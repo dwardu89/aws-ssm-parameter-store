@@ -8,14 +8,16 @@ try {
     AWS.config.update({ region: core.getInput('aws-region') });
     // Load the AWS Region to use in SSM
     const ssm = new SSM()
-    var ssm_path_name = core.getInput('ssm-path')
+
     var params = {
-        Name: ssm_path_name,
-        Value: core.getInput('ssm-value'),
-        Type: core.getInput('ssm-value-type'),
-        Overwrite: core.getInput('ssm-value-overwrite')
+        Name: core.getInput('ssm-path', { required: true }),
+        Value: core.getInput('ssm-value', { required: true }),
+        Type: core.getInput('ssm-value-type', { required: true }),
+        Overwrite: core.getInput('ssm-value-overwrite', { required: true }),
+        KeyId: core.getInput('ssm-kms-key-id'),
+        Description: core.getInput('ssm-value-description')
     }
-    ssm.putParameter(params).then(value => {
+    ssm.putParameter({ params }).then(value => {
         console.log(`Storing Variable in path [${ssm_path_name}]`);
     }).catch(reason => {
         core.setFailed(reason);

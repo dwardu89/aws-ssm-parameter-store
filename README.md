@@ -16,11 +16,15 @@ This action helps solve this problem by taking allowing the user to provide the 
 
 **Required** The value to be stored in the SSM Parameter Store Path.
 
+### `ssm-value-description`
+
+A description of the value being inserted into SSM.
+
 ### `ssm-value`
 
 **Required** The value to be stored in the SSM Parameter Store Path.
 
-### `ssm-value`
+### `ssm-value-type`
 
 **Required** The value type to store the SSM Parameter (String | StringList | SecureString). Default `SecureString`.
 
