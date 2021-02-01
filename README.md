@@ -24,6 +24,10 @@ This action helps solve this problem by taking allowing the user to provide the 
 
 **Required** The value type to store the SSM Parameter (String | StringList | SecureString). Default `SecureString`.
 
+### `ssm-value-overwrite`
+
+**Required** TOverwrite the value of the SSM Parameter when inserting. Default `true`.
+
 ## Example usage
 
 ```yaml
