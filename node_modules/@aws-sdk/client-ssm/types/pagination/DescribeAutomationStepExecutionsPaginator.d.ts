@@ -1,0 +1,4 @@
+import { DescribeAutomationStepExecutionsCommandInput, DescribeAutomationStepExecutionsCommandOutput } from "../commands/DescribeAutomationStepExecutionsCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateDescribeAutomationStepExecutions(config: SSMPaginationConfiguration, input: DescribeAutomationStepExecutionsCommandInput, ...additionalArguments: any): Paginator<DescribeAutomationStepExecutionsCommandOutput>;

@@ -1,0 +1,4 @@
+import { DescribeAssociationExecutionsCommandInput, DescribeAssociationExecutionsCommandOutput } from "../commands/DescribeAssociationExecutionsCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateDescribeAssociationExecutions(config: SSMPaginationConfiguration, input: DescribeAssociationExecutionsCommandInput, ...additionalArguments: any): Paginator<DescribeAssociationExecutionsCommandOutput>;

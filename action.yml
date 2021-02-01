@@ -1,0 +1,29 @@
+name: "AWS SSM Parameter Store Action"
+description: "Stores a secure string in amazon SSM Agent."
+inputs:
+  aws-access-key-id:
+    required: true
+    description: "AWS access key id"
+  aws-secret-access-key:
+    required: true
+    description: "AWS secret access key"
+  aws-region:
+    required: true
+    description: "The AWS Region to use"
+  ssm-path:
+    description: "The Path of the SSM Parameter Store path to store"
+    required: true
+  ssm-value:
+    description: "The value to be stored in the SSM Parameter Store Path"
+    required: true
+  ssm-value-type:
+    description: "The value type to store the SSM Parameter (String | StringList | SecureString)"
+    required: true
+    default: "SecureString"
+  ssm-value-overwrite:
+    description: "Overwrite the value of the SSM Parameter when inserting"
+    required: true
+    default: true
+runs:
+  using: "node12"
+  main: "index.js"

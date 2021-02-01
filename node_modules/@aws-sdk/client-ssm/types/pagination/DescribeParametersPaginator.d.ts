@@ -1,0 +1,4 @@
+import { DescribeParametersCommandInput, DescribeParametersCommandOutput } from "../commands/DescribeParametersCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateDescribeParameters(config: SSMPaginationConfiguration, input: DescribeParametersCommandInput, ...additionalArguments: any): Paginator<DescribeParametersCommandOutput>;

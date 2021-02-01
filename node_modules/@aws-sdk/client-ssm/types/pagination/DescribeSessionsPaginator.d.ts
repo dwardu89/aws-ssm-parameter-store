@@ -1,0 +1,4 @@
+import { DescribeSessionsCommandInput, DescribeSessionsCommandOutput } from "../commands/DescribeSessionsCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateDescribeSessions(config: SSMPaginationConfiguration, input: DescribeSessionsCommandInput, ...additionalArguments: any): Paginator<DescribeSessionsCommandOutput>;

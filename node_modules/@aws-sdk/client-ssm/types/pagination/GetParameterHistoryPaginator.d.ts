@@ -1,0 +1,4 @@
+import { GetParameterHistoryCommandInput, GetParameterHistoryCommandOutput } from "../commands/GetParameterHistoryCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateGetParameterHistory(config: SSMPaginationConfiguration, input: GetParameterHistoryCommandInput, ...additionalArguments: any): Paginator<GetParameterHistoryCommandOutput>;
