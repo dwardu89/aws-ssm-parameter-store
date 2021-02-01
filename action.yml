@@ -1,4 +1,4 @@
-name: "AWS SSM Parameter Store Action"
+name: "AWS SSM Parameter Store Writer"
 description: "Stores a secure string in amazon SSM Agent."
 inputs:
   aws-region:
