@@ -1,0 +1,25 @@
+name: test_pull_request
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  add_to_ssm:
+    runs-on: Ubuntu-20.04
+    name: A job to test the aws-ssm-parameter-store
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      - name: Add to SSM Step
+        id: add_to_ssm
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          aws-region: eu-west-1
