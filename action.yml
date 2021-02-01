@@ -7,6 +7,9 @@ inputs:
   ssm-path:
     description: "The Path of the SSM Parameter Store path to store"
     required: true
+  ssm-value-description:
+    description: "A description of the value being inserted into SSM"
+    default: ""
   ssm-value:
     description: "The value to be stored in the SSM Parameter Store Path"
     required: true
@@ -16,8 +19,10 @@ inputs:
     default: "SecureString"
   ssm-value-overwrite:
     description: "Overwrite the value of the SSM Parameter when inserting"
-    required: true
     default: true
+  ssm-kms-key-id:
+    description: "The AWS KMS Key ARN to use to encrypt the key"
+    default: ""
 runs:
   using: "node12"
   main: "index.js"
