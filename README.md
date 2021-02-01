@@ -33,3 +33,25 @@ with:
   ssm-path: /dwardu89/hello
   ssm-value: ${{ secrets.WORLD }}
 ```
+
+## Required IAM Permissions
+
+In order to use this, your AWS User/Role must allow the `ssm:PutParameter` action.
+
+e.g.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PutSSMParameter",
+      "Effect": "Allow",
+      "Action": "ssm:PutParameter",
+      "Resource": [
+        "arn:aws:ssm:eu-west-1:942970296693:parameter/dwardu89/hello"
+      ]
+    }
+  ]
+}
+```
