@@ -1,0 +1,4 @@
+import { ListDocumentVersionsCommandInput, ListDocumentVersionsCommandOutput } from "../commands/ListDocumentVersionsCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateListDocumentVersions(config: SSMPaginationConfiguration, input: ListDocumentVersionsCommandInput, ...additionalArguments: any): Paginator<ListDocumentVersionsCommandOutput>;

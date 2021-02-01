@@ -1,0 +1,4 @@
+import { DescribeMaintenanceWindowTargetsCommandInput, DescribeMaintenanceWindowTargetsCommandOutput } from "../commands/DescribeMaintenanceWindowTargetsCommand";
+import { SSMPaginationConfiguration } from "./Interfaces";
+import { Paginator } from "@aws-sdk/types";
+export declare function paginateDescribeMaintenanceWindowTargets(config: SSMPaginationConfiguration, input: DescribeMaintenanceWindowTargetsCommandInput, ...additionalArguments: any): Paginator<DescribeMaintenanceWindowTargetsCommandOutput>;
