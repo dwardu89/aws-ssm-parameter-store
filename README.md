@@ -57,7 +57,7 @@ e.g.
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "PutSSMParameter",
+      "Sid": "PutSSMParameters",
       "Effect": "Allow",
       "Action": "ssm:PutParameter",
       "Resource": ["arn:aws:ssm:eu-west-1:1234567890:parameter/dwardu89/hello"]
