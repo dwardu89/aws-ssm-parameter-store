@@ -1,5 +1,6 @@
 name: "AWS SSM Parameter Store Writer"
 description: "Stores a secure string in amazon SSM Agent."
+icon: briefcase
 colour: orange
 inputs:
   aws-region:
