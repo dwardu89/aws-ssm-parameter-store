@@ -34,7 +34,7 @@ A description of the value being inserted into SSM.
 
 ### `ssm-kms-key-id`
 
-The AWS KMS Key ARN to use to encrypt the key.
+The AWS KMS Key ARN to use to encrypt the key. Default uses the AWS Provided KMS Key ID .
 
 ## Example usage
 
