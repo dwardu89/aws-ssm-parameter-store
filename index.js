@@ -18,8 +18,8 @@ try {
         KeyId: core.getInput('ssm-kms-key-id'),
         Description: core.getInput('ssm-value-description')
     }
-    ssm.putParameter({ params }).then(value => {
-        console.log(`Storing Variable in path [${value}]`);
+    ssm.putParameter(params).then(value => {
+        console.log(`Successfully Stored parameter in path [${value}]`);
     }).catch(reason => {
         core.setFailed(reason);
     })
