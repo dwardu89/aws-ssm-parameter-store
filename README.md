@@ -1,10 +1,8 @@
 # AWS SSM Parameter Store GitHub Action
 
-This GitHub Action was created with the problem that was discovered when working with secrets and infrastructure as code.
+This GitHub Action was created to solve the problem when using Terraform or CloudFormation, you would have to store the secret encrypted in an encrypted format, then write extra steps to decrypt it. Terraform suffers from storing sensitive data as plain text which would require you to further encrypt your state file. Sometimes the simplest solution would have to manage the secret manually if using SSM Parameter store.
 
-The problem that was faced was when using Terraform or CloudFormation, you would have to store the secret in plain text and then run some extra checks to encrypt it. Or you would have to add the value manually.
-
-This action helps solve this problem by taking allowing the user to provide the path and the value that wants to be stored in a GitHub Action and the value can be passed in as a secret.
+This action helps solve this problem by allowing the user to provide the path and the value that wants to be stored in a GitHub Action and the value can be passed in as a secret from the github actions. Pair this with the `Environments` feature and you can have a GitHub Action CI that also manages secrets.
 
 ## Inputs
 
