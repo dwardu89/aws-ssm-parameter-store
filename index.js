@@ -4,12 +4,12 @@ var AWS = require('aws-sdk');
 const { SSM } = require("@aws-sdk/client-ssm");
 
 try {
-    console.log(`Storing Variable in path [${core.getInput('ssm-path', { required: true })}]`);
-    // Set the region 
-    AWS.config.update({ region: core.getInput('aws-region') });
+    var ssm_path = core.getInput('ssm-path', { required: true })
+    core.info(`Storing Variable in path [${ssm_path}]`);
     // Load the AWS Region to use in SSM
+    core.debug(`Setting aws-region [${core.getInput('aws-region')}]`)
+    AWS.config.update({ region: core.getInput('aws-region') });
     const ssm = new SSM()
-
     var params = {
         Name: core.getInput('ssm-path', { required: true }),
         Value: core.getInput('ssm-value', { required: true }),
@@ -19,16 +19,14 @@ try {
     }
     const keyId = core.getInput('ssm-kms-key-id')
     if (params['Type'] === "SecureString" && keyId !== '') {
+        core.debug(`Setting the KeyId to ${keyId}`)
         params['KeyId'] = keyId
     }
-    ssm.putParameter(params).then(value => {
-        console.log(`Successfully Stored parameter in path [${value}]`);
+    await ssm.putParameter(params).then(value => {
+        core.info(`Successfully Stored parameter in path [${ssm_path}]`);
     }).catch(reason => {
         core.setFailed(reason);
     })
-
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
 } catch (error) {
     core.setFailed(error.message);
 }
