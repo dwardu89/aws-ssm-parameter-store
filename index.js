@@ -15,8 +15,11 @@ try {
         Value: core.getInput('ssm-value', { required: true }),
         Type: core.getInput('ssm-value-type', { required: true }),
         Overwrite: core.getInput('ssm-value-overwrite', { required: true }),
-        KeyId: core.getInput('ssm-kms-key-id'),
         Description: core.getInput('ssm-value-description')
+    }
+    const keyId = core.getInput('ssm-kms-key-id')
+    if (params['Type'] === "SecureString" && keyId !== '') {
+        params['KeyId'] = keyId
     }
     ssm.putParameter(params).then(value => {
         console.log(`Successfully Stored parameter in path [${value}]`);

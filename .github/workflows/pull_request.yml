@@ -16,10 +16,18 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
-      - name: Add to SSM Step
-        id: add_to_ssm
+      - name: Add SecureString to SSM
+        id: add_to_ssm_secure_string
         uses: ./
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          aws-region: eu-west-1
+      - name: Add String to SSM Step
+        id: add_to_ssm_string
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          ssm-value-type: "String"
           aws-region: eu-west-1
