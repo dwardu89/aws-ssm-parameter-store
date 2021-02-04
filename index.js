@@ -3,32 +3,33 @@ const github = require('@actions/github');
 var AWS = require('aws-sdk');
 const { SSM } = require("@aws-sdk/client-ssm");
 
-try {
-    console.log(`Storing Variable in path [${core.getInput('ssm-path', { required: true })}]`);
-    // Set the region 
-    AWS.config.update({ region: core.getInput('aws-region') });
-    // Load the AWS Region to use in SSM
-    const ssm = new SSM()
+async function run() {
+    try {
+        var ssm_path = core.getInput('ssm-path', { required: true })
+        core.info(`Storing Variable in path [${ssm_path}]`);
+        // Load the AWS Region to use in SSM
+        core.debug(`Setting aws-region [${core.getInput('aws-region')}]`)
+        AWS.config.update({ region: core.getInput('aws-region') });
+        const ssm = new SSM()
+        var params = {
+            Name: core.getInput('ssm-path', { required: true }),
+            Value: core.getInput('ssm-value', { required: true }),
+            Type: core.getInput('ssm-value-type', { required: true }),
+            Overwrite: core.getInput('ssm-value-overwrite', { required: true }),
+            Description: core.getInput('ssm-value-description')
+        }
+        const keyId = core.getInput('ssm-kms-key-id')
+        if (params['Type'] === "SecureString" && keyId !== '') {
+            core.debug(`Setting the KeyId to ${keyId}`)
+            params['KeyId'] = keyId
+        }
+        var result = await ssm.putParameter(params)
+        core.debug(`Parameter details Version [${result.Version}] Tier [${result.Tier}]`)
+        core.info(`Successfully Stored parameter in path [${ssm_path}]`);
 
-    var params = {
-        Name: core.getInput('ssm-path', { required: true }),
-        Value: core.getInput('ssm-value', { required: true }),
-        Type: core.getInput('ssm-value-type', { required: true }),
-        Overwrite: core.getInput('ssm-value-overwrite', { required: true }),
-        Description: core.getInput('ssm-value-description')
+    } catch (error) {
+        core.setFailed(error.message);
     }
-    const keyId = core.getInput('ssm-kms-key-id')
-    if (params['Type'] === "SecureString" && keyId !== '') {
-        params['KeyId'] = keyId
-    }
-    ssm.putParameter(params).then(value => {
-        console.log(`Successfully Stored parameter in path [${value}]`);
-    }).catch(reason => {
-        core.setFailed(reason);
-    })
-
-    // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-} catch (error) {
-    core.setFailed(error.message);
 }
+
+run()
