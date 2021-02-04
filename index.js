@@ -4,6 +4,7 @@ var AWS = require('aws-sdk');
 const { SSM } = require("@aws-sdk/client-ssm");
 
 try {
+    console.log(`Storing Variable in path [${core.getInput('ssm-path', { required: true })}]`);
     // Set the region 
     AWS.config.update({ region: core.getInput('aws-region') });
     // Load the AWS Region to use in SSM
@@ -18,7 +19,7 @@ try {
         Description: core.getInput('ssm-value-description')
     }
     ssm.putParameter({ params }).then(value => {
-        console.log(`Storing Variable in path [${ssm_path_name}]`);
+        console.log(`Storing Variable in path [${value}]`);
     }).catch(reason => {
         core.setFailed(reason);
     })
