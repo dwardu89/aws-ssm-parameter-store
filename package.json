@@ -1,7 +1,7 @@
 {
   "name": "aws-ssm-parameter-store",
   "version": "1.0.0",
-  "description": "This GitHub Action was created with the problem that was discovered when working with secrets and infrastructure as code.",
+  "description": "Inject parameters and secrets into AWS SSM Parameter Store in your CI.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
