@@ -31,3 +31,21 @@ jobs:
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           ssm-value-type: "String"
           aws-region: eu-west-1
+
+  check_semver_label:
+    name: Check for semantic version label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: major,minor,patch
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+  check_pull_request_type:
+    name: Check for pull request type label
+    runs-on: ubuntu-latest
+    steps:
+      - uses: docker://agilepathway/pull-request-label-checker:latest
+        with:
+          one_of: bug,enhancement,chore
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
