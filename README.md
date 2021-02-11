@@ -6,7 +6,7 @@ Terraform requires extra work in order to secure your state file because the sec
 
 CloudFormation requires you to store it before you can reference it.
 
-This action helps solve this problem by allowing the user to provide the path and value that wants to be stored in a GitHub Action and the value can be passed in as a GitHub Environment Secret.
+This action helps solve this problem by allowing the user to provide the path and the value that wants to be stored in a GitHub Action and the value can be passed in as a secret from the github actions. Pair this with the `Environments` feature and you can have a GitHub Action CI that also manages secrets.
 
 ## Inputs
 

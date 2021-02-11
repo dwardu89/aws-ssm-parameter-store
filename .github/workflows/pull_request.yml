@@ -6,7 +6,7 @@ on:
 jobs:
   add_to_ssm:
     runs-on: Ubuntu-20.04
-    name: A job to test the aws-ssm-parameter-store
+    name: Test in a github runner
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,20 +17,75 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - name: Add SecureString to SSM
-        id: add_to_ssm_secure_string
         uses: ./
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           aws-region: eu-west-1
       - name: Add String to SSM Step
-        id: add_to_ssm_string
         uses: ./
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           ssm-value-type: "String"
           aws-region: eu-west-1
+      - name: Add String to SSM Step
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          ssm-value-type: "String"
+
+  add_to_ssm_on_container:
+    runs-on: Ubuntu-20.04
+    name: Test in a node container
+    container: node:12.20.1-alpine3.10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      - name: Add SecureString to SSM
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+      - name: Add String to SSM Step
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          ssm-value-type: "String"
+
+  add_to_ssm_on_container_and_environment:
+    runs-on: Ubuntu-20.04
+    name: Test in a node container and environment
+    container: node:12.20.1-alpine3.10
+    environment: dev
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      - name: Add SecureString to SSM
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+      - name: Add String to SSM Step
+        uses: ./
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          ssm-value-type: "String"
 
   check_semver_label:
     name: Check for semantic version label
