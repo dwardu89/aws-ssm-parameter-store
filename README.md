@@ -1,10 +1,12 @@
 # AWS SSM Parameter Store GitHub Action
 
-This GitHub Action was created with the problem that was discovered when working with secrets and infrastructure as code.
+This GitHub Action allows you to inject parameters into AWS Systems Manager Parameter Store. It was created to solve the problem of secret management when using infrastructure as code.
 
-The problem that was faced was when using Terraform or CloudFormation, you would have to store the secret in plain text and then run some extra checks to encrypt it. Or you would have to add the value manually.
+Terraform requires extra work in order to secure your state file because the secret is stored as plain text. This would require you to encrypt/decrypt the statefile when you are modifying state.
 
-This action helps solve this problem by taking allowing the user to provide the path and the value that wants to be stored in a GitHub Action and the value can be passed in as a secret.
+CloudFormation requires you to store it before you can reference it.
+
+This action helps solve this problem by allowing the user to provide the path and value that wants to be stored in a GitHub Action and the value can be passed in as a GitHub Environment Secret.
 
 ## Inputs
 
@@ -39,11 +41,28 @@ The AWS KMS Key ARN to use to encrypt the key. Default uses the AWS Provided KMS
 ## Example usage
 
 ```yaml
-uses: dwardu89/aws-ssm-parameter-store
-with:
-  aws-region: eu-west-1
-  ssm-path: /dwardu89/hello
-  ssm-value: ${{ secrets.WORLD }}
+name: store_secret
+on:
+  pull_request:
+    branches:
+      - master
+jobs:
+  add_to_ssm:
+    runs-on: Ubuntu-20.04
+    name: Store a Secret
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-1
+      - name: Add hello SecureString to SSM
+        uses: dwardu89/aws-ssm-parameter-store@v1
+        with:
+          ssm-path: "/dwardu89/hello"
+          ssm-value: ${{ secrets.WORLD }}
+          aws-region: eu-west-1
 ```
 
 ## Required IAM Permissions

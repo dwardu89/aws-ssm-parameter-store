@@ -1,5 +1,5 @@
-name: "AWS SSM Parameter Store Writer"
-description: "Stores a secure string in amazon SSM Agent."
+name: "AWS Parameter Store Injector"
+description: "Secret management for GitHub Actions using AWS Systems Manager Parameter Store."
 branding:
   icon: briefcase
   color: orange
