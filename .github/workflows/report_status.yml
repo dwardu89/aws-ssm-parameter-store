@@ -7,10 +7,10 @@ jobs:
   send_result:
     runs-on: ubuntu-latest
     steps:
-      - name: PING - Dispatch initiating repository event
-        if: github.event.action != 'pong'
+      - name: Report the outcome of the event
+        if: ${{ always() }}
         run: |
           curl -X POST https://api.github.com/repos/dwardu89/repository-status-collector/dispatches \
           -H "Accept: application/vnd.github.v3+json" \
           -u ${{ secrets.ACCESS_TOKEN }} \
-          --data '{"event_type": "status_report", "client_payload": { "result": "success", "workflow": "report_status", "repository": "'"$GITHUB_REPOSITORY"'" }}'
+          --data '{"event_type": "status_report", "client_payload": { "result": "${{ job.status }}", "workflow": "report_status", "github_user": "${{ github.actor }}", "repository": "${{ github.repository}}" }}'
