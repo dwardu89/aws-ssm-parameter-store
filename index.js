@@ -26,6 +26,7 @@ async function run() {
         }
         core.debug('Checking AWS authentication')
         if (accessKey !== '') {
+          core.debug('Updating AWS authentication')
             AWS.config.update({
                 secretAccessKey: core.getInput('aws-secret-key'),
                 accessKeyId: core.getInput('aws-access-key')
