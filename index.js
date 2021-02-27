@@ -15,7 +15,7 @@ async function run() {
             Name: core.getInput('ssm-path', { required: true }),
             Value: core.getInput('ssm-value', { required: true }),
             Type: core.getInput('ssm-value-type', { required: true }),
-            Overwrite: core.getInput('ssm-value-overwrite', { required: true }),
+            Overwrite: Boolean(core.getInput('ssm-value-overwrite', { required: true })),
             Description: core.getInput('ssm-value-description')
         }
         const keyId = core.getInput('ssm-kms-key-id')
@@ -26,16 +26,21 @@ async function run() {
         }
         core.debug('Checking AWS authentication')
         if (accessKey !== '') {
-          core.debug('Updating AWS authentication')
+            core.debug('Updating AWS authentication')
             AWS.config.update({
                 secretAccessKey: core.getInput('aws-secret-key'),
-                accessKeyId: core.getInput('aws-access-key')
+                accessKeyId: core.getInput('aws-access-key'),
+                region: core.getInput('aws-region')
             })
+            var authedSsm = new AWS.SSM()
+            await authedSsm.putParameter(params).promise().then((res) => {              
+              core.debug(res.message)
+            })
+        } else {
+          var result = await ssm.putParameter(params)
+          core.debug(`Parameter details Version [${result.Version}] Tier [${result.Tier}]`)
         }
-        var result = await ssm.putParameter(params)
-        core.debug(`Parameter details Version [${result.Version}] Tier [${result.Tier}]`)
         core.info(`Successfully Stored parameter in path [${ssm_path}]`);
-
     } catch (error) {
         core.setFailed(error.message);
     }
