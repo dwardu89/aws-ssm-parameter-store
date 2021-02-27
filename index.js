@@ -19,9 +19,17 @@ async function run() {
             Description: core.getInput('ssm-value-description')
         }
         const keyId = core.getInput('ssm-kms-key-id')
+        const accessKey = core.getInput('aws-access-key')
         if (params['Type'] === "SecureString" && keyId !== '') {
             core.debug(`Setting the KeyId to ${keyId}`)
             params['KeyId'] = keyId
+        }
+        core.debug('Checking AWS authentication')
+        if (accessKey !== '') {
+            AWS.config.update({
+                secretAccessKey: core.getInput('aws-secret-key'),
+                accessKeyId: core.getInput('aws-access-key')
+            })
         }
         var result = await ssm.putParameter(params)
         core.debug(`Parameter details Version [${result.Version}] Tier [${result.Tier}]`)
