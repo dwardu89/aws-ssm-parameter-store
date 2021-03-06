@@ -7,6 +7,14 @@ inputs:
   aws-region:
     required: true
     description: "The AWS Region to use"
+  aws-access-key:
+    required: false
+    description: "The AWS api access key to use"
+    default: ""
+  aws-secret-key:
+    required: false
+    description: "The AWS api secret key to use"
+    default: ""
   ssm-path:
     description: "The Path of the SSM Parameter Store path to store"
     required: true
