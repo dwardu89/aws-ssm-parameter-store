@@ -10,9 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
-    "@aws-sdk/client-ssm": "^3.4.1",
-    "aws-sdk": "^2.834.0"
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.0",
+    "@aws-sdk/client-ssm": "^3.43.0",
+    "aws-sdk": "^2.1039.0"
   }
 }
