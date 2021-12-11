@@ -14,3 +14,10 @@ jobs:
       - uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Report the outcome of the event
+        if: ${{ always() }}
+        run: |
+          curl -X POST https://api.github.com/repos/dwardu89/repository-status-collector/dispatches \
+          -H "Accept: application/vnd.github.v3+json" \
+          -u ${{ secrets.ACCESS_TOKEN }} \
+          --data '{"event_type": "status_report", "client_payload": { "result": "failed", "workflow": "report_status", "github_user": "${{ github.actor }}", "repository": "${{ github.repository}}" }}'
