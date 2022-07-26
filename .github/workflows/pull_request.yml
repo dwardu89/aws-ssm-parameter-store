@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   add_to_ssm:
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Test in a github runner
     steps:
       - name: Checkout
