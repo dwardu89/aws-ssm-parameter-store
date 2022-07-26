@@ -18,25 +18,25 @@ This action helps solve this problem by allowing the user to provide the path an
 
 **Required** The value to be stored in the SSM Parameter Store Path.
 
-### `ssm-value-description`
-
-A description of the value being inserted into SSM.
-
 ### `ssm-value`
 
 **Required** The value to be stored in the SSM Parameter Store Path.
 
+### `ssm-value-description`
+
+**Optional** A description of the value being inserted into SSM.
+
 ### `ssm-value-type`
 
-**Required** The value type to store the SSM Parameter (String | StringList | SecureString). Default `SecureString`.
+**Optional** The value type to store the SSM Parameter (String | StringList | SecureString). Default `SecureString`.
 
 ### `ssm-value-overwrite`
 
-**Required** TOverwrite the value of the SSM Parameter when inserting. Default `true`.
+**Optional** To overwrite the value of the SSM Parameter when inserting. Default `true`.
 
 ### `ssm-kms-key-id`
 
-The AWS KMS Key ARN to use to encrypt the key. Default uses the AWS Provided KMS Key ID .
+**Optional** The AWS KMS Key ARN to use to encrypt the key. Default uses the AWS Provided KMS Key ID .
 
 ## Example usage
 
@@ -48,7 +48,7 @@ on:
       - master
 jobs:
   add_to_ssm:
-    runs-on: Ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Store a Secret
     steps:
       - name: Configure AWS Credentials
@@ -58,9 +58,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - name: Add hello SecureString to SSM
-        uses: dwardu89/aws-ssm-parameter-store@v1
+        uses: joshghent/aws-ssm-parameter-store@v1
         with:
-          ssm-path: "/dwardu89/hello"
+          ssm-path: "/joshghent/hello"
           ssm-value: ${{ secrets.WORLD }}
           aws-region: eu-west-1
 ```
@@ -84,3 +84,19 @@ e.g.
   ]
 }
 ```
+
+## Local Testing
+
+To test this action locally, you can use [`act`](https://github.com/nektos/act)
+
+1. Install `act`
+2. Make your AWS credentials accessible as variables on your command line. `export AWS_ACCESS_KEY_ID="wasd"`
+3. Run the command below.
+
+```
+act -j local_test_store_ssm --secret AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --secret SSM_PATH="/joshghent/helloworld" --secret SSM_VALUE="hello"
+```
+
+## Credit
+
+Original code by [@dwardu89](https://github.com/dwardu89)
