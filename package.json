@@ -1,18 +1,25 @@
 {
   "name": "aws-ssm-parameter-store",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Inject parameters and secrets into AWS SSM Parameter Store in your CI.",
   "main": "index.js",
   "scripts": {
+    "package": "ncc build index.js -o dist --source-map --license licenses.txt",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "AWS",
+    "SSM",
+    "Parameter Store",
+    "GitHub Action"
+  ],
+  "author": "Josh Ghent <me@joshghent.com>",
+  "license": "Apache 2.0",
   "dependencies": {
-    "@actions/core": "^1.6.0",
-    "@actions/github": "^5.0.0",
-    "@aws-sdk/client-ssm": "^3.43.0",
-    "aws-sdk": "^2.1039.0"
+    "@actions/core": "^1.9.0",
+    "@actions/github": "^5.0.3",
+    "@aws-sdk/client-ssm": "^3.131.0",
+    "@vercel/ncc": "^0.34.0",
+    "aws-sdk": "^2.1181.0"
   }
 }
