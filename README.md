@@ -58,7 +58,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
       - name: Add hello SecureString to SSM
-        uses: joshghent/aws-ssm-parameter-store@v1
+        uses: joshghent/aws-ssm-parameter-store@v2
         with:
           ssm-path: "/joshghent/hello"
           ssm-value: ${{ secrets.WORLD }}
