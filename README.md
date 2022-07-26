@@ -63,6 +63,7 @@ jobs:
           ssm-path: "/joshghent/hello"
           ssm-value: ${{ secrets.WORLD }}
           aws-region: eu-west-1
+          ssm-value-type: "String"
 ```
 
 ## Required IAM Permissions
