@@ -1,4 +1,4 @@
-name: "AWS SSM Parameter Store PutParameter"
+name: "AWS Parameter Store Injector"
 description: "Create or Update an AWS SSM (Systems Manager) Parameter with ease"
 branding:
   icon: briefcase
