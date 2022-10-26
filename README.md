@@ -60,7 +60,7 @@ jobs:
       - name: Add hello SecureString to SSM
         uses: dwardu89/aws-ssm-parameter-store@latest
         with:
-          ssm-path: "/joshghent/hello"
+          ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.WORLD }}
           aws-region: eu-west-1
           ssm-value-type: "String"
