@@ -35,6 +35,7 @@ jobs:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           ssm-value-type: "String"
+          aws-region: eu-west-1
 
   add_to_ssm_on_container:
     runs-on: Ubuntu-20.04
@@ -54,12 +55,14 @@ jobs:
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          aws-region: eu-west-1
       - name: Add String to SSM Step
         uses: ./
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           ssm-value-type: "String"
+          aws-region: eu-west-1
 
   add_to_ssm_on_container_and_environment:
     runs-on: Ubuntu-20.04
@@ -80,12 +83,14 @@ jobs:
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
+          aws-region: eu-west-1
       - name: Add String to SSM Step
         uses: ./
         with:
           ssm-path: "/dwardu89/hello"
           ssm-value: ${{ secrets.SSM_VALUE_EXAMPLE }}
           ssm-value-type: "String"
+          aws-region: eu-west-1
 
   check_semver_label:
     name: Check for semantic version label
