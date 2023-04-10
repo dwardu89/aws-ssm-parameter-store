@@ -20,6 +20,6 @@
     "@actions/github": "^5.0.3",
     "@aws-sdk/client-ssm": "^3.131.0",
     "@vercel/ncc": "^0.34.0",
-    "aws-sdk": "^2.1181.0"
+    "aws-sdk": "^2.1354.0"
   }
 }
