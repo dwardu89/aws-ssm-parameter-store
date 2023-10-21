@@ -21,8 +21,8 @@ async function run() {
       }),
       Description: core.getInput("ssm-value-description"),
     };
-    core.info(`params.Value [${params.Value}] ${params.Value===undefined}, ${params.Value===''} `);
-    if (skip === true && params.Value === undefined) {
+    core.info(`skip [${skip}] params.Value [${params.Value}]`);
+    if (skip === true && params.Value === '') {
       core.info(`Skipping empty value parameter in path [${ssm_path}]`);
       return;
     }
