@@ -20,6 +20,11 @@ async function run() {
       }),
       Description: core.getInput("ssm-value-description"),
     };
+    var skip = core.getInput("skip-empty-value", { required: false });
+    if (skip === true && params.Value === '') {
+      core.info(`Skipping empty value parameter in path [${ssm_path}]`);
+      return;
+    }
     core.debug(
       `Prepared parameters for SSM parameter update. ${JSON.stringify(params)}`
     );
