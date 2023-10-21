@@ -22,7 +22,7 @@ async function run() {
       Description: core.getInput("ssm-value-description"),
     };
     core.info(`skip [${skip}] params.Value [${params.Value}]`);
-    if (skip === true && params.Value === '') {
+    if (skip === 'true' && params.Value === '') {
       core.info(`Skipping empty value parameter in path [${ssm_path}]`);
       return;
     }
