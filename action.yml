@@ -26,6 +26,9 @@ inputs:
   ssm-kms-key-id:
     description: "The AWS KMS Key ARN to use to encrypt the key"
     default: ""
+  skip-empty-value:
+    description: "Skips creating/updating an SSM Parameter if provided value is empty"
+    default: ""
 runs:
   using: "node16"
   main: "index.js"
