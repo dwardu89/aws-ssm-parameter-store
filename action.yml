@@ -27,5 +27,5 @@ inputs:
     description: "The AWS KMS Key ARN to use to encrypt the key"
     default: ""
 runs:
-  using: "node16"
+  using: "node20"
   main: "index.js"
