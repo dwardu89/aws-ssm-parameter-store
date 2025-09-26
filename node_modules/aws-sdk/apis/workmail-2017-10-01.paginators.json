@@ -21,6 +21,16 @@
       "output_token": "NextToken",
       "limit_key": "MaxResults"
     },
+    "ListGroupsForEntity": {
+      "input_token": "NextToken",
+      "output_token": "NextToken",
+      "limit_key": "MaxResults"
+    },
+    "ListImpersonationRoles": {
+      "input_token": "NextToken",
+      "output_token": "NextToken",
+      "limit_key": "MaxResults"
+    },
     "ListMailDomains": {
       "input_token": "NextToken",
       "output_token": "NextToken",

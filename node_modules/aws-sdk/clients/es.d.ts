@@ -36,6 +36,22 @@ declare class ES extends Service {
    */
   associatePackage(callback?: (err: AWSError, data: ES.Types.AssociatePackageResponse) => void): Request<ES.Types.AssociatePackageResponse, AWSError>;
   /**
+   * Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+   */
+  authorizeVpcEndpointAccess(params: ES.Types.AuthorizeVpcEndpointAccessRequest, callback?: (err: AWSError, data: ES.Types.AuthorizeVpcEndpointAccessResponse) => void): Request<ES.Types.AuthorizeVpcEndpointAccessResponse, AWSError>;
+  /**
+   * Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+   */
+  authorizeVpcEndpointAccess(callback?: (err: AWSError, data: ES.Types.AuthorizeVpcEndpointAccessResponse) => void): Request<ES.Types.AuthorizeVpcEndpointAccessResponse, AWSError>;
+  /**
+   * Cancels a pending configuration change on an Amazon OpenSearch Service domain.
+   */
+  cancelDomainConfigChange(params: ES.Types.CancelDomainConfigChangeRequest, callback?: (err: AWSError, data: ES.Types.CancelDomainConfigChangeResponse) => void): Request<ES.Types.CancelDomainConfigChangeResponse, AWSError>;
+  /**
+   * Cancels a pending configuration change on an Amazon OpenSearch Service domain.
+   */
+  cancelDomainConfigChange(callback?: (err: AWSError, data: ES.Types.CancelDomainConfigChangeResponse) => void): Request<ES.Types.CancelDomainConfigChangeResponse, AWSError>;
+  /**
    * Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the AutomatedUpdateDate and when the UpdateStatus is in the PENDING_UPDATE state.
    */
   cancelElasticsearchServiceSoftwareUpdate(params: ES.Types.CancelElasticsearchServiceSoftwareUpdateRequest, callback?: (err: AWSError, data: ES.Types.CancelElasticsearchServiceSoftwareUpdateResponse) => void): Request<ES.Types.CancelElasticsearchServiceSoftwareUpdateResponse, AWSError>;
@@ -67,6 +83,14 @@ declare class ES extends Service {
    * Create a package for use with Amazon ES domains.
    */
   createPackage(callback?: (err: AWSError, data: ES.Types.CreatePackageResponse) => void): Request<ES.Types.CreatePackageResponse, AWSError>;
+  /**
+   * Creates an Amazon OpenSearch Service-managed VPC endpoint.
+   */
+  createVpcEndpoint(params: ES.Types.CreateVpcEndpointRequest, callback?: (err: AWSError, data: ES.Types.CreateVpcEndpointResponse) => void): Request<ES.Types.CreateVpcEndpointResponse, AWSError>;
+  /**
+   * Creates an Amazon OpenSearch Service-managed VPC endpoint.
+   */
+  createVpcEndpoint(callback?: (err: AWSError, data: ES.Types.CreateVpcEndpointResponse) => void): Request<ES.Types.CreateVpcEndpointResponse, AWSError>;
   /**
    * Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
    */
@@ -103,6 +127,14 @@ declare class ES extends Service {
    * Delete the package.
    */
   deletePackage(callback?: (err: AWSError, data: ES.Types.DeletePackageResponse) => void): Request<ES.Types.DeletePackageResponse, AWSError>;
+  /**
+   * Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+   */
+  deleteVpcEndpoint(params: ES.Types.DeleteVpcEndpointRequest, callback?: (err: AWSError, data: ES.Types.DeleteVpcEndpointResponse) => void): Request<ES.Types.DeleteVpcEndpointResponse, AWSError>;
+  /**
+   * Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
+   */
+  deleteVpcEndpoint(callback?: (err: AWSError, data: ES.Types.DeleteVpcEndpointResponse) => void): Request<ES.Types.DeleteVpcEndpointResponse, AWSError>;
   /**
    * Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
    */
@@ -192,6 +224,14 @@ declare class ES extends Service {
    */
   describeReservedElasticsearchInstances(callback?: (err: AWSError, data: ES.Types.DescribeReservedElasticsearchInstancesResponse) => void): Request<ES.Types.DescribeReservedElasticsearchInstancesResponse, AWSError>;
   /**
+   * Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
+   */
+  describeVpcEndpoints(params: ES.Types.DescribeVpcEndpointsRequest, callback?: (err: AWSError, data: ES.Types.DescribeVpcEndpointsResponse) => void): Request<ES.Types.DescribeVpcEndpointsResponse, AWSError>;
+  /**
+   * Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
+   */
+  describeVpcEndpoints(callback?: (err: AWSError, data: ES.Types.DescribeVpcEndpointsResponse) => void): Request<ES.Types.DescribeVpcEndpointsResponse, AWSError>;
+  /**
    * Dissociates a package from the Amazon ES domain.
    */
   dissociatePackage(params: ES.Types.DissociatePackageRequest, callback?: (err: AWSError, data: ES.Types.DissociatePackageResponse) => void): Request<ES.Types.DissociatePackageResponse, AWSError>;
@@ -280,6 +320,30 @@ declare class ES extends Service {
    */
   listTags(callback?: (err: AWSError, data: ES.Types.ListTagsResponse) => void): Request<ES.Types.ListTagsResponse, AWSError>;
   /**
+   * Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+   */
+  listVpcEndpointAccess(params: ES.Types.ListVpcEndpointAccessRequest, callback?: (err: AWSError, data: ES.Types.ListVpcEndpointAccessResponse) => void): Request<ES.Types.ListVpcEndpointAccessResponse, AWSError>;
+  /**
+   * Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
+   */
+  listVpcEndpointAccess(callback?: (err: AWSError, data: ES.Types.ListVpcEndpointAccessResponse) => void): Request<ES.Types.ListVpcEndpointAccessResponse, AWSError>;
+  /**
+   * Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
+   */
+  listVpcEndpoints(params: ES.Types.ListVpcEndpointsRequest, callback?: (err: AWSError, data: ES.Types.ListVpcEndpointsResponse) => void): Request<ES.Types.ListVpcEndpointsResponse, AWSError>;
+  /**
+   * Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
+   */
+  listVpcEndpoints(callback?: (err: AWSError, data: ES.Types.ListVpcEndpointsResponse) => void): Request<ES.Types.ListVpcEndpointsResponse, AWSError>;
+  /**
+   * Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+   */
+  listVpcEndpointsForDomain(params: ES.Types.ListVpcEndpointsForDomainRequest, callback?: (err: AWSError, data: ES.Types.ListVpcEndpointsForDomainResponse) => void): Request<ES.Types.ListVpcEndpointsForDomainResponse, AWSError>;
+  /**
+   * Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
+   */
+  listVpcEndpointsForDomain(callback?: (err: AWSError, data: ES.Types.ListVpcEndpointsForDomainResponse) => void): Request<ES.Types.ListVpcEndpointsForDomainResponse, AWSError>;
+  /**
    * Allows you to purchase reserved Elasticsearch instances.
    */
   purchaseReservedElasticsearchInstanceOffering(params: ES.Types.PurchaseReservedElasticsearchInstanceOfferingRequest, callback?: (err: AWSError, data: ES.Types.PurchaseReservedElasticsearchInstanceOfferingResponse) => void): Request<ES.Types.PurchaseReservedElasticsearchInstanceOfferingResponse, AWSError>;
@@ -303,6 +367,14 @@ declare class ES extends Service {
    * Removes the specified set of tags from the specified Elasticsearch domain.
    */
   removeTags(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
+  /**
+   * Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
+   */
+  revokeVpcEndpointAccess(params: ES.Types.RevokeVpcEndpointAccessRequest, callback?: (err: AWSError, data: ES.Types.RevokeVpcEndpointAccessResponse) => void): Request<ES.Types.RevokeVpcEndpointAccessResponse, AWSError>;
+  /**
+   * Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
+   */
+  revokeVpcEndpointAccess(callback?: (err: AWSError, data: ES.Types.RevokeVpcEndpointAccessResponse) => void): Request<ES.Types.RevokeVpcEndpointAccessResponse, AWSError>;
   /**
    * Schedules a service software update for an Amazon ES domain.
    */
@@ -328,6 +400,14 @@ declare class ES extends Service {
    */
   updatePackage(callback?: (err: AWSError, data: ES.Types.UpdatePackageResponse) => void): Request<ES.Types.UpdatePackageResponse, AWSError>;
   /**
+   * Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+   */
+  updateVpcEndpoint(params: ES.Types.UpdateVpcEndpointRequest, callback?: (err: AWSError, data: ES.Types.UpdateVpcEndpointResponse) => void): Request<ES.Types.UpdateVpcEndpointResponse, AWSError>;
+  /**
+   * Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
+   */
+  updateVpcEndpoint(callback?: (err: AWSError, data: ES.Types.UpdateVpcEndpointResponse) => void): Request<ES.Types.UpdateVpcEndpointResponse, AWSError>;
+  /**
    * Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
    */
   upgradeElasticsearchDomain(params: ES.Types.UpgradeElasticsearchDomainRequest, callback?: (err: AWSError, data: ES.Types.UpgradeElasticsearchDomainResponse) => void): Request<ES.Types.UpgradeElasticsearchDomainResponse, AWSError>;
@@ -338,6 +418,7 @@ declare class ES extends Service {
 }
 declare namespace ES {
   export type ARN = string;
+  export type AWSAccount = string;
   export interface AcceptInboundCrossClusterSearchConnectionRequest {
     /**
      * The id of the inbound connection that you want to accept.
@@ -462,6 +543,33 @@ declare namespace ES {
      */
     DomainPackageDetails?: DomainPackageDetails;
   }
+  export interface AuthorizeVpcEndpointAccessRequest {
+    /**
+     * The name of the OpenSearch Service domain to provide access to.
+     */
+    DomainName: DomainName;
+    /**
+     * The account ID to grant access to.
+     */
+    Account: AWSAccount;
+  }
+  export interface AuthorizeVpcEndpointAccessResponse {
+    /**
+     * Information about the account or service that was provided access to the domain.
+     */
+    AuthorizedPrincipal: AuthorizedPrincipal;
+  }
+  export interface AuthorizedPrincipal {
+    /**
+     * The type of principal.
+     */
+    PrincipalType?: PrincipalType;
+    /**
+     * The IAM principal that is allowed access to the domain.
+     */
+    Principal?: String;
+  }
+  export type AuthorizedPrincipalList = AuthorizedPrincipal[];
   export interface AutoTune {
     /**
      * Specifies Auto-Tune type. Valid value is SCHEDULED_ACTION. 
@@ -567,6 +675,30 @@ declare namespace ES {
   export type AutoTuneType = "SCHEDULED_ACTION"|string;
   export type BackendRole = string;
   export type Boolean = boolean;
+  export interface CancelDomainConfigChangeRequest {
+    /**
+     * Name of the OpenSearch Service domain configuration request to cancel.
+     */
+    DomainName: DomainName;
+    /**
+     * When set to True, returns the list of change IDs and properties that will be cancelled without actually cancelling the change.
+     */
+    DryRun?: DryRun;
+  }
+  export interface CancelDomainConfigChangeResponse {
+    /**
+     * Whether or not the request was a dry run. If True, the changes were not actually cancelled.
+     */
+    DryRun?: DryRun;
+    /**
+     * The unique identifiers of the changes that were cancelled.
+     */
+    CancelledChangeIds?: GUIDList;
+    /**
+     * The domain change properties that were cancelled.
+     */
+    CancelledChangeProperties?: CancelledChangePropertyList;
+  }
   export interface CancelElasticsearchServiceSoftwareUpdateRequest {
     /**
      * The name of the domain that you want to stop the latest service software update on.
@@ -579,6 +711,21 @@ declare namespace ES {
      */
     ServiceSoftwareOptions?: ServiceSoftwareOptions;
   }
+  export interface CancelledChangeProperty {
+    /**
+     * The name of the property whose change was cancelled.
+     */
+    PropertyName?: String;
+    /**
+     * The pending value of the property that was cancelled. This would have been the eventual value of the property if the chance had not been cancelled.
+     */
+    CancelledValue?: String;
+    /**
+     * The current value of the property, after the change was cancelled.
+     */
+    ActiveValue?: String;
+  }
+  export type CancelledChangePropertyList = CancelledChangeProperty[];
   export interface ChangeProgressDetails {
     /**
      * The unique change identifier associated with a specific domain configuration change.
@@ -588,6 +735,22 @@ declare namespace ES {
      * Contains an optional message associated with the domain configuration change.
      */
     Message?: Message;
+    /**
+     * The current status of the configuration change.
+     */
+    ConfigChangeStatus?: ConfigChangeStatus;
+    /**
+     * The time that the configuration change was initiated, in Universal Coordinated Time (UTC).
+     */
+    StartTime?: UpdateTimestamp;
+    /**
+     * The last time that the configuration change was updated.
+     */
+    LastUpdatedTime?: UpdateTimestamp;
+    /**
+     * The IAM principal who initiated the configuration change.
+     */
+    InitiatedBy?: InitiatedBy;
   }
   export interface ChangeProgressStage {
     /**
@@ -639,7 +802,20 @@ declare namespace ES {
      * The specific stages that the domain is going through to perform the configuration change.
      */
     ChangeProgressStages?: ChangeProgressStageList;
+    /**
+     * The current status of the configuration change.
+     */
+    ConfigChangeStatus?: ConfigChangeStatus;
+    /**
+     * The last time that the status of the configuration change was updated.
+     */
+    LastUpdatedTime?: UpdateTimestamp;
+    /**
+     * The IAM principal who initiated the configuration change.
+     */
+    InitiatedBy?: InitiatedBy;
   }
+  export type ClientToken = string;
   export type CloudWatchLogsLogGroupArn = string;
   export interface CognitoOptions {
     /**
@@ -684,6 +860,7 @@ declare namespace ES {
     SourceVersion?: ElasticsearchVersionString;
     TargetVersions?: ElasticsearchVersionList;
   }
+  export type ConfigChangeStatus = "Pending"|"Initializing"|"Validating"|"ValidationFailed"|"ApplyingChanges"|"Completed"|"PendingUserInput"|"Cancelled"|string;
   export type ConnectionAlias = string;
   export interface CreateElasticsearchDomainRequest {
     /**
@@ -817,6 +994,26 @@ declare namespace ES {
      */
     PackageDetails?: PackageDetails;
   }
+  export interface CreateVpcEndpointRequest {
+    /**
+     * The Amazon Resource Name (ARN) of the domain to grant access to.
+     */
+    DomainArn: DomainArn;
+    /**
+     * Options to specify the subnets and security groups for the endpoint.
+     */
+    VpcOptions: VPCOptions;
+    /**
+     * Unique, case-sensitive identifier to ensure idempotency of the request.
+     */
+    ClientToken?: ClientToken;
+  }
+  export interface CreateVpcEndpointResponse {
+    /**
+     * Information about the newly created VPC endpoint.
+     */
+    VpcEndpoint: VpcEndpoint;
+  }
   export type CreatedAt = Date;
   export type CrossClusterSearchConnectionId = string;
   export type CrossClusterSearchConnectionStatusMessage = string;
@@ -867,6 +1064,18 @@ declare namespace ES {
      * PackageDetails
      */
     PackageDetails?: PackageDetails;
+  }
+  export interface DeleteVpcEndpointRequest {
+    /**
+     * The unique identifier of the endpoint to be deleted.
+     */
+    VpcEndpointId: VpcEndpointId;
+  }
+  export interface DeleteVpcEndpointResponse {
+    /**
+     * Information about the deleted endpoint, including its current status (DELETING or DELETE_FAILED).
+     */
+    VpcEndpointSummary: VpcEndpointSummary;
   }
   export type DeploymentCloseDateTimeStamp = Date;
   export type DeploymentStatus = "PENDING_UPDATE"|"IN_PROGRESS"|"COMPLETED"|"NOT_ELIGIBLE"|"ELIGIBLE"|string;
@@ -1018,7 +1227,7 @@ declare namespace ES {
      */
     Name?: DescribePackagesFilterName;
     /**
-     * A list of values for the specified field.
+     * A non-empty list of values for the specified field.
      */
     Value?: DescribePackagesFilterValues;
   }
@@ -1095,6 +1304,22 @@ declare namespace ES {
      */
     ReservedElasticsearchInstances?: ReservedElasticsearchInstanceList;
   }
+  export interface DescribeVpcEndpointsRequest {
+    /**
+     * The unique identifiers of the endpoints to get information about.
+     */
+    VpcEndpointIds: VpcEndpointIdList;
+  }
+  export interface DescribeVpcEndpointsResponse {
+    /**
+     * Information about each requested VPC endpoint.
+     */
+    VpcEndpoints: VpcEndpoints;
+    /**
+     * Any errors associated with the request.
+     */
+    VpcEndpointErrors: VpcEndpointErrorList;
+  }
   export type Description = string;
   export type DisableTimestamp = Date;
   export interface DissociatePackageRequest {
@@ -1113,13 +1338,14 @@ declare namespace ES {
      */
     DomainPackageDetails?: DomainPackageDetails;
   }
+  export type DomainArn = string;
   export interface DomainEndpointOptions {
     /**
      * Specify if only HTTPS endpoint should be enabled for the Elasticsearch domain.
      */
     EnforceHTTPS?: Boolean;
     /**
-     * Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain.  It can be one of the following values:  Policy-Min-TLS-1-0-2019-07:  TLS security policy which supports TLSv1.0 and higher. Policy-Min-TLS-1-2-2019-07:  TLS security policy which supports only TLSv1.2  
+     * Specify the TLS security policy that needs to be applied to the HTTPS endpoint of Elasticsearch domain.  It can be one of the following values:  Policy-Min-TLS-1-0-2019-07:  TLS security policy that supports TLS version 1.0 to TLS version 1.2 Policy-Min-TLS-1-2-2019-07:  TLS security policy that supports only TLS version 1.2 Policy-Min-TLS-1-2-PFS-2023-10:  TLS security policy that supports TLS version 1.2 to TLS version 1.3 with perfect forward secrecy cipher suites  
      */
     TLSSecurityPolicy?: TLSSecurityPolicy;
     /**
@@ -1202,6 +1428,7 @@ declare namespace ES {
   }
   export type DomainPackageDetailsList = DomainPackageDetails[];
   export type DomainPackageStatus = "ASSOCIATING"|"ASSOCIATION_FAILED"|"ACTIVE"|"DISSOCIATING"|"DISSOCIATION_FAILED"|string;
+  export type DomainProcessingStatusType = "Creating"|"Active"|"Modifying"|"UpgradingEngineVersion"|"UpdatingServiceSoftware"|"Isolated"|"Deleting"|string;
   export type Double = number;
   export type DryRun = boolean;
   export interface DryRunResults {
@@ -1239,9 +1466,13 @@ declare namespace ES {
      */
     VolumeSize?: IntegerClass;
     /**
-     * Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).
+     * Specifies the IOPS for Provisioned IOPS And GP3 EBS volume (SSD).
      */
     Iops?: IntegerClass;
+    /**
+     * Specifies the Throughput for GP3 EBS volume (SSD).
+     */
+    Throughput?: IntegerClass;
   }
   export interface EBSOptionsStatus {
     /**
@@ -1372,6 +1603,10 @@ declare namespace ES {
      * Specifies change details of the domain configuration change.
      */
     ChangeProgressDetails?: ChangeProgressDetails;
+    /**
+     * Information about the domain properties that are currently being modified.
+     */
+    ModifyingProperties?: ModifyingPropertiesList;
   }
   export interface ElasticsearchDomainStatus {
     /**
@@ -1471,6 +1706,14 @@ declare namespace ES {
      * Specifies change details of the domain configuration change.
      */
     ChangeProgressDetails?: ChangeProgressDetails;
+    /**
+     * The status of any changes that are currently in progress for the domain.
+     */
+    DomainProcessingStatus?: DomainProcessingStatusType;
+    /**
+     * Information about the domain properties that are currently being modified.
+     */
+    ModifyingProperties?: ModifyingPropertiesList;
   }
   export type ElasticsearchDomainStatusList = ElasticsearchDomainStatus[];
   export type ElasticsearchInstanceTypeList = ESPartitionInstanceType[];
@@ -1506,6 +1749,7 @@ declare namespace ES {
      */
     Status: OptionStatus;
   }
+  export type Endpoint = string;
   export type EndpointsMap = {[key: string]: ServiceUrl};
   export type EngineType = "OpenSearch"|"Elasticsearch"|string;
   export interface ErrorDetails {
@@ -1526,6 +1770,7 @@ declare namespace ES {
   }
   export type FilterList = Filter[];
   export type GUID = string;
+  export type GUIDList = GUID[];
   export interface GetCompatibleElasticsearchVersionsRequest {
     DomainName?: DomainName;
   }
@@ -1620,6 +1865,7 @@ declare namespace ES {
   }
   export type InboundCrossClusterSearchConnectionStatusCode = "PENDING_ACCEPTANCE"|"APPROVED"|"REJECTING"|"REJECTED"|"DELETING"|"DELETED"|string;
   export type InboundCrossClusterSearchConnections = InboundCrossClusterSearchConnection[];
+  export type InitiatedBy = "CUSTOMER"|"SERVICE"|string;
   export type InstanceCount = number;
   export interface InstanceCountLimits {
     MinimumInstanceCount?: MinimumInstanceCount;
@@ -1758,6 +2004,62 @@ declare namespace ES {
      */
     TagList?: TagList;
   }
+  export interface ListVpcEndpointAccessRequest {
+    /**
+     * The name of the OpenSearch Service domain to retrieve access information for.
+     */
+    DomainName: DomainName;
+    /**
+     * Provides an identifier to allow retrieval of paginated results.
+     */
+    NextToken?: NextToken;
+  }
+  export interface ListVpcEndpointAccessResponse {
+    /**
+     * List of AuthorizedPrincipal describing the details of the permissions to manage VPC endpoints against the specified domain.
+     */
+    AuthorizedPrincipalList: AuthorizedPrincipalList;
+    /**
+     * Provides an identifier to allow retrieval of paginated results.
+     */
+    NextToken: NextToken;
+  }
+  export interface ListVpcEndpointsForDomainRequest {
+    /**
+     * Name of the ElasticSearch domain whose VPC endpoints are to be listed.
+     */
+    DomainName: DomainName;
+    /**
+     * Provides an identifier to allow retrieval of paginated results.
+     */
+    NextToken?: NextToken;
+  }
+  export interface ListVpcEndpointsForDomainResponse {
+    /**
+     * Provides list of VpcEndpointSummary summarizing details of the VPC endpoints.
+     */
+    VpcEndpointSummaryList: VpcEndpointSummaryList;
+    /**
+     * Information about each endpoint associated with the domain.
+     */
+    NextToken: NextToken;
+  }
+  export interface ListVpcEndpointsRequest {
+    /**
+     * Identifier to allow retrieval of paginated results.
+     */
+    NextToken?: NextToken;
+  }
+  export interface ListVpcEndpointsResponse {
+    /**
+     * Information about each endpoint.
+     */
+    VpcEndpointSummaryList: VpcEndpointSummaryList;
+    /**
+     * Provides an identifier to allow retrieval of paginated results.
+     */
+    NextToken: NextToken;
+  }
   export interface LogPublishingOption {
     CloudWatchLogsLogGroupArn?: CloudWatchLogsLogGroupArn;
     /**
@@ -1795,6 +2097,25 @@ declare namespace ES {
   export type MaximumInstanceCount = number;
   export type Message = string;
   export type MinimumInstanceCount = number;
+  export interface ModifyingProperties {
+    /**
+     * The name of the property that is currently being modified.
+     */
+    Name?: String;
+    /**
+     * The current value of the domain property that is being modified.
+     */
+    ActiveValue?: String;
+    /**
+     * The value that the property that is currently being modified will eventually have.
+     */
+    PendingValue?: String;
+    /**
+     * The type of value that is currently being modified. Properties can have two types:  PLAIN_TEXT: Contain direct values such as "1", "True", or "c5.large.search". STRINGIFIED_JSON: Contain content in JSON format, such as {"Enabled":"True"}". 
+     */
+    ValueType?: PropertyValueType;
+  }
+  export type ModifyingPropertiesList = ModifyingProperties[];
   export type NextToken = string;
   export interface NodeToNodeEncryptionOptions {
     /**
@@ -1938,6 +2259,8 @@ declare namespace ES {
   export type PackageVersionHistoryList = PackageVersionHistory[];
   export type Password = string;
   export type PolicyDocument = string;
+  export type PrincipalType = "AWS_ACCOUNT"|"AWS_SERVICE"|string;
+  export type PropertyValueType = "PLAIN_TEXT"|"STRINGIFIED_JSON"|string;
   export interface PurchaseReservedElasticsearchInstanceOfferingRequest {
     /**
      * The ID of the reserved Elasticsearch instance offering to purchase.
@@ -2089,6 +2412,18 @@ declare namespace ES {
   }
   export type ReservedElasticsearchInstanceOfferingList = ReservedElasticsearchInstanceOffering[];
   export type ReservedElasticsearchInstancePaymentOption = "ALL_UPFRONT"|"PARTIAL_UPFRONT"|"NO_UPFRONT"|string;
+  export interface RevokeVpcEndpointAccessRequest {
+    /**
+     * The name of the OpenSearch Service domain.
+     */
+    DomainName: DomainName;
+    /**
+     * The account ID to revoke access from.
+     */
+    Account: AWSAccount;
+  }
+  export interface RevokeVpcEndpointAccessResponse {
+  }
   export type RoleArn = string;
   export type RollbackOnDisable = "NO_ROLLBACK"|"DEFAULT_ROLLBACK"|string;
   export type S3BucketName = string;
@@ -2254,7 +2589,7 @@ declare namespace ES {
   }
   export interface StorageTypeLimit {
     /**
-     *  Name of storage limits that are applicable for given storage type. If  StorageType  is ebs, following storage options are applicable  MinimumVolumeSize Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. MaximumVolumeSize Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. MaximumIops Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. MinimumIops Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable.  
+     *  Name of storage limits that are applicable for given storage type. If  StorageType  is ebs, following storage options are applicable  MinimumVolumeSize Minimum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. MaximumVolumeSize Maximum amount of volume size that is applicable for given storage type.It can be empty if it is not applicable. MaximumIops Maximum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. MinimumIops Minimum amount of Iops that is applicable for given storage type.It can be empty if it is not applicable. MaximumThroughput Maximum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable. MinimumThroughput Minimum amount of Throughput that is applicable for given storage type.It can be empty if it is not applicable.  
      */
     LimitName?: LimitName;
     /**
@@ -2267,7 +2602,7 @@ declare namespace ES {
   export type StorageTypeName = string;
   export type String = string;
   export type StringList = String[];
-  export type TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|string;
+  export type TLSSecurityPolicy = "Policy-Min-TLS-1-0-2019-07"|"Policy-Min-TLS-1-2-2019-07"|"Policy-Min-TLS-1-2-PFS-2023-10"|string;
   export interface Tag {
     /**
      * Specifies the TagKey, the name of the tag. Tag keys must be unique for the Elasticsearch domain to which they are attached.
@@ -2378,6 +2713,22 @@ declare namespace ES {
     PackageDetails?: PackageDetails;
   }
   export type UpdateTimestamp = Date;
+  export interface UpdateVpcEndpointRequest {
+    /**
+     * Unique identifier of the VPC endpoint to be updated.
+     */
+    VpcEndpointId: VpcEndpointId;
+    /**
+     * The security groups and/or subnets to add, remove, or modify.
+     */
+    VpcOptions: VPCOptions;
+  }
+  export interface UpdateVpcEndpointResponse {
+    /**
+     * The endpoint to be updated.
+     */
+    VpcEndpoint: VpcEndpoint;
+  }
   export interface UpgradeElasticsearchDomainRequest {
     DomainName: DomainName;
     /**
@@ -2483,7 +2834,72 @@ declare namespace ES {
     SecurityGroupIds?: StringList;
   }
   export type ValueStringList = NonEmptyString[];
-  export type VolumeType = "standard"|"gp2"|"io1"|string;
+  export type VolumeType = "standard"|"gp2"|"io1"|"gp3"|string;
+  export interface VpcEndpoint {
+    /**
+     * The unique identifier of the endpoint.
+     */
+    VpcEndpointId?: VpcEndpointId;
+    /**
+     * The creator of the endpoint.
+     */
+    VpcEndpointOwner?: AWSAccount;
+    /**
+     * The Amazon Resource Name (ARN) of the domain associated with the endpoint.
+     */
+    DomainArn?: DomainArn;
+    /**
+     * Options to specify the subnets and security groups for an Amazon OpenSearch Service VPC endpoint.
+     */
+    VpcOptions?: VPCDerivedInfo;
+    /**
+     * The current status of the endpoint.
+     */
+    Status?: VpcEndpointStatus;
+    /**
+     * The connection endpoint ID for connecting to the domain.
+     */
+    Endpoint?: Endpoint;
+  }
+  export interface VpcEndpointError {
+    /**
+     * The unique identifier of the endpoint. 
+     */
+    VpcEndpointId?: VpcEndpointId;
+    /**
+     * The code associated with the error.
+     */
+    ErrorCode?: VpcEndpointErrorCode;
+    /**
+     * A message describing the error.
+     */
+    ErrorMessage?: String;
+  }
+  export type VpcEndpointErrorCode = "ENDPOINT_NOT_FOUND"|"SERVER_ERROR"|string;
+  export type VpcEndpointErrorList = VpcEndpointError[];
+  export type VpcEndpointId = string;
+  export type VpcEndpointIdList = VpcEndpointId[];
+  export type VpcEndpointStatus = "CREATING"|"CREATE_FAILED"|"ACTIVE"|"UPDATING"|"UPDATE_FAILED"|"DELETING"|"DELETE_FAILED"|string;
+  export interface VpcEndpointSummary {
+    /**
+     * The unique identifier of the endpoint.
+     */
+    VpcEndpointId?: VpcEndpointId;
+    /**
+     * The creator of the endpoint.
+     */
+    VpcEndpointOwner?: String;
+    /**
+     * The Amazon Resource Name (ARN) of the domain associated with the endpoint.
+     */
+    DomainArn?: DomainArn;
+    /**
+     * The current status of the endpoint.
+     */
+    Status?: VpcEndpointStatus;
+  }
+  export type VpcEndpointSummaryList = VpcEndpointSummary[];
+  export type VpcEndpoints = VpcEndpoint[];
   export interface ZoneAwarenessConfig {
     /**
      * An integer value to indicate the number of availability zones for a domain when zone awareness is enabled. This should be equal to number of subnets if VPC endpoints is enabled

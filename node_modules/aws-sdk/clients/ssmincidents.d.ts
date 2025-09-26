@@ -13,6 +13,14 @@ declare class SSMIncidents extends Service {
   constructor(options?: SSMIncidents.Types.ClientConfiguration)
   config: Config & SSMIncidents.Types.ClientConfiguration;
   /**
+   * Retrieves details about all specified findings for an incident, including descriptive details about each finding. A finding represents a recent application environment change made by an CodeDeploy deployment or an CloudFormation stack creation or update that can be investigated as a potential cause of the incident.
+   */
+  batchGetIncidentFindings(params: SSMIncidents.Types.BatchGetIncidentFindingsInput, callback?: (err: AWSError, data: SSMIncidents.Types.BatchGetIncidentFindingsOutput) => void): Request<SSMIncidents.Types.BatchGetIncidentFindingsOutput, AWSError>;
+  /**
+   * Retrieves details about all specified findings for an incident, including descriptive details about each finding. A finding represents a recent application environment change made by an CodeDeploy deployment or an CloudFormation stack creation or update that can be investigated as a potential cause of the incident.
+   */
+  batchGetIncidentFindings(callback?: (err: AWSError, data: SSMIncidents.Types.BatchGetIncidentFindingsOutput) => void): Request<SSMIncidents.Types.BatchGetIncidentFindingsOutput, AWSError>;
+  /**
    * A replication set replicates and encrypts your data to the provided Regions with the provided KMS key. 
    */
   createReplicationSet(params: SSMIncidents.Types.CreateReplicationSetInput, callback?: (err: AWSError, data: SSMIncidents.Types.CreateReplicationSetOutput) => void): Request<SSMIncidents.Types.CreateReplicationSetOutput, AWSError>;
@@ -29,11 +37,11 @@ declare class SSMIncidents extends Service {
    */
   createResponsePlan(callback?: (err: AWSError, data: SSMIncidents.Types.CreateResponsePlanOutput) => void): Request<SSMIncidents.Types.CreateResponsePlanOutput, AWSError>;
   /**
-   * Creates a custom timeline event on the incident details page of an incident record. Timeline events are automatically created by Incident Manager, marking key moment during an incident. You can create custom timeline events to mark important events that are automatically detected by Incident Manager.
+   * Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
    */
   createTimelineEvent(params: SSMIncidents.Types.CreateTimelineEventInput, callback?: (err: AWSError, data: SSMIncidents.Types.CreateTimelineEventOutput) => void): Request<SSMIncidents.Types.CreateTimelineEventOutput, AWSError>;
   /**
-   * Creates a custom timeline event on the incident details page of an incident record. Timeline events are automatically created by Incident Manager, marking key moment during an incident. You can create custom timeline events to mark important events that are automatically detected by Incident Manager.
+   * Creates a custom timeline event on the incident details page of an incident record. Incident Manager automatically creates timeline events that mark key moments during an incident. You can create custom timeline events to mark important events that Incident Manager can detect automatically.
    */
   createTimelineEvent(callback?: (err: AWSError, data: SSMIncidents.Types.CreateTimelineEventOutput) => void): Request<SSMIncidents.Types.CreateTimelineEventOutput, AWSError>;
   /**
@@ -117,6 +125,14 @@ declare class SSMIncidents extends Service {
    */
   getTimelineEvent(callback?: (err: AWSError, data: SSMIncidents.Types.GetTimelineEventOutput) => void): Request<SSMIncidents.Types.GetTimelineEventOutput, AWSError>;
   /**
+   * Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident. A finding represents a recent application environment change made by an CloudFormation stack creation or update or an CodeDeploy deployment that can be investigated as a potential cause of the incident.
+   */
+  listIncidentFindings(params: SSMIncidents.Types.ListIncidentFindingsInput, callback?: (err: AWSError, data: SSMIncidents.Types.ListIncidentFindingsOutput) => void): Request<SSMIncidents.Types.ListIncidentFindingsOutput, AWSError>;
+  /**
+   * Retrieves a list of the IDs of findings, plus their last modified times, that have been identified for a specified incident. A finding represents a recent application environment change made by an CloudFormation stack creation or update or an CodeDeploy deployment that can be investigated as a potential cause of the incident.
+   */
+  listIncidentFindings(callback?: (err: AWSError, data: SSMIncidents.Types.ListIncidentFindingsOutput) => void): Request<SSMIncidents.Types.ListIncidentFindingsOutput, AWSError>;
+  /**
    * Lists all incident records in your account. Use this command to retrieve the Amazon Resource Name (ARN) of the incident record you want to update. 
    */
   listIncidentRecords(params: SSMIncidents.Types.ListIncidentRecordsInput, callback?: (err: AWSError, data: SSMIncidents.Types.ListIncidentRecordsOutput) => void): Request<SSMIncidents.Types.ListIncidentRecordsOutput, AWSError>;
@@ -149,11 +165,11 @@ declare class SSMIncidents extends Service {
    */
   listResponsePlans(callback?: (err: AWSError, data: SSMIncidents.Types.ListResponsePlansOutput) => void): Request<SSMIncidents.Types.ListResponsePlansOutput, AWSError>;
   /**
-   * Lists the tags that are attached to the specified response plan.
+   * Lists the tags that are attached to the specified response plan or incident.
    */
   listTagsForResource(params: SSMIncidents.Types.ListTagsForResourceRequest, callback?: (err: AWSError, data: SSMIncidents.Types.ListTagsForResourceResponse) => void): Request<SSMIncidents.Types.ListTagsForResourceResponse, AWSError>;
   /**
-   * Lists the tags that are attached to the specified response plan.
+   * Lists the tags that are attached to the specified response plan or incident.
    */
   listTagsForResource(callback?: (err: AWSError, data: SSMIncidents.Types.ListTagsForResourceResponse) => void): Request<SSMIncidents.Types.ListTagsForResourceResponse, AWSError>;
   /**
@@ -165,11 +181,11 @@ declare class SSMIncidents extends Service {
    */
   listTimelineEvents(callback?: (err: AWSError, data: SSMIncidents.Types.ListTimelineEventsOutput) => void): Request<SSMIncidents.Types.ListTimelineEventsOutput, AWSError>;
   /**
-   * Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see Setting up cross-account functionality.
+   * Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see Cross-Region and cross-account incident management.
    */
   putResourcePolicy(params: SSMIncidents.Types.PutResourcePolicyInput, callback?: (err: AWSError, data: SSMIncidents.Types.PutResourcePolicyOutput) => void): Request<SSMIncidents.Types.PutResourcePolicyOutput, AWSError>;
   /**
-   * Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see Setting up cross-account functionality.
+   * Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see Cross-Region and cross-account incident management.
    */
   putResourcePolicy(callback?: (err: AWSError, data: SSMIncidents.Types.PutResourcePolicyOutput) => void): Request<SSMIncidents.Types.PutResourcePolicyOutput, AWSError>;
   /**
@@ -297,6 +313,41 @@ declare namespace SSMIncidents {
     ssmExecutionArn?: Arn;
   }
   export type AutomationExecutionSet = AutomationExecution[];
+  export interface BatchGetIncidentFindingsError {
+    /**
+     * The code associated with an error that was returned for a BatchGetIncidentFindings operation.
+     */
+    code: String;
+    /**
+     * The ID of a specified finding for which an error was returned for a BatchGetIncidentFindings operation.
+     */
+    findingId: FindingId;
+    /**
+     * The description for an error that was returned for a BatchGetIncidentFindings operation.
+     */
+    message: String;
+  }
+  export type BatchGetIncidentFindingsErrorList = BatchGetIncidentFindingsError[];
+  export interface BatchGetIncidentFindingsInput {
+    /**
+     * A list of IDs of findings for which you want to view details.
+     */
+    findingIds: FindingIdList;
+    /**
+     * The Amazon Resource Name (ARN) of the incident for which you want to view finding details.
+     */
+    incidentRecordArn: Arn;
+  }
+  export interface BatchGetIncidentFindingsOutput {
+    /**
+     * A list of errors encountered during the operation.
+     */
+    errors: BatchGetIncidentFindingsErrorList;
+    /**
+     * Information about the requested findings.
+     */
+    findings: FindingList;
+  }
   export type Boolean = boolean;
   export interface ChatChannel {
     /**
@@ -310,6 +361,39 @@ declare namespace SSMIncidents {
   }
   export type ChatbotSnsConfigurationSet = SnsArn[];
   export type ClientToken = string;
+  export interface CloudFormationStackUpdate {
+    /**
+     * The timestamp for when the CloudFormation stack creation or update ended. Not reported for deployments that are still in progress.
+     */
+    endTime?: Timestamp;
+    /**
+     * The Amazon Resource Name (ARN) of the CloudFormation stack involved in the update.
+     */
+    stackArn: Arn;
+    /**
+     * The timestamp for when the CloudFormation stack creation or update began.
+     */
+    startTime: Timestamp;
+  }
+  export interface CodeDeployDeployment {
+    /**
+     * The Amazon Resource Name (ARN) of the CodeDeploy deployment group associated with the deployment.
+     */
+    deploymentGroupArn: Arn;
+    /**
+     * The ID of the CodeDeploy deployment.
+     */
+    deploymentId: CodeDeployDeploymentDeploymentIdString;
+    /**
+     * The timestamp for when the CodeDeploy deployment ended. Not reported for deployments that are still in progress.
+     */
+    endTime?: Timestamp;
+    /**
+     * The timestamp for when the CodeDeploy deployment began.
+     */
+    startTime: Timestamp;
+  }
+  export type CodeDeployDeploymentDeploymentIdString = string;
   export interface Condition {
     /**
      * After the specified timestamp.
@@ -326,13 +410,17 @@ declare namespace SSMIncidents {
   }
   export interface CreateReplicationSetInput {
     /**
-     * A token ensuring that the operation is called only once with the specified details.
+     * A token that ensures that the operation is called only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
      * The Regions that Incident Manager replicates your data to. You can have up to three Regions in your replication set.
      */
     regions: RegionMapInput;
+    /**
+     * A list of tags to add to the replication set.
+     */
+    tags?: TagMap;
   }
   export interface CreateReplicationSetOutput {
     /**
@@ -358,13 +446,17 @@ declare namespace SSMIncidents {
      */
     displayName?: ResponsePlanDisplayName;
     /**
-     * The contacts and escalation plans that the response plan engages during an incident.
+     * The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
      */
     engagements?: EngagementSet;
     /**
      * Details used to create an incident when using this response plan.
      */
     incidentTemplate: IncidentTemplate;
+    /**
+     * Information about third-party services integrated into the response plan.
+     */
+    integrations?: Integrations;
     /**
      * The short format name of the response plan. Can't include spaces.
      */
@@ -382,7 +474,7 @@ declare namespace SSMIncidents {
   }
   export interface CreateTimelineEventInput {
     /**
-     * A token ensuring that the action is called only once with the specified details.
+     * A token that ensures that a client calls the action only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
@@ -390,15 +482,19 @@ declare namespace SSMIncidents {
      */
     eventData: EventData;
     /**
-     * The time that the event occurred.
+     * Adds one or more references to the TimelineEvent. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with a resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use the table's ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.
+     */
+    eventReferences?: EventReferenceList;
+    /**
+     * The timestamp for when the event occurred.
      */
     eventTime: Timestamp;
     /**
-     * The type of the event. You can create timeline events of type Custom Event.
+     * The type of event. You can create timeline events of type Custom Event and Note. To make a Note-type event appear on the Incident notes panel in the console, specify eventType as Noteand enter the Amazon Resource Name (ARN) of the incident as the value for eventReference.
      */
     eventType: TimelineEventType;
     /**
-     * The Amazon Resource Name (ARN) of the incident record to which the event will be added.
+     * The Amazon Resource Name (ARN) of the incident record that the action adds the incident to.
      */
     incidentRecordArn: Arn;
   }
@@ -457,7 +553,7 @@ declare namespace SSMIncidents {
   }
   export interface DeleteTimelineEventInput {
     /**
-     * The ID of the event you are updating. You can find this by using ListTimelineEvents.
+     * The ID of the event to update. You can use ListTimelineEvents to find an event's ID.
      */
     eventId: UUID;
     /**
@@ -479,21 +575,36 @@ declare namespace SSMIncidents {
   }
   export type EngagementSet = SsmContactsArn[];
   export type EventData = string;
+  export interface EventReference {
+    /**
+     * The ID of a RelatedItem referenced in a TimelineEvent.
+     */
+    relatedItemId?: GeneratedId;
+    /**
+     * The Amazon Resource Name (ARN) of an Amazon Web Services resource referenced in a TimelineEvent.
+     */
+    resource?: Arn;
+  }
+  export type EventReferenceList = EventReference[];
   export interface EventSummary {
     /**
      * The timeline event ID.
      */
     eventId: UUID;
     /**
-     * The time that the event occurred.
+     * A list of references in a TimelineEvent.
+     */
+    eventReferences?: EventReferenceList;
+    /**
+     * The timestamp for when the event occurred.
      */
     eventTime: Timestamp;
     /**
-     * The type of event. The timeline event must be Custom Event.
+     * The type of event. The timeline event must be Custom Event or Note.
      */
     eventType: TimelineEventType;
     /**
-     * The time that the timeline event was last updated.
+     * The timestamp for when the timeline event was last updated.
      */
     eventUpdatedTime: Timestamp;
     /**
@@ -514,6 +625,49 @@ declare namespace SSMIncidents {
   }
   export type FilterKeyString = string;
   export type FilterList = Filter[];
+  export interface Finding {
+    /**
+     * The timestamp for when a finding was created.
+     */
+    creationTime: Timestamp;
+    /**
+     * Details about the finding.
+     */
+    details?: FindingDetails;
+    /**
+     * The ID assigned to the finding.
+     */
+    id: FindingId;
+    /**
+     * The timestamp for when the finding was most recently updated with additional information.
+     */
+    lastModifiedTime: Timestamp;
+  }
+  export interface FindingDetails {
+    /**
+     * Information about the CloudFormation stack creation or update associated with the finding.
+     */
+    cloudFormationStackUpdate?: CloudFormationStackUpdate;
+    /**
+     * Information about the CodeDeploy deployment associated with the finding.
+     */
+    codeDeployDeployment?: CodeDeployDeployment;
+  }
+  export type FindingId = string;
+  export type FindingIdList = FindingId[];
+  export type FindingList = Finding[];
+  export interface FindingSummary {
+    /**
+     * The ID of the finding.
+     */
+    id: FindingId;
+    /**
+     * The timestamp for when the finding was last updated.
+     */
+    lastModifiedTime: Timestamp;
+  }
+  export type FindingSummaryList = FindingSummary[];
+  export type GeneratedId = string;
   export interface GetIncidentRecordInput {
     /**
      * The Amazon Resource Name (ARN) of the incident record.
@@ -540,11 +694,11 @@ declare namespace SSMIncidents {
   }
   export interface GetResourcePoliciesInput {
     /**
-     * The maximum number of resource policies to display per page of results.
+     * The maximum number of resource policies to display for each page of results.
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
     /**
@@ -554,7 +708,7 @@ declare namespace SSMIncidents {
   }
   export interface GetResourcePoliciesOutput {
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
     /**
@@ -586,13 +740,17 @@ declare namespace SSMIncidents {
      */
     displayName?: ResponsePlanDisplayName;
     /**
-     * The contacts and escalation plans that the response plan engages during an incident.
+     * The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
      */
     engagements?: EngagementSet;
     /**
      * Details used to create the incident when using this response plan.
      */
     incidentTemplate: IncidentTemplate;
+    /**
+     * Information about third-party services integrated into the Incident Manager response plan.
+     */
+    integrations?: Integrations;
     /**
      * The short format name of the response plan. The name can't contain spaces.
      */
@@ -629,7 +787,7 @@ declare namespace SSMIncidents {
      */
     chatChannel?: ChatChannel;
     /**
-     * The time that Incident Manager created the incident record.
+     * The timestamp for when Incident Manager created the incident record.
      */
     creationTime: Timestamp;
     /**
@@ -637,7 +795,7 @@ declare namespace SSMIncidents {
      */
     dedupeString: DedupeString;
     /**
-     * The impact of the incident on customers and applications.
+     * The impact of the incident on customers and applications.  Supported impact codes     1 - Critical    2 - High    3 - Medium    4 - Low    5 - No Impact  
      */
     impact: Impact;
     /**
@@ -649,7 +807,7 @@ declare namespace SSMIncidents {
      */
     lastModifiedBy: Arn;
     /**
-     * The time at which the incident was most recently modified.
+     * The timestamp for when the incident was most recently modified.
      */
     lastModifiedTime: Timestamp;
     /**
@@ -657,7 +815,7 @@ declare namespace SSMIncidents {
      */
     notificationTargets?: NotificationTargetSet;
     /**
-     * The time at which the incident was resolved. This appears as a timeline event.
+     * The timestamp for when the incident was resolved. This appears as a timeline event.
      */
     resolvedTime?: Timestamp;
     /**
@@ -698,7 +856,7 @@ declare namespace SSMIncidents {
      */
     arn: Arn;
     /**
-     * The time the incident was created.
+     * The timestamp for when the incident was created.
      */
     creationTime: Timestamp;
     /**
@@ -710,7 +868,7 @@ declare namespace SSMIncidents {
      */
     incidentRecordSource: IncidentRecordSource;
     /**
-     * The time the incident was resolved.
+     * The timestamp for when the incident was resolved.
      */
     resolvedTime?: Timestamp;
     /**
@@ -727,15 +885,15 @@ declare namespace SSMIncidents {
   export type IncidentSummary = string;
   export interface IncidentTemplate {
     /**
-     * Used to stop Incident Manager from creating multiple incident records for the same incident. 
+     * The string Incident Manager uses to prevent the same root cause from creating multiple incidents in the same account. A deduplication string is a term or phrase the system uses to check for duplicate incidents. If you specify a deduplication string, Incident Manager searches for open incidents that contain the same string in the dedupeString field when it creates the incident. If a duplicate is detected, Incident Manager deduplicates the newer incident into the existing incident.  By default, Incident Manager automatically deduplicates multiple incidents created by the same Amazon CloudWatch alarm or Amazon EventBridge event. You don't have to enter your own deduplication string to prevent duplication for these resource types. 
      */
     dedupeString?: DedupeString;
     /**
-     * The impact of the incident on your customers and applications. 
+     * The impact of the incident on your customers and applications.  Supported impact codes     1 - Critical    2 - High    3 - Medium    4 - Low    5 - No Impact  
      */
     impact: Impact;
     /**
-     * Tags to apply to an incident when calling the StartIncident API action.
+     * Tags to assign to the template. When the StartIncident API action is called, Incident Manager assigns the tags specified in the template to the incident.
      */
     incidentTags?: TagMap;
     /**
@@ -754,6 +912,13 @@ declare namespace SSMIncidents {
   export type IncidentTitle = string;
   export type Integer = number;
   export type IntegerList = Integer[];
+  export interface Integration {
+    /**
+     * Information about the PagerDuty service where the response plan creates an incident.
+     */
+    pagerDutyConfiguration?: PagerDutyConfiguration;
+  }
+  export type Integrations = Integration[];
   export interface ItemIdentifier {
     /**
      * The type of related item. 
@@ -764,7 +929,7 @@ declare namespace SSMIncidents {
      */
     value: ItemValue;
   }
-  export type ItemType = "ANALYSIS"|"INCIDENT"|"METRIC"|"PARENT"|"ATTACHMENT"|"OTHER"|"AUTOMATION"|"INVOLVED_RESOURCE"|string;
+  export type ItemType = "ANALYSIS"|"INCIDENT"|"METRIC"|"PARENT"|"ATTACHMENT"|"OTHER"|"AUTOMATION"|"INVOLVED_RESOURCE"|"TASK"|string;
   export interface ItemValue {
     /**
      * The Amazon Resource Name (ARN) of the related item, if the related item is an Amazon resource.
@@ -775,13 +940,42 @@ declare namespace SSMIncidents {
      */
     metricDefinition?: MetricDefinition;
     /**
+     * Details about an incident that is associated with a PagerDuty incident.
+     */
+    pagerDutyIncidentDetail?: PagerDutyIncidentDetail;
+    /**
      * The URL, if the related item is a non-Amazon Web Services resource.
      */
     url?: Url;
   }
+  export interface ListIncidentFindingsInput {
+    /**
+     * The Amazon Resource Name (ARN) of the incident for which you want to view associated findings.
+     */
+    incidentRecordArn: Arn;
+    /**
+     * The maximum number of findings to retrieve per call.
+     */
+    maxResults?: ListIncidentFindingsInputMaxResultsInteger;
+    /**
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
+     */
+    nextToken?: NextToken;
+  }
+  export type ListIncidentFindingsInputMaxResultsInteger = number;
+  export interface ListIncidentFindingsOutput {
+    /**
+     * A list of findings that represent deployments that might be the potential cause of the incident.
+     */
+    findings: FindingSummaryList;
+    /**
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
+     */
+    nextToken?: NextToken;
+  }
   export interface ListIncidentRecordsInput {
     /**
-     * Filters the list of incident records through which you are searching. You can filter on the following keys:    creationTime     impact     status     createdBy    Note the following when deciding how to use Filters:   If you don't specify a Filter, the response includes all incident records.   If you specify more than one filter in a single request, the response returns incident records that match all filters.   If you specify a filter with more than one value, the response returns incident records that match any of the values provided.  
+     * Filters the list of incident records you want to search through. You can filter on the following keys:    creationTime     impact     status     createdBy    Note the following when when you use Filters:   If you don't specify a Filter, the response includes all incident records.   If you specify more than one filter in a single request, the response returns incident records that match all filters.   If you specify a filter with more than one value, the response returns incident records that match any of the values provided.  
      */
     filters?: FilterList;
     /**
@@ -789,7 +983,7 @@ declare namespace SSMIncidents {
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
   }
@@ -799,7 +993,7 @@ declare namespace SSMIncidents {
      */
     incidentRecordSummaries: IncidentRecordSummaryList;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
   }
@@ -813,13 +1007,13 @@ declare namespace SSMIncidents {
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
   }
   export interface ListRelatedItemsOutput {
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
     /**
@@ -833,13 +1027,13 @@ declare namespace SSMIncidents {
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
   }
   export interface ListReplicationSetsOutput {
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
     /**
@@ -853,13 +1047,13 @@ declare namespace SSMIncidents {
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
   }
   export interface ListResponsePlansOutput {
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
     /**
@@ -869,19 +1063,19 @@ declare namespace SSMIncidents {
   }
   export interface ListTagsForResourceRequest {
     /**
-     * The Amazon Resource Name (ARN) of the response plan.
+     * The Amazon Resource Name (ARN) of the response plan or incident.
      */
     resourceArn: String;
   }
   export interface ListTagsForResourceResponse {
     /**
-     * A list of tags for the response plan.
+     * A list of tags for the response plan or incident.
      */
     tags: TagMap;
   }
   export interface ListTimelineEventsInput {
     /**
-     * Filters the timeline events based on the provided conditional values. You can filter timeline events using the following keys:    eventTime     eventType    Note the following when deciding how to use Filters:   If you don't specify a Filter, the response includes all timeline events.   If you specify more than one filter in a single request, the response returns timeline events that match all filters.   If you specify a filter with more than one value, the response returns timeline events that match any of the values provided.  
+     * Filters the timeline events based on the provided conditional values. You can filter timeline events with the following keys:    eventReference     eventTime     eventType    Note the following when deciding how to use Filters:   If you don't specify a Filter, the response includes all timeline events.   If you specify more than one filter in a single request, the response returns timeline events that match all filters.   If you specify a filter with more than one value, the response returns timeline events that match any of the values provided.  
      */
     filters?: FilterList;
     /**
@@ -893,11 +1087,11 @@ declare namespace SSMIncidents {
      */
     maxResults?: MaxResults;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token for the next set of items to return. (You received this token from a previous call.)
      */
     nextToken?: NextToken;
     /**
-     * Sort by the specified key value pair.
+     * Sort timeline events by the specified key value pair.
      */
     sortBy?: TimelineEventSort;
     /**
@@ -911,7 +1105,7 @@ declare namespace SSMIncidents {
      */
     eventSummaries: EventSummaryList;
     /**
-     * The pagination token to continue to the next page of results.
+     * The pagination token to use when requesting the next set of items. If there are no additional items to return, the string is null.
      */
     nextToken?: NextToken;
   }
@@ -925,6 +1119,45 @@ declare namespace SSMIncidents {
     snsTopicArn?: Arn;
   }
   export type NotificationTargetSet = NotificationTargetItem[];
+  export interface PagerDutyConfiguration {
+    /**
+     * The name of the PagerDuty configuration.
+     */
+    name: PagerDutyConfigurationNameString;
+    /**
+     * Details about the PagerDuty service associated with the configuration.
+     */
+    pagerDutyIncidentConfiguration: PagerDutyIncidentConfiguration;
+    /**
+     * The ID of the Amazon Web Services Secrets Manager secret that stores your PagerDuty key, either a General Access REST API Key or User Token REST API Key, and other user credentials.
+     */
+    secretId: PagerDutyConfigurationSecretIdString;
+  }
+  export type PagerDutyConfigurationNameString = string;
+  export type PagerDutyConfigurationSecretIdString = string;
+  export interface PagerDutyIncidentConfiguration {
+    /**
+     * The ID of the PagerDuty service that the response plan associates with an incident when it launches.
+     */
+    serviceId: PagerDutyIncidentConfigurationServiceIdString;
+  }
+  export type PagerDutyIncidentConfigurationServiceIdString = string;
+  export interface PagerDutyIncidentDetail {
+    /**
+     * Indicates whether to resolve the PagerDuty incident when you resolve the associated Incident Manager incident.
+     */
+    autoResolve?: Boolean;
+    /**
+     * The ID of the incident associated with the PagerDuty service for the response plan.
+     */
+    id: PagerDutyIncidentDetailIdString;
+    /**
+     * The ID of the Amazon Web Services Secrets Manager secret that stores your PagerDuty key, either a General Access REST API Key or User Token REST API Key, and other user credentials.
+     */
+    secretId?: PagerDutyIncidentDetailSecretIdString;
+  }
+  export type PagerDutyIncidentDetailIdString = string;
+  export type PagerDutyIncidentDetailSecretIdString = string;
   export type Policy = string;
   export type PolicyId = string;
   export interface PutResourcePolicyInput {
@@ -933,7 +1166,7 @@ declare namespace SSMIncidents {
      */
     policy: Policy;
     /**
-     * The Amazon Resource Name (ARN) of the response plan you're adding the resource policy to.
+     * The Amazon Resource Name (ARN) of the response plan to add the resource policy to.
      */
     resourceArn: Arn;
   }
@@ -958,7 +1191,7 @@ declare namespace SSMIncidents {
      */
     statusMessage?: String;
     /**
-     * The most recent date and time that Incident Manager updated the Amazon Web Services Region's status.
+     * The timestamp for when Incident Manager updated the status of the Amazon Web Services Region.
      */
     statusUpdateDateTime: Timestamp;
   }
@@ -973,6 +1206,10 @@ declare namespace SSMIncidents {
   export type RegionName = string;
   export type RegionStatus = "ACTIVE"|"CREATING"|"DELETING"|"FAILED"|string;
   export interface RelatedItem {
+    /**
+     * A unique ID for a RelatedItem.  Don't specify this parameter when you add a RelatedItem by using the UpdateRelatedItems API action. 
+     */
+    generatedId?: GeneratedId;
     /**
      * Details about the related item.
      */
@@ -1107,11 +1344,11 @@ declare namespace SSMIncidents {
      */
     clientToken?: ClientToken;
     /**
-     * Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.  Possible impacts:     1 - Critical impact, this typically relates to full application failure that impacts many to all customers.     2 - High impact, partial application failure with impact to many customers.    3 - Medium impact, the application is providing reduced service to customers.    4 - Low impact, customer might aren't impacted by the problem yet.    5 - No impact, customers aren't currently impacted but urgent action is needed to avoid impact.  
+     * Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.  Supported impact codes     1 - Critical    2 - High    3 - Medium    4 - Low    5 - No Impact  
      */
     impact?: Impact;
     /**
-     * Add related items to the incident for other responders to use. Related items are AWS resources, external links, or files uploaded to an Amazon S3 bucket. 
+     * Add related items to the incident for other responders to use. Related items are Amazon Web Services resources, external links, or files uploaded to an Amazon S3 bucket. 
      */
     relatedItems?: RelatedItemList;
     /**
@@ -1146,7 +1383,7 @@ declare namespace SSMIncidents {
      */
     resourceArn: String;
     /**
-     * A list of tags that you are adding to the response plan.
+     * A list of tags to add to the response plan.
      */
     tags: TagMap;
   }
@@ -1163,15 +1400,19 @@ declare namespace SSMIncidents {
      */
     eventId: UUID;
     /**
-     * The time that the event occurred.
+     * A list of references in a TimelineEvent.
+     */
+    eventReferences?: EventReferenceList;
+    /**
+     * The timestamp for when the event occurred.
      */
     eventTime: Timestamp;
     /**
-     * The type of event that occurred. Currently Incident Manager supports only the Custom Event type.
+     * The type of event that occurred. Currently Incident Manager supports only the Custom Event and Note types.
      */
     eventType: TimelineEventType;
     /**
-     * The time that the timeline event was last updated.
+     * The timestamp for when the timeline event was last updated.
      */
     eventUpdatedTime: Timestamp;
     /**
@@ -1192,7 +1433,7 @@ declare namespace SSMIncidents {
      */
     source: IncidentSource;
     /**
-     * The time that the incident was detected.
+     * The timestamp for when the incident was detected.
      */
     timestamp: Timestamp;
     /**
@@ -1207,7 +1448,7 @@ declare namespace SSMIncidents {
      */
     resourceArn: String;
     /**
-     * The name of the tag you're removing from the response plan.
+     * The name of the tag to remove from the response plan.
      */
     tagKeys: TagKeyList;
   }
@@ -1215,15 +1456,15 @@ declare namespace SSMIncidents {
   }
   export interface UpdateDeletionProtectionInput {
     /**
-     * The Amazon Resource Name (ARN) of the replication set you're updating.
+     * The Amazon Resource Name (ARN) of the replication set to update.
      */
     arn: Arn;
     /**
-     * A token ensuring that the operation is called only once with the specified details.
+     * A token that ensures that the operation is called only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
-     * Details if deletion protection is enabled or disabled in your account.
+     * Specifies if deletion protection is turned on or off in your account. 
      */
     deletionProtected: Boolean;
   }
@@ -1239,19 +1480,19 @@ declare namespace SSMIncidents {
      */
     chatChannel?: ChatChannel;
     /**
-     * A token that ensures that the operation is called only once with the specified details.
+     * A token that ensures that a client calls the operation only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
-     * Defines the impact of the incident to customers and applications. Providing an impact overwrites the impact provided by the response plan.  Possible impacts:     1 - Critical impact, full application failure that impacts many to all customers.     2 - High impact, partial application failure with impact to many customers.    3 - Medium impact, the application is providing reduced service to customers.    4 - Low impact, customer aren't impacted by the problem yet.    5 - No impact, customers aren't currently impacted but urgent action is needed to avoid impact.  
+     * Defines the impact of the incident to customers and applications. If you provide an impact for an incident, it overwrites the impact provided by the response plan.  Supported impact codes     1 - Critical    2 - High    3 - Medium    4 - Low    5 - No Impact  
      */
     impact?: Impact;
     /**
-     * The Amazon SNS targets that are notified when updates are made to an incident. Using multiple SNS topics creates redundancy in the event that a Region is down during the incident.
+     * The Amazon SNS targets that Incident Manager notifies when a client updates an incident. Using multiple SNS topics creates redundancy in the event that a Region is down during the incident.
      */
     notificationTargets?: NotificationTargetSet;
     /**
-     * The status of the incident. An incident can be Open or Resolved.
+     * The status of the incident. Possible statuses are Open or Resolved.
      */
     status?: IncidentRecordStatus;
     /**
@@ -1267,15 +1508,15 @@ declare namespace SSMIncidents {
   }
   export interface UpdateRelatedItemsInput {
     /**
-     * A token ensuring that the operation is called only once with the specified details.
+     * A token that ensures that a client calls the operation only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
-     * The Amazon Resource Name (ARN) of the incident record containing the related items you are updating.
+     * The Amazon Resource Name (ARN) of the incident record that contains the related items that you update.
      */
     incidentRecordArn: Arn;
     /**
-     * Details about the item you are adding or deleting.
+     * Details about the item that you are add to, or delete from, an incident.
      */
     relatedItemsUpdate: RelatedItemsUpdate;
   }
@@ -1301,7 +1542,7 @@ declare namespace SSMIncidents {
      */
     arn: Arn;
     /**
-     * A token ensuring that the operation is called only once with the specified details.
+     * A token that ensures that the operation is called only once with the specified details.
      */
     clientToken?: ClientToken;
   }
@@ -1330,7 +1571,7 @@ declare namespace SSMIncidents {
      */
     displayName?: ResponsePlanDisplayName;
     /**
-     * The contacts and escalation plans that Incident Manager engages at the start of the incident.
+     * The Amazon Resource Name (ARN) for the contacts and escalation plans that the response plan engages during an incident.
      */
     engagements?: EngagementSet;
     /**
@@ -1338,7 +1579,7 @@ declare namespace SSMIncidents {
      */
     incidentTemplateDedupeString?: DedupeString;
     /**
-     * Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.  Possible impacts:     5 - Severe impact    4 - High impact    3 - Medium impact    2 - Low impact    1 - No impact  
+     * Defines the impact to the customers. Providing an impact overwrites the impact provided by a response plan.  Supported impact codes     1 - Critical    2 - High    3 - Medium    4 - Low    5 - No Impact  
      */
     incidentTemplateImpact?: Impact;
     /**
@@ -1350,19 +1591,23 @@ declare namespace SSMIncidents {
      */
     incidentTemplateSummary?: IncidentSummary;
     /**
-     * Tags to apply to an incident when calling the StartIncident API action. To call this action, you must also have permission to call the TagResource API action for the incident record resource.
+     * Tags to assign to the template. When the StartIncident API action is called, Incident Manager assigns the tags specified in the template to the incident. To call this action, you must also have permission to call the TagResource API action for the incident record resource.
      */
     incidentTemplateTags?: TagMapUpdate;
     /**
      * The short format name of the incident. The title can't contain spaces.
      */
     incidentTemplateTitle?: IncidentTitle;
+    /**
+     * Information about third-party services integrated into the response plan.
+     */
+    integrations?: Integrations;
   }
   export interface UpdateResponsePlanOutput {
   }
   export interface UpdateTimelineEventInput {
     /**
-     * A token ensuring that the operation is called only once with the specified details.
+     * A token that ensures that a client calls the operation only once with the specified details.
      */
     clientToken?: ClientToken;
     /**
@@ -1370,15 +1615,19 @@ declare namespace SSMIncidents {
      */
     eventData?: EventData;
     /**
-     * The ID of the event you are updating. You can find this by using ListTimelineEvents.
+     * The ID of the event to update. You can use ListTimelineEvents to find an event's ID.
      */
     eventId: UUID;
     /**
-     * The time that the event occurred.
+     * Updates all existing references in a TimelineEvent. A reference is an Amazon Web Services resource involved or associated with the incident. To specify a reference, enter its Amazon Resource Name (ARN). You can also specify a related item associated with that resource. For example, to specify an Amazon DynamoDB (DynamoDB) table as a resource, use its ARN. You can also specify an Amazon CloudWatch metric associated with the DynamoDB table as a related item.  This update action overrides all existing references. If you want to keep existing references, you must specify them in the call. If you don't, this action removes any existing references and enters only new references. 
+     */
+    eventReferences?: EventReferenceList;
+    /**
+     * The timestamp for when the event occurred.
      */
     eventTime?: Timestamp;
     /**
-     * The type of the event. You can update events of type Custom Event.
+     * The type of event. You can update events of type Custom Event and Note.
      */
     eventType?: TimelineEventType;
     /**
