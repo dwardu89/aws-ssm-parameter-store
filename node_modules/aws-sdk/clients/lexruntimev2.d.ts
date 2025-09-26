@@ -146,7 +146,7 @@ declare namespace LexRuntimeV2 {
   }
   export interface DialogAction {
     /**
-     * The next action that the bot should take in its interaction with the user. The possible values are:    Close - Indicates that there will not be a response from the user. For example, the statement "Your order has been placed" does not require a response.    ConfirmIntent - The next action is asking the user if the intent is complete and ready to be fulfilled. This is a yes/no question such as "Place the order?"    Delegate - The next action is determined by Amazon Lex V2.    ElicitSlot - The next action is to elicit a slot value from the user.  
+     * The next action that the bot should take in its interaction with the user. The following values are possible:    Close – Indicates that there will not be a response from the user. For example, the statement "Your order has been placed" does not require a response.    ConfirmIntent – The next action is asking the user if the intent is complete and ready to be fulfilled. This is a yes/no question such as "Place the order?"    Delegate – The next action is determined by Amazon Lex V2.    ElicitIntent – The next action is to elicit an intent from the user.    ElicitSlot – The next action is to elicit a slot value from the user.  
      */
     type: DialogActionType;
     /**
@@ -157,9 +157,23 @@ declare namespace LexRuntimeV2 {
      * Configures the slot to use spell-by-letter or spell-by-word style. When you use a style on a slot, users can spell out their input to make it clear to your bot.   Spell by letter - "b" "o" "b"   Spell by word - "b as in boy" "o as in oscar" "b as in boy"   For more information, see  Using spelling to enter slot values .
      */
     slotElicitationStyle?: StyleType;
+    /**
+     * The name of the constituent sub slot of the composite slot specified in slotToElicit that should be elicited from the user.
+     */
+    subSlotToElicit?: ElicitSubSlot;
   }
   export type DialogActionType = "Close"|"ConfirmIntent"|"Delegate"|"ElicitIntent"|"ElicitSlot"|"None"|string;
   export type Double = number;
+  export interface ElicitSubSlot {
+    /**
+     * The name of the slot that should be elicited from the user.
+     */
+    name: NonEmptyString;
+    /**
+     * The field is not supported.
+     */
+    subSlotToElicit?: ElicitSubSlot;
+  }
   export interface GetSessionRequest {
     /**
      * The identifier of the bot that contains the session data.
@@ -224,11 +238,11 @@ declare namespace LexRuntimeV2 {
      */
     slots?: Slots;
     /**
-     * Contains fulfillment information for the intent. 
+     * Indicates the fulfillment state for the intent. The meanings of each value are as follows:    Failed – The bot failed to fulfill the intent.    Fulfilled – The bot has completed fulfillment of the intent.    FulfillmentInProgress – The bot is in the middle of fulfilling the intent.    InProgress – The bot is in the middle of eliciting the slot values that are necessary to fulfill the intent.    ReadyForFulfillment – The bot has elicited all the slot values for the intent and is ready to fulfill the intent.    Waiting – The bot is waiting for a response from the user (limited to streaming conversations).  
      */
     state?: IntentState;
     /**
-     * Contains information about whether fulfillment of the intent has been confirmed.
+     * Indicates whether the intent has been Confirmed, Denied, or None if the confirmation stage has not yet been reached.
      */
     confirmationState?: ConfirmationState;
   }
@@ -246,7 +260,12 @@ declare namespace LexRuntimeV2 {
      * A list of intents that might satisfy the user's utterance. The intents are ordered by the confidence score.
      */
     intent?: Intent;
+    /**
+     * Specifies the service that interpreted the input.
+     */
+    interpretationSource?: InterpretationSource;
   }
+  export type InterpretationSource = "Bedrock"|"Lex"|string;
   export type Interpretations = Interpretation[];
   export type LocaleId = string;
   export interface Message {
@@ -309,11 +328,11 @@ declare namespace LexRuntimeV2 {
      */
     messages?: NonEmptyString;
     /**
-     * Represents the current state of the dialog between the user and the bot. Use this to determine the progress of the conversation and what the next action may be.
+     * A base-64-encoded gzipped field that represents the current state of the dialog between the user and the bot. Use this to determine the progress of the conversation and what the next action may be.
      */
     sessionState?: NonEmptyString;
     /**
-     * Request-specific information passed between the client application and Amazon Lex V2. These are the same as the requestAttribute parameter in the call to the PutSession operation.
+     * A base-64-encoded gzipped field that provides request-specific information passed between the client application and Amazon Lex V2. These are the same as the requestAttribute parameter in the call to the PutSession operation.
      */
     requestAttributes?: NonEmptyString;
     /**
@@ -376,6 +395,10 @@ declare namespace LexRuntimeV2 {
      * The identifier of the session in use.
      */
     sessionId?: SessionId;
+    /**
+     * The bot member that recognized the text.
+     */
+    recognizedBotMember?: RecognizedBotMember;
   }
   export interface RecognizeUtteranceRequest {
     /**
@@ -407,7 +430,7 @@ declare namespace LexRuntimeV2 {
      */
     requestContentType: NonEmptyString;
     /**
-     * The message that Amazon Lex V2 returns in the response can be either text or speech based on the responseContentType value.   If the value is text/plain;charset=utf-8, Amazon Lex V2 returns text in the response.   If the value begins with audio/, Amazon Lex V2 returns speech in the response. Amazon Lex V2 uses Amazon Polly to generate the speech using the configuration that you specified in the requestContentType parameter. For example, if you specify audio/mpeg as the value, Amazon Lex V2 returns speech in the MPEG format.   If the value is audio/pcm, the speech returned is audio/pcm at 16 KHz in 16-bit, little-endian format.   The following are the accepted values:   audio/mpeg   audio/ogg   audio/pcm (16 KHz)   audio/* (defaults to mpeg)   text/plain; charset=utf-8    
+     * The message that Amazon Lex V2 returns in the response can be either text or speech based on the responseContentType value.   If the value is text/plain;charset=utf-8, Amazon Lex V2 returns text in the response.   If the value begins with audio/, Amazon Lex V2 returns speech in the response. Amazon Lex V2 uses Amazon Polly to generate the speech using the configuration that you specified in the responseContentType parameter. For example, if you specify audio/mpeg as the value, Amazon Lex V2 returns speech in the MPEG format.   If the value is audio/pcm, the speech returned is audio/pcm at 16 KHz in 16-bit, little-endian format.   The following are the accepted values:   audio/mpeg   audio/ogg   audio/pcm (16 KHz)   audio/* (defaults to mpeg)   text/plain; charset=utf-8    
      */
     responseContentType?: NonEmptyString;
     /**
@@ -417,7 +440,7 @@ declare namespace LexRuntimeV2 {
   }
   export interface RecognizeUtteranceResponse {
     /**
-     * Indicates whether the input mode to the operation was text or speech. 
+     * Indicates whether the input mode to the operation was text, speech, or from a touch-tone keypad. 
      */
     inputMode?: NonEmptyString;
     /**
@@ -452,12 +475,30 @@ declare namespace LexRuntimeV2 {
      * The prompt or statement to send to the user. This is based on the bot configuration and context. For example, if Amazon Lex V2 did not understand the user intent, it sends the clarificationPrompt configured for the bot. If the intent requires confirmation before taking the fulfillment action, it sends the confirmationPrompt. Another example: Suppose that the Lambda function successfully fulfilled the intent, and sent a message to convey to the user. Then Amazon Lex V2 sends that message in the response.
      */
     audioStream?: BlobStream;
+    /**
+     * The bot member that recognized the utterance.
+     */
+    recognizedBotMember?: NonEmptyString;
+  }
+  export interface RecognizedBotMember {
+    /**
+     * The identifier of the bot member that processes the request.
+     */
+    botId: BotIdentifier;
+    /**
+     * The name of the bot member that processes the request.
+     */
+    botName?: Name;
   }
   export interface RuntimeHintDetails {
     /**
      * One or more strings that Amazon Lex V2 should look for in the input to the bot. Each phrase is given preference when deciding on slot values.
      */
-    runtimeHintValues: RuntimeHintValuesList;
+    runtimeHintValues?: RuntimeHintValuesList;
+    /**
+     * A map of constituent sub slot names inside a composite slot in the intent and the phrases that should be added for each sub slot. Inside each composite slot hints, this structure provides a mechanism to add granular sub slot phrases. Only sub slot hints are supported for composite slots. The intent name, composite slot name and the constituent sub slot names must exist.
+     */
+    subSlotHints?: SlotHintsSlotMap;
   }
   export type RuntimeHintPhrase = string;
   export interface RuntimeHintValue {
@@ -527,7 +568,7 @@ declare namespace LexRuntimeV2 {
      */
     runtimeHints?: RuntimeHints;
   }
-  export type Shape = "Scalar"|"List"|string;
+  export type Shape = "Scalar"|"List"|"Composite"|string;
   export interface Slot {
     /**
      * The current value of the slot.
@@ -541,6 +582,10 @@ declare namespace LexRuntimeV2 {
      * A list of one or more values that the user provided for the slot. For example, if a for a slot that elicits pizza toppings, the values might be "pepperoni" and "pineapple." 
      */
     values?: Values;
+    /**
+     * The constituent sub slots of a composite slot.
+     */
+    subSlots?: Slots;
   }
   export type SlotHintsIntentMap = {[key: string]: SlotHintsSlotMap};
   export type SlotHintsSlotMap = {[key: string]: RuntimeHintDetails};
@@ -552,15 +597,15 @@ declare namespace LexRuntimeV2 {
   export type Text = string;
   export interface Value {
     /**
-     * The text of the utterance from the user that was entered for the slot.
+     * The part of the user's response to the slot elicitation that Amazon Lex V2 determines is relevant to the slot value.
      */
     originalValue?: NonEmptyString;
     /**
-     * The value that Amazon Lex V2 determines for the slot. The actual value depends on the setting of the value selection strategy for the bot. You can choose to use the value entered by the user, or you can have Amazon Lex V2 choose the first value in the resolvedValues list.
+     * The value that Amazon Lex V2 determines for the slot, given the user input. The actual value depends on the setting of the value selection strategy for the bot. You can choose to use the value entered by the user, or you can have Amazon Lex V2 choose the first value in the resolvedValues list.
      */
     interpretedValue: NonEmptyString;
     /**
-     * A list of additional values that have been recognized for the slot.
+     * A list of values that Amazon Lex V2 determines are possible resolutions for the user input. The first value matches the interpretedValue.
      */
     resolvedValues?: StringList;
   }

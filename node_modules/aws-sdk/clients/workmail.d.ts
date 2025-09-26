@@ -28,6 +28,14 @@ declare class WorkMail extends Service {
    */
   associateMemberToGroup(callback?: (err: AWSError, data: WorkMail.Types.AssociateMemberToGroupResponse) => void): Request<WorkMail.Types.AssociateMemberToGroupResponse, AWSError>;
   /**
+   * Assumes an impersonation role for the given WorkMail organization. This method returns an authentication token you can use to make impersonated calls.
+   */
+  assumeImpersonationRole(params: WorkMail.Types.AssumeImpersonationRoleRequest, callback?: (err: AWSError, data: WorkMail.Types.AssumeImpersonationRoleResponse) => void): Request<WorkMail.Types.AssumeImpersonationRoleResponse, AWSError>;
+  /**
+   * Assumes an impersonation role for the given WorkMail organization. This method returns an authentication token you can use to make impersonated calls.
+   */
+  assumeImpersonationRole(callback?: (err: AWSError, data: WorkMail.Types.AssumeImpersonationRoleResponse) => void): Request<WorkMail.Types.AssumeImpersonationRoleResponse, AWSError>;
+  /**
    * Cancels a mailbox export job.  If the mailbox export job is near completion, it might not be possible to cancel it. 
    */
   cancelMailboxExportJob(params: WorkMail.Types.CancelMailboxExportJobRequest, callback?: (err: AWSError, data: WorkMail.Types.CancelMailboxExportJobResponse) => void): Request<WorkMail.Types.CancelMailboxExportJobResponse, AWSError>;
@@ -36,11 +44,11 @@ declare class WorkMail extends Service {
    */
   cancelMailboxExportJob(callback?: (err: AWSError, data: WorkMail.Types.CancelMailboxExportJobResponse) => void): Request<WorkMail.Types.CancelMailboxExportJobResponse, AWSError>;
   /**
-   * Adds an alias to the set of a given member (user or group) of Amazon WorkMail.
+   * Adds an alias to the set of a given member (user or group) of WorkMail.
    */
   createAlias(params: WorkMail.Types.CreateAliasRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateAliasResponse) => void): Request<WorkMail.Types.CreateAliasResponse, AWSError>;
   /**
-   * Adds an alias to the set of a given member (user or group) of Amazon WorkMail.
+   * Adds an alias to the set of a given member (user or group) of WorkMail.
    */
   createAlias(callback?: (err: AWSError, data: WorkMail.Types.CreateAliasResponse) => void): Request<WorkMail.Types.CreateAliasResponse, AWSError>;
   /**
@@ -52,43 +60,51 @@ declare class WorkMail extends Service {
    */
   createAvailabilityConfiguration(callback?: (err: AWSError, data: WorkMail.Types.CreateAvailabilityConfigurationResponse) => void): Request<WorkMail.Types.CreateAvailabilityConfigurationResponse, AWSError>;
   /**
-   * Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+   * Creates a group that can be used in WorkMail by calling the RegisterToWorkMail operation.
    */
   createGroup(params: WorkMail.Types.CreateGroupRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateGroupResponse) => void): Request<WorkMail.Types.CreateGroupResponse, AWSError>;
   /**
-   * Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+   * Creates a group that can be used in WorkMail by calling the RegisterToWorkMail operation.
    */
   createGroup(callback?: (err: AWSError, data: WorkMail.Types.CreateGroupResponse) => void): Request<WorkMail.Types.CreateGroupResponse, AWSError>;
   /**
-   * Creates a new mobile device access rule for the specified Amazon WorkMail organization.
+   * Creates an impersonation role for the given WorkMail organization.  Idempotency ensures that an API request completes no more than one time. With an idempotent request, if the original request completes successfully, any subsequent retries also complete successfully without performing any further actions.
+   */
+  createImpersonationRole(params: WorkMail.Types.CreateImpersonationRoleRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateImpersonationRoleResponse) => void): Request<WorkMail.Types.CreateImpersonationRoleResponse, AWSError>;
+  /**
+   * Creates an impersonation role for the given WorkMail organization.  Idempotency ensures that an API request completes no more than one time. With an idempotent request, if the original request completes successfully, any subsequent retries also complete successfully without performing any further actions.
+   */
+  createImpersonationRole(callback?: (err: AWSError, data: WorkMail.Types.CreateImpersonationRoleResponse) => void): Request<WorkMail.Types.CreateImpersonationRoleResponse, AWSError>;
+  /**
+   * Creates a new mobile device access rule for the specified WorkMail organization.
    */
   createMobileDeviceAccessRule(params: WorkMail.Types.CreateMobileDeviceAccessRuleRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.CreateMobileDeviceAccessRuleResponse, AWSError>;
   /**
-   * Creates a new mobile device access rule for the specified Amazon WorkMail organization.
+   * Creates a new mobile device access rule for the specified WorkMail organization.
    */
   createMobileDeviceAccessRule(callback?: (err: AWSError, data: WorkMail.Types.CreateMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.CreateMobileDeviceAccessRuleResponse, AWSError>;
   /**
-   * Creates a new Amazon WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new Amazon WorkMail directory for you. For more information, see Adding an organization in the Amazon WorkMail Administrator Guide. You can associate multiple email domains with an organization, then set your default email domain from the Amazon WorkMail console. You can also associate a domain that is managed in an Amazon Route 53 public hosted zone. For more information, see Adding a domain and Choosing the default domain in the Amazon WorkMail Administrator Guide. Optionally, you can use a customer managed master key from AWS Key Management Service (AWS KMS) to encrypt email for your organization. If you don't associate an AWS KMS key, Amazon WorkMail creates a default AWS managed master key for you.
+   * Creates a new WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new WorkMail directory for you. For more information, see Adding an organization in the WorkMail Administrator Guide. You can associate multiple email domains with an organization, then choose your default email domain from the WorkMail console. You can also associate a domain that is managed in an Amazon Route 53 public hosted zone. For more information, see Adding a domain and Choosing the default domain in the WorkMail Administrator Guide. Optionally, you can use a customer managed key from AWS Key Management Service (AWS KMS) to encrypt email for your organization. If you don't associate an AWS KMS key, WorkMail creates a default, AWS managed key for you.
    */
   createOrganization(params: WorkMail.Types.CreateOrganizationRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateOrganizationResponse) => void): Request<WorkMail.Types.CreateOrganizationResponse, AWSError>;
   /**
-   * Creates a new Amazon WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new Amazon WorkMail directory for you. For more information, see Adding an organization in the Amazon WorkMail Administrator Guide. You can associate multiple email domains with an organization, then set your default email domain from the Amazon WorkMail console. You can also associate a domain that is managed in an Amazon Route 53 public hosted zone. For more information, see Adding a domain and Choosing the default domain in the Amazon WorkMail Administrator Guide. Optionally, you can use a customer managed master key from AWS Key Management Service (AWS KMS) to encrypt email for your organization. If you don't associate an AWS KMS key, Amazon WorkMail creates a default AWS managed master key for you.
+   * Creates a new WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new WorkMail directory for you. For more information, see Adding an organization in the WorkMail Administrator Guide. You can associate multiple email domains with an organization, then choose your default email domain from the WorkMail console. You can also associate a domain that is managed in an Amazon Route 53 public hosted zone. For more information, see Adding a domain and Choosing the default domain in the WorkMail Administrator Guide. Optionally, you can use a customer managed key from AWS Key Management Service (AWS KMS) to encrypt email for your organization. If you don't associate an AWS KMS key, WorkMail creates a default, AWS managed key for you.
    */
   createOrganization(callback?: (err: AWSError, data: WorkMail.Types.CreateOrganizationResponse) => void): Request<WorkMail.Types.CreateOrganizationResponse, AWSError>;
   /**
-   * Creates a new Amazon WorkMail resource. 
+   * Creates a new WorkMail resource.
    */
   createResource(params: WorkMail.Types.CreateResourceRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateResourceResponse) => void): Request<WorkMail.Types.CreateResourceResponse, AWSError>;
   /**
-   * Creates a new Amazon WorkMail resource. 
+   * Creates a new WorkMail resource.
    */
   createResource(callback?: (err: AWSError, data: WorkMail.Types.CreateResourceResponse) => void): Request<WorkMail.Types.CreateResourceResponse, AWSError>;
   /**
-   * Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+   * Creates a user who can be used in WorkMail by calling the RegisterToWorkMail operation.
    */
   createUser(params: WorkMail.Types.CreateUserRequest, callback?: (err: AWSError, data: WorkMail.Types.CreateUserResponse) => void): Request<WorkMail.Types.CreateUserResponse, AWSError>;
   /**
-   * Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation.
+   * Creates a user who can be used in WorkMail by calling the RegisterToWorkMail operation.
    */
   createUser(callback?: (err: AWSError, data: WorkMail.Types.CreateUserResponse) => void): Request<WorkMail.Types.CreateUserResponse, AWSError>;
   /**
@@ -124,13 +140,21 @@ declare class WorkMail extends Service {
    */
   deleteEmailMonitoringConfiguration(callback?: (err: AWSError, data: WorkMail.Types.DeleteEmailMonitoringConfigurationResponse) => void): Request<WorkMail.Types.DeleteEmailMonitoringConfigurationResponse, AWSError>;
   /**
-   * Deletes a group from Amazon WorkMail.
+   * Deletes a group from WorkMail.
    */
   deleteGroup(params: WorkMail.Types.DeleteGroupRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteGroupResponse) => void): Request<WorkMail.Types.DeleteGroupResponse, AWSError>;
   /**
-   * Deletes a group from Amazon WorkMail.
+   * Deletes a group from WorkMail.
    */
   deleteGroup(callback?: (err: AWSError, data: WorkMail.Types.DeleteGroupResponse) => void): Request<WorkMail.Types.DeleteGroupResponse, AWSError>;
+  /**
+   * Deletes an impersonation role for the given WorkMail organization.
+   */
+  deleteImpersonationRole(params: WorkMail.Types.DeleteImpersonationRoleRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteImpersonationRoleResponse) => void): Request<WorkMail.Types.DeleteImpersonationRoleResponse, AWSError>;
+  /**
+   * Deletes an impersonation role for the given WorkMail organization.
+   */
+  deleteImpersonationRole(callback?: (err: AWSError, data: WorkMail.Types.DeleteImpersonationRoleResponse) => void): Request<WorkMail.Types.DeleteImpersonationRoleResponse, AWSError>;
   /**
    * Deletes permissions granted to a member (user or group).
    */
@@ -148,27 +172,27 @@ declare class WorkMail extends Service {
    */
   deleteMobileDeviceAccessOverride(callback?: (err: AWSError, data: WorkMail.Types.DeleteMobileDeviceAccessOverrideResponse) => void): Request<WorkMail.Types.DeleteMobileDeviceAccessOverrideResponse, AWSError>;
   /**
-   * Deletes a mobile device access rule for the specified Amazon WorkMail organization.  Deleting already deleted and non-existing rules does not produce an error. In those cases, the service sends back an HTTP 200 response with an empty HTTP body. 
+   * Deletes a mobile device access rule for the specified WorkMail organization.  Deleting already deleted and non-existing rules does not produce an error. In those cases, the service sends back an HTTP 200 response with an empty HTTP body. 
    */
   deleteMobileDeviceAccessRule(params: WorkMail.Types.DeleteMobileDeviceAccessRuleRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.DeleteMobileDeviceAccessRuleResponse, AWSError>;
   /**
-   * Deletes a mobile device access rule for the specified Amazon WorkMail organization.  Deleting already deleted and non-existing rules does not produce an error. In those cases, the service sends back an HTTP 200 response with an empty HTTP body. 
+   * Deletes a mobile device access rule for the specified WorkMail organization.  Deleting already deleted and non-existing rules does not produce an error. In those cases, the service sends back an HTTP 200 response with an empty HTTP body. 
    */
   deleteMobileDeviceAccessRule(callback?: (err: AWSError, data: WorkMail.Types.DeleteMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.DeleteMobileDeviceAccessRuleResponse, AWSError>;
   /**
-   * Deletes an Amazon WorkMail organization and all underlying AWS resources managed by Amazon WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the Amazon WorkMail Administrator Guide.
+   * Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the WorkMail Administrator Guide.
    */
   deleteOrganization(params: WorkMail.Types.DeleteOrganizationRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteOrganizationResponse) => void): Request<WorkMail.Types.DeleteOrganizationResponse, AWSError>;
   /**
-   * Deletes an Amazon WorkMail organization and all underlying AWS resources managed by Amazon WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the Amazon WorkMail Administrator Guide.
+   * Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see Removing an organization in the WorkMail Administrator Guide.
    */
   deleteOrganization(callback?: (err: AWSError, data: WorkMail.Types.DeleteOrganizationResponse) => void): Request<WorkMail.Types.DeleteOrganizationResponse, AWSError>;
   /**
-   * Deletes the specified resource. 
+   * Deletes the specified resource.
    */
   deleteResource(params: WorkMail.Types.DeleteResourceRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteResourceResponse) => void): Request<WorkMail.Types.DeleteResourceResponse, AWSError>;
   /**
-   * Deletes the specified resource. 
+   * Deletes the specified resource.
    */
   deleteResource(callback?: (err: AWSError, data: WorkMail.Types.DeleteResourceResponse) => void): Request<WorkMail.Types.DeleteResourceResponse, AWSError>;
   /**
@@ -180,27 +204,27 @@ declare class WorkMail extends Service {
    */
   deleteRetentionPolicy(callback?: (err: AWSError, data: WorkMail.Types.DeleteRetentionPolicyResponse) => void): Request<WorkMail.Types.DeleteRetentionPolicyResponse, AWSError>;
   /**
-   * Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the user state must be DISABLED. Use the DescribeUser action to confirm the user state. Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.
+   * Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be DISABLED. Use the DescribeUser action to confirm the user state. Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.
    */
   deleteUser(params: WorkMail.Types.DeleteUserRequest, callback?: (err: AWSError, data: WorkMail.Types.DeleteUserResponse) => void): Request<WorkMail.Types.DeleteUserResponse, AWSError>;
   /**
-   * Deletes a user from Amazon WorkMail and all subsequent systems. Before you can delete a user, the user state must be DISABLED. Use the DescribeUser action to confirm the user state. Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.
+   * Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be DISABLED. Use the DescribeUser action to confirm the user state. Deleting a user is permanent and cannot be undone. WorkMail archives user mailboxes for 30 days before they are permanently removed.
    */
   deleteUser(callback?: (err: AWSError, data: WorkMail.Types.DeleteUserResponse) => void): Request<WorkMail.Types.DeleteUserResponse, AWSError>;
   /**
-   * Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is Disable.
+   * Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is Disable.
    */
   deregisterFromWorkMail(params: WorkMail.Types.DeregisterFromWorkMailRequest, callback?: (err: AWSError, data: WorkMail.Types.DeregisterFromWorkMailResponse) => void): Request<WorkMail.Types.DeregisterFromWorkMailResponse, AWSError>;
   /**
-   * Mark a user, group, or resource as no longer used in Amazon WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is Disable.
+   * Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is Disable.
    */
   deregisterFromWorkMail(callback?: (err: AWSError, data: WorkMail.Types.DeregisterFromWorkMailResponse) => void): Request<WorkMail.Types.DeregisterFromWorkMailResponse, AWSError>;
   /**
-   * Removes a domain from Amazon WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
+   * Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
    */
   deregisterMailDomain(params: WorkMail.Types.DeregisterMailDomainRequest, callback?: (err: AWSError, data: WorkMail.Types.DeregisterMailDomainResponse) => void): Request<WorkMail.Types.DeregisterMailDomainResponse, AWSError>;
   /**
-   * Removes a domain from Amazon WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
+   * Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
    */
   deregisterMailDomain(callback?: (err: AWSError, data: WorkMail.Types.DeregisterMailDomainResponse) => void): Request<WorkMail.Types.DeregisterMailDomainResponse, AWSError>;
   /**
@@ -211,6 +235,14 @@ declare class WorkMail extends Service {
    * Describes the current email monitoring configuration for a specified organization.
    */
   describeEmailMonitoringConfiguration(callback?: (err: AWSError, data: WorkMail.Types.DescribeEmailMonitoringConfigurationResponse) => void): Request<WorkMail.Types.DescribeEmailMonitoringConfigurationResponse, AWSError>;
+  /**
+   * Returns basic details about an entity in WorkMail. 
+   */
+  describeEntity(params: WorkMail.Types.DescribeEntityRequest, callback?: (err: AWSError, data: WorkMail.Types.DescribeEntityResponse) => void): Request<WorkMail.Types.DescribeEntityResponse, AWSError>;
+  /**
+   * Returns basic details about an entity in WorkMail. 
+   */
+  describeEntity(callback?: (err: AWSError, data: WorkMail.Types.DescribeEntityResponse) => void): Request<WorkMail.Types.DescribeEntityResponse, AWSError>;
   /**
    * Returns the data available for the group.
    */
@@ -276,11 +308,11 @@ declare class WorkMail extends Service {
    */
   disassociateMemberFromGroup(callback?: (err: AWSError, data: WorkMail.Types.DisassociateMemberFromGroupResponse) => void): Request<WorkMail.Types.DisassociateMemberFromGroupResponse, AWSError>;
   /**
-   * Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID. 
+   * Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, and user ID or impersonation role ID. You must provide either the user ID or impersonation role ID. Impersonation role ID can only be used with Action EWS.
    */
   getAccessControlEffect(params: WorkMail.Types.GetAccessControlEffectRequest, callback?: (err: AWSError, data: WorkMail.Types.GetAccessControlEffectResponse) => void): Request<WorkMail.Types.GetAccessControlEffectResponse, AWSError>;
   /**
-   * Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, or user ID. 
+   * Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, and user ID or impersonation role ID. You must provide either the user ID or impersonation role ID. Impersonation role ID can only be used with Action EWS.
    */
   getAccessControlEffect(callback?: (err: AWSError, data: WorkMail.Types.GetAccessControlEffectResponse) => void): Request<WorkMail.Types.GetAccessControlEffectResponse, AWSError>;
   /**
@@ -291,6 +323,22 @@ declare class WorkMail extends Service {
    * Gets the default retention policy details for the specified organization.
    */
   getDefaultRetentionPolicy(callback?: (err: AWSError, data: WorkMail.Types.GetDefaultRetentionPolicyResponse) => void): Request<WorkMail.Types.GetDefaultRetentionPolicyResponse, AWSError>;
+  /**
+   * Gets the impersonation role details for the given WorkMail organization.
+   */
+  getImpersonationRole(params: WorkMail.Types.GetImpersonationRoleRequest, callback?: (err: AWSError, data: WorkMail.Types.GetImpersonationRoleResponse) => void): Request<WorkMail.Types.GetImpersonationRoleResponse, AWSError>;
+  /**
+   * Gets the impersonation role details for the given WorkMail organization.
+   */
+  getImpersonationRole(callback?: (err: AWSError, data: WorkMail.Types.GetImpersonationRoleResponse) => void): Request<WorkMail.Types.GetImpersonationRoleResponse, AWSError>;
+  /**
+   * Tests whether the given impersonation role can impersonate a target user.
+   */
+  getImpersonationRoleEffect(params: WorkMail.Types.GetImpersonationRoleEffectRequest, callback?: (err: AWSError, data: WorkMail.Types.GetImpersonationRoleEffectResponse) => void): Request<WorkMail.Types.GetImpersonationRoleEffectResponse, AWSError>;
+  /**
+   * Tests whether the given impersonation role can impersonate a target user.
+   */
+  getImpersonationRoleEffect(callback?: (err: AWSError, data: WorkMail.Types.GetImpersonationRoleEffectResponse) => void): Request<WorkMail.Types.GetImpersonationRoleEffectResponse, AWSError>;
   /**
    * Gets details for a mail domain, including domain records required to configure your domain with recommended security.
    */
@@ -308,11 +356,11 @@ declare class WorkMail extends Service {
    */
   getMailboxDetails(callback?: (err: AWSError, data: WorkMail.Types.GetMailboxDetailsResponse) => void): Request<WorkMail.Types.GetMailboxDetailsResponse, AWSError>;
   /**
-   * Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the Amazon WorkMail organization for a particular user's attributes.
+   * Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the WorkMail organization for a particular user's attributes.
    */
   getMobileDeviceAccessEffect(params: WorkMail.Types.GetMobileDeviceAccessEffectRequest, callback?: (err: AWSError, data: WorkMail.Types.GetMobileDeviceAccessEffectResponse) => void): Request<WorkMail.Types.GetMobileDeviceAccessEffectResponse, AWSError>;
   /**
-   * Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the Amazon WorkMail organization for a particular user's attributes.
+   * Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the WorkMail organization for a particular user's attributes.
    */
   getMobileDeviceAccessEffect(callback?: (err: AWSError, data: WorkMail.Types.GetMobileDeviceAccessEffectResponse) => void): Request<WorkMail.Types.GetMobileDeviceAccessEffectResponse, AWSError>;
   /**
@@ -364,11 +412,27 @@ declare class WorkMail extends Service {
    */
   listGroups(callback?: (err: AWSError, data: WorkMail.Types.ListGroupsResponse) => void): Request<WorkMail.Types.ListGroupsResponse, AWSError>;
   /**
-   * Lists the mail domains in a given Amazon WorkMail organization.
+   * Returns all the groups to which an entity belongs.
+   */
+  listGroupsForEntity(params: WorkMail.Types.ListGroupsForEntityRequest, callback?: (err: AWSError, data: WorkMail.Types.ListGroupsForEntityResponse) => void): Request<WorkMail.Types.ListGroupsForEntityResponse, AWSError>;
+  /**
+   * Returns all the groups to which an entity belongs.
+   */
+  listGroupsForEntity(callback?: (err: AWSError, data: WorkMail.Types.ListGroupsForEntityResponse) => void): Request<WorkMail.Types.ListGroupsForEntityResponse, AWSError>;
+  /**
+   * Lists all the impersonation roles for the given WorkMail organization.
+   */
+  listImpersonationRoles(params: WorkMail.Types.ListImpersonationRolesRequest, callback?: (err: AWSError, data: WorkMail.Types.ListImpersonationRolesResponse) => void): Request<WorkMail.Types.ListImpersonationRolesResponse, AWSError>;
+  /**
+   * Lists all the impersonation roles for the given WorkMail organization.
+   */
+  listImpersonationRoles(callback?: (err: AWSError, data: WorkMail.Types.ListImpersonationRolesResponse) => void): Request<WorkMail.Types.ListImpersonationRolesResponse, AWSError>;
+  /**
+   * Lists the mail domains in a given WorkMail organization.
    */
   listMailDomains(params: WorkMail.Types.ListMailDomainsRequest, callback?: (err: AWSError, data: WorkMail.Types.ListMailDomainsResponse) => void): Request<WorkMail.Types.ListMailDomainsResponse, AWSError>;
   /**
-   * Lists the mail domains in a given Amazon WorkMail organization.
+   * Lists the mail domains in a given WorkMail organization.
    */
   listMailDomains(callback?: (err: AWSError, data: WorkMail.Types.ListMailDomainsResponse) => void): Request<WorkMail.Types.ListMailDomainsResponse, AWSError>;
   /**
@@ -396,11 +460,11 @@ declare class WorkMail extends Service {
    */
   listMobileDeviceAccessOverrides(callback?: (err: AWSError, data: WorkMail.Types.ListMobileDeviceAccessOverridesResponse) => void): Request<WorkMail.Types.ListMobileDeviceAccessOverridesResponse, AWSError>;
   /**
-   * Lists the mobile device access rules for the specified Amazon WorkMail organization.
+   * Lists the mobile device access rules for the specified WorkMail organization.
    */
   listMobileDeviceAccessRules(params: WorkMail.Types.ListMobileDeviceAccessRulesRequest, callback?: (err: AWSError, data: WorkMail.Types.ListMobileDeviceAccessRulesResponse) => void): Request<WorkMail.Types.ListMobileDeviceAccessRulesResponse, AWSError>;
   /**
-   * Lists the mobile device access rules for the specified Amazon WorkMail organization.
+   * Lists the mobile device access rules for the specified WorkMail organization.
    */
   listMobileDeviceAccessRules(callback?: (err: AWSError, data: WorkMail.Types.ListMobileDeviceAccessRulesResponse) => void): Request<WorkMail.Types.ListMobileDeviceAccessRulesResponse, AWSError>;
   /**
@@ -428,11 +492,11 @@ declare class WorkMail extends Service {
    */
   listResources(callback?: (err: AWSError, data: WorkMail.Types.ListResourcesResponse) => void): Request<WorkMail.Types.ListResourcesResponse, AWSError>;
   /**
-   * Lists the tags applied to an Amazon WorkMail organization resource.
+   * Lists the tags applied to an WorkMail organization resource.
    */
   listTagsForResource(params: WorkMail.Types.ListTagsForResourceRequest, callback?: (err: AWSError, data: WorkMail.Types.ListTagsForResourceResponse) => void): Request<WorkMail.Types.ListTagsForResourceResponse, AWSError>;
   /**
-   * Lists the tags applied to an Amazon WorkMail organization resource.
+   * Lists the tags applied to an WorkMail organization resource.
    */
   listTagsForResource(callback?: (err: AWSError, data: WorkMail.Types.ListTagsForResourceResponse) => void): Request<WorkMail.Types.ListTagsForResourceResponse, AWSError>;
   /**
@@ -444,11 +508,11 @@ declare class WorkMail extends Service {
    */
   listUsers(callback?: (err: AWSError, data: WorkMail.Types.ListUsersResponse) => void): Request<WorkMail.Types.ListUsersResponse, AWSError>;
   /**
-   * Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, and user IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
+   * Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, user IDs and impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
    */
   putAccessControlRule(params: WorkMail.Types.PutAccessControlRuleRequest, callback?: (err: AWSError, data: WorkMail.Types.PutAccessControlRuleResponse) => void): Request<WorkMail.Types.PutAccessControlRuleResponse, AWSError>;
   /**
-   * Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, and user IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
+   * Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, user IDs and impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
    */
   putAccessControlRule(callback?: (err: AWSError, data: WorkMail.Types.PutAccessControlRuleResponse) => void): Request<WorkMail.Types.PutAccessControlRuleResponse, AWSError>;
   /**
@@ -492,19 +556,19 @@ declare class WorkMail extends Service {
    */
   putRetentionPolicy(callback?: (err: AWSError, data: WorkMail.Types.PutRetentionPolicyResponse) => void): Request<WorkMail.Types.PutRetentionPolicyResponse, AWSError>;
   /**
-   * Registers a new domain in Amazon WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
+   * Registers a new domain in WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
    */
   registerMailDomain(params: WorkMail.Types.RegisterMailDomainRequest, callback?: (err: AWSError, data: WorkMail.Types.RegisterMailDomainResponse) => void): Request<WorkMail.Types.RegisterMailDomainResponse, AWSError>;
   /**
-   * Registers a new domain in Amazon WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
+   * Registers a new domain in WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
    */
   registerMailDomain(callback?: (err: AWSError, data: WorkMail.Types.RegisterMailDomainResponse) => void): Request<WorkMail.Types.RegisterMailDomainResponse, AWSError>;
   /**
-   * Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see Pricing. The equivalent console functionality for this operation is Enable.  Users can either be created by calling the CreateUser API operation or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.
+   * Registers an existing and disabled user, group, or resource for WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see Pricing. The equivalent console functionality for this operation is Enable. Users can either be created by calling the CreateUser API operation or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.
    */
   registerToWorkMail(params: WorkMail.Types.RegisterToWorkMailRequest, callback?: (err: AWSError, data: WorkMail.Types.RegisterToWorkMailResponse) => void): Request<WorkMail.Types.RegisterToWorkMailResponse, AWSError>;
   /**
-   * Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see Pricing. The equivalent console functionality for this operation is Enable.  Users can either be created by calling the CreateUser API operation or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.
+   * Registers an existing and disabled user, group, or resource for WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see Pricing. The equivalent console functionality for this operation is Enable. Users can either be created by calling the CreateUser API operation or they can be synchronized from your directory. For more information, see DeregisterFromWorkMail.
    */
   registerToWorkMail(callback?: (err: AWSError, data: WorkMail.Types.RegisterToWorkMailResponse) => void): Request<WorkMail.Types.RegisterToWorkMailResponse, AWSError>;
   /**
@@ -516,35 +580,35 @@ declare class WorkMail extends Service {
    */
   resetPassword(callback?: (err: AWSError, data: WorkMail.Types.ResetPasswordResponse) => void): Request<WorkMail.Types.ResetPasswordResponse, AWSError>;
   /**
-   * Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Exporting mailbox content in the Amazon WorkMail Administrator Guide.
+   * Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Exporting mailbox content in the WorkMail Administrator Guide.
    */
   startMailboxExportJob(params: WorkMail.Types.StartMailboxExportJobRequest, callback?: (err: AWSError, data: WorkMail.Types.StartMailboxExportJobResponse) => void): Request<WorkMail.Types.StartMailboxExportJobResponse, AWSError>;
   /**
-   * Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Exporting mailbox content in the Amazon WorkMail Administrator Guide.
+   * Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see Exporting mailbox content in the WorkMail Administrator Guide.
    */
   startMailboxExportJob(callback?: (err: AWSError, data: WorkMail.Types.StartMailboxExportJobResponse) => void): Request<WorkMail.Types.StartMailboxExportJobResponse, AWSError>;
   /**
-   * Applies the specified tags to the specified Amazon WorkMail organization resource.
+   * Applies the specified tags to the specified WorkMailorganization resource.
    */
   tagResource(params: WorkMail.Types.TagResourceRequest, callback?: (err: AWSError, data: WorkMail.Types.TagResourceResponse) => void): Request<WorkMail.Types.TagResourceResponse, AWSError>;
   /**
-   * Applies the specified tags to the specified Amazon WorkMail organization resource.
+   * Applies the specified tags to the specified WorkMailorganization resource.
    */
   tagResource(callback?: (err: AWSError, data: WorkMail.Types.TagResourceResponse) => void): Request<WorkMail.Types.TagResourceResponse, AWSError>;
   /**
-   * Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a SourceArn or SourceAccount header.  The request must contain either one provider definition (EwsProvider or LambdaProvider) or the DomainName parameter. If the DomainName parameter is provided, the configuration stored under the DomainName will be tested.  
+   * Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a SourceArn or SourceAccount header.  The request must contain either one provider definition (EwsProvider or LambdaProvider) or the DomainName parameter. If the DomainName parameter is provided, the configuration stored under the DomainName will be tested. 
    */
   testAvailabilityConfiguration(params: WorkMail.Types.TestAvailabilityConfigurationRequest, callback?: (err: AWSError, data: WorkMail.Types.TestAvailabilityConfigurationResponse) => void): Request<WorkMail.Types.TestAvailabilityConfigurationResponse, AWSError>;
   /**
-   * Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a SourceArn or SourceAccount header.  The request must contain either one provider definition (EwsProvider or LambdaProvider) or the DomainName parameter. If the DomainName parameter is provided, the configuration stored under the DomainName will be tested.  
+   * Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a SourceArn or SourceAccount header.  The request must contain either one provider definition (EwsProvider or LambdaProvider) or the DomainName parameter. If the DomainName parameter is provided, the configuration stored under the DomainName will be tested. 
    */
   testAvailabilityConfiguration(callback?: (err: AWSError, data: WorkMail.Types.TestAvailabilityConfigurationResponse) => void): Request<WorkMail.Types.TestAvailabilityConfigurationResponse, AWSError>;
   /**
-   * Untags the specified tags from the specified Amazon WorkMail organization resource.
+   * Untags the specified tags from the specified WorkMail organization resource.
    */
   untagResource(params: WorkMail.Types.UntagResourceRequest, callback?: (err: AWSError, data: WorkMail.Types.UntagResourceResponse) => void): Request<WorkMail.Types.UntagResourceResponse, AWSError>;
   /**
-   * Untags the specified tags from the specified Amazon WorkMail organization resource.
+   * Untags the specified tags from the specified WorkMail organization resource.
    */
   untagResource(callback?: (err: AWSError, data: WorkMail.Types.UntagResourceResponse) => void): Request<WorkMail.Types.UntagResourceResponse, AWSError>;
   /**
@@ -564,6 +628,22 @@ declare class WorkMail extends Service {
    */
   updateDefaultMailDomain(callback?: (err: AWSError, data: WorkMail.Types.UpdateDefaultMailDomainResponse) => void): Request<WorkMail.Types.UpdateDefaultMailDomainResponse, AWSError>;
   /**
+   * Updates attibutes in a group.
+   */
+  updateGroup(params: WorkMail.Types.UpdateGroupRequest, callback?: (err: AWSError, data: WorkMail.Types.UpdateGroupResponse) => void): Request<WorkMail.Types.UpdateGroupResponse, AWSError>;
+  /**
+   * Updates attibutes in a group.
+   */
+  updateGroup(callback?: (err: AWSError, data: WorkMail.Types.UpdateGroupResponse) => void): Request<WorkMail.Types.UpdateGroupResponse, AWSError>;
+  /**
+   * Updates an impersonation role for the given WorkMail organization.
+   */
+  updateImpersonationRole(params: WorkMail.Types.UpdateImpersonationRoleRequest, callback?: (err: AWSError, data: WorkMail.Types.UpdateImpersonationRoleResponse) => void): Request<WorkMail.Types.UpdateImpersonationRoleResponse, AWSError>;
+  /**
+   * Updates an impersonation role for the given WorkMail organization.
+   */
+  updateImpersonationRole(callback?: (err: AWSError, data: WorkMail.Types.UpdateImpersonationRoleResponse) => void): Request<WorkMail.Types.UpdateImpersonationRoleResponse, AWSError>;
+  /**
    * Updates a user's current mailbox quota for a specified organization and user.
    */
   updateMailboxQuota(params: WorkMail.Types.UpdateMailboxQuotaRequest, callback?: (err: AWSError, data: WorkMail.Types.UpdateMailboxQuotaResponse) => void): Request<WorkMail.Types.UpdateMailboxQuotaResponse, AWSError>;
@@ -572,11 +652,11 @@ declare class WorkMail extends Service {
    */
   updateMailboxQuota(callback?: (err: AWSError, data: WorkMail.Types.UpdateMailboxQuotaResponse) => void): Request<WorkMail.Types.UpdateMailboxQuotaResponse, AWSError>;
   /**
-   * Updates a mobile device access rule for the specified Amazon WorkMail organization.
+   * Updates a mobile device access rule for the specified WorkMail organization.
    */
   updateMobileDeviceAccessRule(params: WorkMail.Types.UpdateMobileDeviceAccessRuleRequest, callback?: (err: AWSError, data: WorkMail.Types.UpdateMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.UpdateMobileDeviceAccessRuleResponse, AWSError>;
   /**
-   * Updates a mobile device access rule for the specified Amazon WorkMail organization.
+   * Updates a mobile device access rule for the specified WorkMail organization.
    */
   updateMobileDeviceAccessRule(callback?: (err: AWSError, data: WorkMail.Types.UpdateMobileDeviceAccessRuleResponse) => void): Request<WorkMail.Types.UpdateMobileDeviceAccessRuleResponse, AWSError>;
   /**
@@ -595,6 +675,14 @@ declare class WorkMail extends Service {
    * Updates data for the resource. To have the latest information, it must be preceded by a DescribeResource call. The dataset in the request should be the one expected when performing another DescribeResource call.
    */
   updateResource(callback?: (err: AWSError, data: WorkMail.Types.UpdateResourceResponse) => void): Request<WorkMail.Types.UpdateResourceResponse, AWSError>;
+  /**
+   * Updates data for the user. To have the latest information, it must be preceded by a DescribeUser call. The dataset in the request should be the one expected when performing another DescribeUser call.
+   */
+  updateUser(params: WorkMail.Types.UpdateUserRequest, callback?: (err: AWSError, data: WorkMail.Types.UpdateUserResponse) => void): Request<WorkMail.Types.UpdateUserResponse, AWSError>;
+  /**
+   * Updates data for the user. To have the latest information, it must be preceded by a DescribeUser call. The dataset in the request should be the one expected when performing another DescribeUser call.
+   */
+  updateUser(callback?: (err: AWSError, data: WorkMail.Types.UpdateUserResponse) => void): Request<WorkMail.Types.UpdateUserResponse, AWSError>;
 }
 declare namespace WorkMail {
   export interface AccessControlRule {
@@ -642,6 +730,14 @@ declare namespace WorkMail {
      * The date that the rule was modified.
      */
     DateModified?: Timestamp;
+    /**
+     * Impersonation role IDs to include in the rule.
+     */
+    ImpersonationRoleIds?: ImpersonationRoleIdList;
+    /**
+     * Impersonation role IDs to exclude from the rule.
+     */
+    NotImpersonationRoleIds?: ImpersonationRoleIdList;
   }
   export type AccessControlRuleAction = string;
   export type AccessControlRuleDescription = string;
@@ -649,6 +745,7 @@ declare namespace WorkMail {
   export type AccessControlRuleName = string;
   export type AccessControlRuleNameList = AccessControlRuleName[];
   export type AccessControlRulesList = AccessControlRule[];
+  export type AccessEffect = "ALLOW"|"DENY"|string;
   export type ActionsList = AccessControlRuleAction[];
   export type Aliases = EmailAddress[];
   export type AmazonResourceName = string;
@@ -658,13 +755,13 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The resource for which members (users or groups) are associated.
+     * The resource for which members (users or groups) are associated. The identifier can accept ResourceId, Resourcename, or email. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Email address: resource@domain.tld   Resource name: resource  
      */
-    ResourceId: ResourceId;
+    ResourceId: EntityIdentifier;
     /**
-     * The member (user or group) to associate to the resource.
+     * The member (user or group) to associate to the resource. The entity ID can accept UserId or GroupID, Username or Groupname, or email.   Entity: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
   }
   export interface AssociateDelegateToResourceResponse {
   }
@@ -674,15 +771,35 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The group to which the member (user or group) is associated.
+     * The group to which the member (user or group) is associated. The identifier can accept GroupId, Groupname, or email. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: group@domain.tld   Group name: group  
      */
-    GroupId: WorkMailIdentifier;
+    GroupId: EntityIdentifier;
     /**
-     * The member (user or group) to associate to the group.
+     * The member (user or group) to associate to the group. The member ID can accept UserID or GroupId, Username or Groupname, or email.   Member: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: member@domain.tld   Member name: member  
      */
-    MemberId: WorkMailIdentifier;
+    MemberId: EntityIdentifier;
   }
   export interface AssociateMemberToGroupResponse {
+  }
+  export interface AssumeImpersonationRoleRequest {
+    /**
+     * The WorkMail organization under which the impersonation role will be assumed.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The impersonation role ID to assume.
+     */
+    ImpersonationRoleId: ImpersonationRoleId;
+  }
+  export interface AssumeImpersonationRoleResponse {
+    /**
+     * The authentication token for the impersonation role.
+     */
+    Token?: ImpersonationToken;
+    /**
+     * The authentication token's validity, in seconds.
+     */
+    ExpiresIn?: ExpiresIn;
   }
   export interface AvailabilityConfiguration {
     /**
@@ -694,7 +811,7 @@ declare namespace WorkMail {
      */
     ProviderType?: AvailabilityProviderType;
     /**
-     * If ProviderType is EWS, then this field contains RedactedEwsAvailabilityProvider. Otherwise, it is not requried.
+     * If ProviderType is EWS, then this field contains RedactedEwsAvailabilityProvider. Otherwise, it is not required.
      */
     EwsProvider?: RedactedEwsAvailabilityProvider;
     /**
@@ -766,7 +883,7 @@ declare namespace WorkMail {
      */
     ClientToken?: IdempotencyClientToken;
     /**
-     * The Amazon WorkMail organization for which the AvailabilityConfiguration will be created.
+     * The WorkMail organization for which the AvailabilityConfiguration will be created.
      */
     OrganizationId: OrganizationId;
     /**
@@ -793,6 +910,10 @@ declare namespace WorkMail {
      * The name of the group.
      */
     Name: GroupName;
+    /**
+     * If this parameter is enabled, the group will be hidden from the address book.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
   }
   export interface CreateGroupResponse {
     /**
@@ -800,9 +921,41 @@ declare namespace WorkMail {
      */
     GroupId?: WorkMailIdentifier;
   }
+  export interface CreateImpersonationRoleRequest {
+    /**
+     * The idempotency token for the client request.
+     */
+    ClientToken?: IdempotencyClientToken;
+    /**
+     * The WorkMail organization to create the new impersonation role within.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The name of the new impersonation role.
+     */
+    Name: ImpersonationRoleName;
+    /**
+     * The impersonation role's type. The available impersonation role types are READ_ONLY or FULL_ACCESS.
+     */
+    Type: ImpersonationRoleType;
+    /**
+     * The description of the new impersonation role.
+     */
+    Description?: ImpersonationRoleDescription;
+    /**
+     * The list of rules for the impersonation role.
+     */
+    Rules: ImpersonationRuleList;
+  }
+  export interface CreateImpersonationRoleResponse {
+    /**
+     * The new impersonation role ID.
+     */
+    ImpersonationRoleId?: ImpersonationRoleId;
+  }
   export interface CreateMobileDeviceAccessRuleRequest {
     /**
-     * The Amazon WorkMail organization under which the rule will be created.
+     * The WorkMail organization under which the rule will be created.
      */
     OrganizationId: OrganizationId;
     /**
@@ -878,11 +1031,11 @@ declare namespace WorkMail {
      */
     Domains?: Domains;
     /**
-     * The Amazon Resource Name (ARN) of a customer managed master key from AWS KMS.
+     * The Amazon Resource Name (ARN) of a customer managed key from AWS KMS.
      */
     KmsKeyArn?: KmsKeyArn;
     /**
-     * When true, allows organization interoperability between Amazon WorkMail and Microsoft Exchange. Can only be set to true if an AD Connector directory ID is included in the request.
+     * When true, allows organization interoperability between WorkMail and Microsoft Exchange. If true, you must include a AD Connector directory ID in the request.
      */
     EnableInteroperability?: Boolean;
   }
@@ -905,6 +1058,14 @@ declare namespace WorkMail {
      * The type of the new resource. The available types are equipment and room.
      */
     Type: ResourceType;
+    /**
+     * Resource description.
+     */
+    Description?: ResourceDescription;
+    /**
+     * If this parameter is enabled, the resource will be hidden from the address book.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
   }
   export interface CreateResourceResponse {
     /**
@@ -924,11 +1085,27 @@ declare namespace WorkMail {
     /**
      * The display name for the new user.
      */
-    DisplayName: String;
+    DisplayName: UserAttribute;
     /**
      * The password for the new user.
      */
-    Password: Password;
+    Password?: Password;
+    /**
+     * The role of the new user. You cannot pass SYSTEM_USER or RESOURCE role in a single request. When a user role is not selected, the default role of USER is selected.
+     */
+    Role?: UserRole;
+    /**
+     * The first name of the new user.
+     */
+    FirstName?: UserAttribute;
+    /**
+     * The last name of the new user. 
+     */
+    LastName?: UserAttribute;
+    /**
+     * If this parameter is enabled, the user will be hidden from the address book.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
   }
   export interface CreateUserResponse {
     /**
@@ -976,7 +1153,7 @@ declare namespace WorkMail {
   }
   export interface DeleteAvailabilityConfigurationRequest {
     /**
-     * The Amazon WorkMail organization for which the AvailabilityConfiguration will be deleted.
+     * The WorkMail organization for which the AvailabilityConfiguration will be deleted.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1000,11 +1177,23 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the group to be deleted.
+     * The identifier of the group to be deleted. The identifier can be the GroupId, or Groupname. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Group name: group  
      */
-    GroupId: WorkMailIdentifier;
+    GroupId: EntityIdentifier;
   }
   export interface DeleteGroupResponse {
+  }
+  export interface DeleteImpersonationRoleRequest {
+    /**
+     * The WorkMail organization from which to delete the impersonation role.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The ID of the impersonation role to delete.
+     */
+    ImpersonationRoleId: ImpersonationRoleId;
+  }
+  export interface DeleteImpersonationRoleResponse {
   }
   export interface DeleteMailboxPermissionsRequest {
     /**
@@ -1012,19 +1201,19 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the member (user or group) that owns the mailbox.
+     * The identifier of the entity that owns the mailbox. The identifier can be UserId or Group Id, Username or Groupname, or email.   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
-     * The identifier of the member (user or group) for which to delete granted permissions.
+     * The identifier of the entity for which to delete granted permissions. The identifier can be UserId, ResourceID, or Group Id, Username or Groupname, or email.   Grantee ID: 12345678-1234-1234-1234-123456789012,r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: grantee@domain.tld   Grantee name: grantee  
      */
-    GranteeId: WorkMailIdentifier;
+    GranteeId: EntityIdentifier;
   }
   export interface DeleteMailboxPermissionsResponse {
   }
   export interface DeleteMobileDeviceAccessOverrideRequest {
     /**
-     * The Amazon WorkMail organization for which the access override will be deleted.
+     * The WorkMail organization for which the access override will be deleted.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1040,7 +1229,7 @@ declare namespace WorkMail {
   }
   export interface DeleteMobileDeviceAccessRuleRequest {
     /**
-     * The Amazon WorkMail organization under which the rule will be deleted.
+     * The WorkMail organization under which the rule will be deleted.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1063,6 +1252,10 @@ declare namespace WorkMail {
      * If true, deletes the AWS Directory Service directory associated with the organization.
      */
     DeleteDirectory: Boolean;
+    /**
+     * Deletes a WorkMail organization even if the organization has enabled users.
+     */
+    ForceDelete?: Boolean;
   }
   export interface DeleteOrganizationResponse {
     /**
@@ -1080,9 +1273,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the resource to be deleted.
+     * The identifier of the resource to be deleted. The identifier can accept ResourceId, or Resourcename. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Resource name: resource  
      */
-    ResourceId: ResourceId;
+    ResourceId: EntityIdentifier;
   }
   export interface DeleteResourceResponse {
   }
@@ -1104,31 +1297,31 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the user to be deleted.
+     * The identifier of the user to be deleted. The identifier can be the UserId or Username. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   User name: user  
      */
-    UserId: WorkMailIdentifier;
+    UserId: EntityIdentifier;
   }
   export interface DeleteUserResponse {
   }
   export interface DeregisterFromWorkMailRequest {
     /**
-     * The identifier for the organization under which the Amazon WorkMail entity exists.
+     * The identifier for the organization under which the WorkMail entity exists.
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the member (user or group) to be updated.
+     * The identifier for the member to be updated. The identifier can be UserId, ResourceId, or Group Id, Username, Resourcename, or Groupname, or email.   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
   }
   export interface DeregisterFromWorkMailResponse {
   }
   export interface DeregisterMailDomainRequest {
     /**
-     * The Amazon WorkMail organization for which the domain will be deregistered.
+     * The WorkMail organization for which the domain will be deregistered.
      */
     OrganizationId: OrganizationId;
     /**
-     * The domain to deregister in WorkMail and SES. 
+     * The domain to deregister in WorkMail and SES.
      */
     DomainName: WorkMailDomainName;
   }
@@ -1150,15 +1343,39 @@ declare namespace WorkMail {
      */
     LogGroupArn?: LogGroupArn;
   }
+  export interface DescribeEntityRequest {
+    /**
+     * The identifier for the organization under which the entity exists.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The email under which the entity exists.
+     */
+    Email: EmailAddress;
+  }
+  export interface DescribeEntityResponse {
+    /**
+     * The entity ID under which the entity exists.
+     */
+    EntityId?: WorkMailIdentifier;
+    /**
+     * Username, GroupName, or ResourceName based on entity type.
+     */
+    Name?: String;
+    /**
+     * Entity type.
+     */
+    Type?: EntityType;
+  }
   export interface DescribeGroupRequest {
     /**
      * The identifier for the organization under which the group exists.
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the group to be described.
+     * The identifier for the group to be described. The identifier can accept GroupId, Groupname, or email. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: group@domain.tld   Group name: group  
      */
-    GroupId: WorkMailIdentifier;
+    GroupId: EntityIdentifier;
   }
   export interface DescribeGroupResponse {
     /**
@@ -1174,7 +1391,7 @@ declare namespace WorkMail {
      */
     Email?: EmailAddress;
     /**
-     * The state of the user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).
+     * The state of the user: enabled (registered to WorkMail) or disabled (deregistered or never registered to WorkMail).
      */
     State?: EntityState;
     /**
@@ -1185,6 +1402,10 @@ declare namespace WorkMail {
      * The date and time when a user was deregistered from WorkMail, in UNIX epoch time format.
      */
     DisabledDate?: Timestamp;
+    /**
+     * If the value is set to true, the group is hidden from the address book.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
   }
   export interface DescribeInboundDmarcSettingsRequest {
     /**
@@ -1278,7 +1499,7 @@ declare namespace WorkMail {
      */
     State?: String;
     /**
-     * The identifier for the directory associated with an Amazon WorkMail organization.
+     * The identifier for the directory associated with an WorkMail organization.
      */
     DirectoryId?: String;
     /**
@@ -1301,6 +1522,14 @@ declare namespace WorkMail {
      * The Amazon Resource Name (ARN) of the organization.
      */
     ARN?: AmazonResourceName;
+    /**
+     * The user ID of the migration admin if migration is enabled for the organization.
+     */
+    MigrationAdmin?: WorkMailIdentifier;
+    /**
+     * Indicates if interoperability is enabled for this organization.
+     */
+    InteroperabilityEnabled?: Boolean;
   }
   export interface DescribeResourceRequest {
     /**
@@ -1308,9 +1537,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the resource to be described.
+     * The identifier of the resource to be described. The identifier can accept ResourceId, Resourcename, or email. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Email address: resource@domain.tld   Resource name: resource  
      */
-    ResourceId: ResourceId;
+    ResourceId: EntityIdentifier;
   }
   export interface DescribeResourceResponse {
     /**
@@ -1334,7 +1563,7 @@ declare namespace WorkMail {
      */
     BookingOptions?: BookingOptions;
     /**
-     * The state of the resource: enabled (registered to Amazon WorkMail), disabled (deregistered or never registered to WorkMail), or deleted.
+     * The state of the resource: enabled (registered to WorkMail), disabled (deregistered or never registered to WorkMail), or deleted.
      */
     State?: EntityState;
     /**
@@ -1345,6 +1574,14 @@ declare namespace WorkMail {
      * The date and time when a resource was disabled from WorkMail, in UNIX epoch time format.
      */
     DisabledDate?: Timestamp;
+    /**
+     * Description of the resource.
+     */
+    Description?: ResourceDescription;
+    /**
+     * If enabled, the resource is hidden from the global address list.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
   }
   export interface DescribeUserRequest {
     /**
@@ -1352,9 +1589,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the user to be described.
+     * The identifier for the user to be described. The identifier can be the UserId, Username, or email. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: user@domain.tld   User name: user   
      */
-    UserId: WorkMailIdentifier;
+    UserId: EntityIdentifier;
   }
   export interface DescribeUserResponse {
     /**
@@ -1372,23 +1609,83 @@ declare namespace WorkMail {
     /**
      * The display name of the user.
      */
-    DisplayName?: String;
+    DisplayName?: UserAttribute;
     /**
-     * The state of a user: enabled (registered to Amazon WorkMail) or disabled (deregistered or never registered to WorkMail).
+     * The state of a user: enabled (registered to WorkMail) or disabled (deregistered or never registered to WorkMail).
      */
     State?: EntityState;
     /**
-     * In certain cases, other entities are modeled as users. If interoperability is enabled, resources are imported into Amazon WorkMail as users. Because different WorkMail organizations rely on different directory types, administrators can distinguish between an unregistered user (account is disabled and has a user role) and the directory administrators. The values are USER, RESOURCE, and SYSTEM_USER.
+     * In certain cases, other entities are modeled as users. If interoperability is enabled, resources are imported into WorkMail as users. Because different WorkMail organizations rely on different directory types, administrators can distinguish between an unregistered user (account is disabled and has a user role) and the directory administrators. The values are USER, RESOURCE, SYSTEM_USER, and REMOTE_USER.
      */
     UserRole?: UserRole;
     /**
-     * The date and time at which the user was enabled for Amazon WorkMail usage, in UNIX epoch time format.
+     * The date and time at which the user was enabled for WorkMailusage, in UNIX epoch time format.
      */
     EnabledDate?: Timestamp;
     /**
-     * The date and time at which the user was disabled for Amazon WorkMail usage, in UNIX epoch time format.
+     * The date and time at which the user was disabled for WorkMail usage, in UNIX epoch time format.
      */
     DisabledDate?: Timestamp;
+    /**
+     * The date when the mailbox was created for the user.
+     */
+    MailboxProvisionedDate?: Timestamp;
+    /**
+     * The date when the mailbox was removed for the user.
+     */
+    MailboxDeprovisionedDate?: Timestamp;
+    /**
+     * First name of the user.
+     */
+    FirstName?: UserAttribute;
+    /**
+     * Last name of the user.
+     */
+    LastName?: UserAttribute;
+    /**
+     * If enabled, the user is hidden from the global address list.
+     */
+    HiddenFromGlobalAddressList?: Boolean;
+    /**
+     * Initials of the user.
+     */
+    Initials?: UserAttribute;
+    /**
+     * User's contact number.
+     */
+    Telephone?: UserAttribute;
+    /**
+     * Street where the user is located.
+     */
+    Street?: UserAttribute;
+    /**
+     * Job title of the user.
+     */
+    JobTitle?: UserAttribute;
+    /**
+     * City where the user is located.
+     */
+    City?: UserAttribute;
+    /**
+     * Company of the user.
+     */
+    Company?: UserAttribute;
+    /**
+     * Zip code of the user.
+     */
+    ZipCode?: UserAttribute;
+    /**
+     * Department of the user.
+     */
+    Department?: UserAttribute;
+    /**
+     * Country where the user is located.
+     */
+    Country?: UserAttribute;
+    /**
+     * Office where the user is located.
+     */
+    Office?: UserAttribute;
   }
   export type Description = string;
   export type DeviceId = string;
@@ -1407,13 +1704,13 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the resource from which delegates' set members are removed. 
+     * The identifier of the resource from which delegates' set members are removed.  The identifier can accept ResourceId, Resourcename, or email. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Email address: resource@domain.tld   Resource name: resource  
      */
-    ResourceId: ResourceId;
+    ResourceId: EntityIdentifier;
     /**
-     * The identifier for the member (user, group) to be removed from the resource's delegates.
+     * The identifier for the member (user, group) to be removed from the resource's delegates. The entity ID can accept UserId or GroupID, Username or Groupname, or email.   Entity: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
   }
   export interface DisassociateDelegateFromResourceResponse {
   }
@@ -1423,13 +1720,13 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the group from which members are removed.
+     * The identifier for the group from which members are removed. The identifier can accept GroupId, Groupname, or email. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: group@domain.tld   Group name: group  
      */
-    GroupId: WorkMailIdentifier;
+    GroupId: EntityIdentifier;
     /**
-     * The identifier for the member to be removed to the group.
+     * The identifier for the member to be removed from the group. The member ID can accept UserID or GroupId, Username or Groupname, or email.   Member ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: member@domain.tld   Member name: member  
      */
-    MemberId: WorkMailIdentifier;
+    MemberId: EntityIdentifier;
   }
   export interface DisassociateMemberFromGroupResponse {
   }
@@ -1453,7 +1750,7 @@ declare namespace WorkMail {
     /**
      * The fully qualified domain name.
      */
-    DomainName?: DomainName;
+    DomainName: DomainName;
     /**
      * The hosted zone ID for a domain hosted in Route 53. Required when configuring a domain hosted in Route 53.
      */
@@ -1464,6 +1761,7 @@ declare namespace WorkMail {
   export type EmailAddress = string;
   export type EntityIdentifier = string;
   export type EntityState = "ENABLED"|"DISABLED"|"DELETED"|string;
+  export type EntityType = "GROUP"|"USER"|"RESOURCE"|string;
   export interface EwsAvailabilityProvider {
     /**
      * The endpoint of the remote EWS server.
@@ -1478,6 +1776,7 @@ declare namespace WorkMail {
      */
     EwsPassword: Password;
   }
+  export type ExpiresIn = number;
   export type ExternalUserName = string;
   export interface FolderConfiguration {
     /**
@@ -1511,7 +1810,11 @@ declare namespace WorkMail {
     /**
      * The user ID.
      */
-    UserId: WorkMailIdentifier;
+    UserId?: WorkMailIdentifier;
+    /**
+     * The impersonation role ID.
+     */
+    ImpersonationRoleId?: ImpersonationRoleId;
   }
   export interface GetAccessControlEffectResponse {
     /**
@@ -1547,9 +1850,77 @@ declare namespace WorkMail {
      */
     FolderConfigurations?: FolderConfigurations;
   }
+  export interface GetImpersonationRoleEffectRequest {
+    /**
+     * The WorkMail organization where the impersonation role is defined.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The impersonation role ID to test.
+     */
+    ImpersonationRoleId: ImpersonationRoleId;
+    /**
+     * The WorkMail organization user chosen to test the impersonation role. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234    Email address: user@domain.tld    User name: user   
+     */
+    TargetUser: EntityIdentifier;
+  }
+  export interface GetImpersonationRoleEffectResponse {
+    /**
+     * The impersonation role type.
+     */
+    Type?: ImpersonationRoleType;
+    /**
+     *  Effect of the impersonation role on the target user based on its rules. Available effects are ALLOW or DENY.
+     */
+    Effect?: AccessEffect;
+    /**
+     * A list of the rules that match the input and produce the configured effect.
+     */
+    MatchedRules?: ImpersonationMatchedRuleList;
+  }
+  export interface GetImpersonationRoleRequest {
+    /**
+     * The WorkMail organization from which to retrieve the impersonation role.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The impersonation role ID to retrieve.
+     */
+    ImpersonationRoleId: ImpersonationRoleId;
+  }
+  export interface GetImpersonationRoleResponse {
+    /**
+     * The impersonation role ID.
+     */
+    ImpersonationRoleId?: ImpersonationRoleId;
+    /**
+     * The impersonation role name.
+     */
+    Name?: ImpersonationRoleName;
+    /**
+     * The impersonation role type.
+     */
+    Type?: ImpersonationRoleType;
+    /**
+     * The impersonation role description.
+     */
+    Description?: ImpersonationRoleDescription;
+    /**
+     * The list of rules for the given impersonation role.
+     */
+    Rules?: ImpersonationRuleList;
+    /**
+     * The date when the impersonation role was created.
+     */
+    DateCreated?: Timestamp;
+    /**
+     * The date when the impersonation role was last modified.
+     */
+    DateModified?: Timestamp;
+  }
   export interface GetMailDomainRequest {
     /**
-     * The Amazon WorkMail organization for which the domain is retrieved.
+     * The WorkMail organization for which the domain is retrieved.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1559,7 +1930,7 @@ declare namespace WorkMail {
   }
   export interface GetMailDomainResponse {
     /**
-     * A list of the DNS records that Amazon WorkMail recommends adding in your DNS provider for the best user experience. The records configure your domain with DMARC, SPF, DKIM, and direct incoming email traffic to SES. See admin guide for more details.
+     * A list of the DNS records that WorkMail recommends adding in your DNS provider for the best user experience. The records configure your domain with DMARC, SPF, DKIM, and direct incoming email traffic to SES. See admin guide for more details.
      */
     Records?: DnsRecords;
     /**
@@ -1585,9 +1956,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the user whose mailbox details are being requested.
+     * The identifier for the user whose mailbox details are being requested. The identifier can be the UserId, Username, or email. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: user@domain.tld   User name: user  
      */
-    UserId: WorkMailIdentifier;
+    UserId: EntityIdentifier;
   }
   export interface GetMailboxDetailsResponse {
     /**
@@ -1601,7 +1972,7 @@ declare namespace WorkMail {
   }
   export interface GetMobileDeviceAccessEffectRequest {
     /**
-     * The Amazon WorkMail organization to simulate the access effect for.
+     * The WorkMail organization to simulate the access effect for.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1623,7 +1994,7 @@ declare namespace WorkMail {
   }
   export interface GetMobileDeviceAccessEffectResponse {
     /**
-     * The effect of the simulated access, ALLOW or DENY, after evaluating mobile device access rules in the Amazon WorkMail organization for the simulated user parameters.
+     * The effect of the simulated access, ALLOW or DENY, after evaluating mobile device access rules in the WorkMail organization for the simulated user parameters.
      */
     Effect?: MobileDeviceAccessRuleEffect;
     /**
@@ -1633,7 +2004,7 @@ declare namespace WorkMail {
   }
   export interface GetMobileDeviceAccessOverrideRequest {
     /**
-     * The Amazon WorkMail organization to which you want to apply the override.
+     * The WorkMail organization to which you want to apply the override.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1689,18 +2060,99 @@ declare namespace WorkMail {
      */
     State?: EntityState;
     /**
-     * The date indicating when the group was enabled for Amazon WorkMail use.
+     * The date indicating when the group was enabled for WorkMail use.
      */
     EnabledDate?: Timestamp;
     /**
-     * The date indicating when the group was disabled from Amazon WorkMail use.
+     * The date indicating when the group was disabled from WorkMail use.
      */
     DisabledDate?: Timestamp;
   }
+  export interface GroupIdentifier {
+    /**
+     * Group ID that matched the group.
+     */
+    GroupId?: WorkMailIdentifier;
+    /**
+     * Group name that matched the group.
+     */
+    GroupName?: GroupName;
+  }
+  export type GroupIdentifiers = GroupIdentifier[];
   export type GroupName = string;
   export type Groups = Group[];
   export type HostedZoneId = string;
   export type IdempotencyClientToken = string;
+  export interface ImpersonationMatchedRule {
+    /**
+     * The ID of the rule that matched the input
+     */
+    ImpersonationRuleId?: ImpersonationRuleId;
+    /**
+     * The name of the rule that matched the input.
+     */
+    Name?: ImpersonationRuleName;
+  }
+  export type ImpersonationMatchedRuleList = ImpersonationMatchedRule[];
+  export interface ImpersonationRole {
+    /**
+     * The identifier of the impersonation role.
+     */
+    ImpersonationRoleId?: ImpersonationRoleId;
+    /**
+     * The impersonation role name.
+     */
+    Name?: ImpersonationRoleName;
+    /**
+     * The impersonation role type.
+     */
+    Type?: ImpersonationRoleType;
+    /**
+     * The date when the impersonation role was created.
+     */
+    DateCreated?: Timestamp;
+    /**
+     * The date when the impersonation role was last modified.
+     */
+    DateModified?: Timestamp;
+  }
+  export type ImpersonationRoleDescription = string;
+  export type ImpersonationRoleId = string;
+  export type ImpersonationRoleIdList = ImpersonationRoleId[];
+  export type ImpersonationRoleList = ImpersonationRole[];
+  export type ImpersonationRoleName = string;
+  export type ImpersonationRoleType = "FULL_ACCESS"|"READ_ONLY"|string;
+  export interface ImpersonationRule {
+    /**
+     * The identifier of the rule.
+     */
+    ImpersonationRuleId: ImpersonationRuleId;
+    /**
+     * The rule name.
+     */
+    Name?: ImpersonationRuleName;
+    /**
+     * The rule description.
+     */
+    Description?: ImpersonationRuleDescription;
+    /**
+     * The effect of the rule when it matches the input. Allowed effect values are ALLOW or DENY.
+     */
+    Effect: AccessEffect;
+    /**
+     * A list of user IDs that match the rule.
+     */
+    TargetUsers?: TargetUsers;
+    /**
+     * A list of user IDs that don't match the rule.
+     */
+    NotTargetUsers?: TargetUsers;
+  }
+  export type ImpersonationRuleDescription = string;
+  export type ImpersonationRuleId = string;
+  export type ImpersonationRuleList = ImpersonationRule[];
+  export type ImpersonationRuleName = string;
+  export type ImpersonationToken = string;
   export type IpAddress = string;
   export type IpRange = string;
   export type IpRangeList = IpRange[];
@@ -1755,7 +2207,7 @@ declare namespace WorkMail {
   }
   export interface ListAvailabilityConfigurationsRequest {
     /**
-     * The Amazon WorkMail organization for which the AvailabilityConfiguration's will be listed.
+     * The WorkMail organization for which the AvailabilityConfiguration's will be listed.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1769,7 +2221,7 @@ declare namespace WorkMail {
   }
   export interface ListAvailabilityConfigurationsResponse {
     /**
-     * The list of AvailabilityConfiguration's that exist for the specified Amazon WorkMail organization.
+     * The list of AvailabilityConfiguration's that exist for the specified WorkMail organization.
      */
     AvailabilityConfigurations?: AvailabilityConfigurationList;
     /**
@@ -1783,9 +2235,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the group to which the members (users or groups) are associated.
+     * The identifier for the group to which the members (users or groups) are associated. The identifier can accept GroupId, Groupname, or email. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: group@domain.tld   Group name: group  
      */
-    GroupId: WorkMailIdentifier;
+    GroupId: EntityIdentifier;
     /**
      *  The token to use to retrieve the next page of results. The first call does not contain any tokens.
      */
@@ -1805,6 +2257,58 @@ declare namespace WorkMail {
      */
     NextToken?: NextToken;
   }
+  export interface ListGroupsFilters {
+    /**
+     * Filters only groups with the provided name prefix.
+     */
+    NamePrefix?: String;
+    /**
+     * Filters only groups with the provided primary email prefix.
+     */
+    PrimaryEmailPrefix?: String;
+    /**
+     * Filters only groups with the provided state.
+     */
+    State?: EntityState;
+  }
+  export interface ListGroupsForEntityFilters {
+    /**
+     * Filters only group names that start with the provided name prefix.
+     */
+    GroupNamePrefix?: String;
+  }
+  export interface ListGroupsForEntityRequest {
+    /**
+     * The identifier for the organization under which the entity exists.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The identifier for the entity. The entity ID can accept UserId or GroupID, Username or Groupname, or email.   Entity ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
+     */
+    EntityId: EntityIdentifier;
+    /**
+     * Limit the search results based on the filter criteria.
+     */
+    Filters?: ListGroupsForEntityFilters;
+    /**
+     * The token to use to retrieve the next page of results. The first call does not contain any tokens.
+     */
+    NextToken?: NextToken;
+    /**
+     * The maximum number of results to return in a single call.
+     */
+    MaxResults?: MaxResults;
+  }
+  export interface ListGroupsForEntityResponse {
+    /**
+     * The overview of groups in an organization.
+     */
+    Groups?: GroupIdentifiers;
+    /**
+     * The token to use to retrieve the next page of results. This value is `null` when there are no more results to return.
+     */
+    NextToken?: NextToken;
+  }
   export interface ListGroupsRequest {
     /**
      * The identifier for the organization under which the groups exist.
@@ -1818,6 +2322,10 @@ declare namespace WorkMail {
      * The maximum number of results to return in a single call.
      */
     MaxResults?: MaxResults;
+    /**
+     * Limit the search results based on the filter criteria. Only one filter per request is supported.
+     */
+    Filters?: ListGroupsFilters;
   }
   export interface ListGroupsResponse {
     /**
@@ -1829,9 +2337,33 @@ declare namespace WorkMail {
      */
     NextToken?: NextToken;
   }
+  export interface ListImpersonationRolesRequest {
+    /**
+     * The WorkMail organization to which the listed impersonation roles belong.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The token used to retrieve the next page of results. The first call doesn't require a token.
+     */
+    NextToken?: NextToken;
+    /**
+     * The maximum number of results returned in a single call.
+     */
+    MaxResults?: MaxResults;
+  }
+  export interface ListImpersonationRolesResponse {
+    /**
+     * The list of impersonation roles under the given WorkMail organization.
+     */
+    Roles?: ImpersonationRoleList;
+    /**
+     * The token to retrieve the next page of results. The value is null when there are no results to return.
+     */
+    NextToken?: NextToken;
+  }
   export interface ListMailDomainsRequest {
     /**
-     * The Amazon WorkMail organization for which to list domains.
+     * The WorkMail organization for which to list domains.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1845,7 +2377,7 @@ declare namespace WorkMail {
   }
   export interface ListMailDomainsResponse {
     /**
-     * The list of mail domain summaries, specifying domains that exist in the specified Amazon WorkMail organization, along with the information about whether the domain is or isn't the default.
+     * The list of mail domain summaries, specifying domains that exist in the specified WorkMail organization, along with the information about whether the domain is or isn't the default.
      */
     MailDomains?: MailDomains;
     /**
@@ -1883,9 +2415,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the user, group, or resource for which to list mailbox permissions.
+     * The identifier of the user, or resource for which to list mailbox permissions. The entity ID can accept UserId or ResourceId, Username or Resourcename, or email.   Entity ID: 12345678-1234-1234-1234-123456789012, or r-0123456789a0123456789b0123456789   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
      * The token to use to retrieve the next page of results. The first call does not contain any tokens.
      */
@@ -1907,7 +2439,7 @@ declare namespace WorkMail {
   }
   export interface ListMobileDeviceAccessOverridesRequest {
     /**
-     * The Amazon WorkMail organization under which to list mobile device access overrides.
+     * The WorkMail organization under which to list mobile device access overrides.
      */
     OrganizationId: OrganizationId;
     /**
@@ -1929,7 +2461,7 @@ declare namespace WorkMail {
   }
   export interface ListMobileDeviceAccessOverridesResponse {
     /**
-     * The list of mobile device access overrides that exist for the specified Amazon WorkMail organization and user.
+     * The list of mobile device access overrides that exist for the specified WorkMail organization and user.
      */
     Overrides?: MobileDeviceAccessOverridesList;
     /**
@@ -1939,13 +2471,13 @@ declare namespace WorkMail {
   }
   export interface ListMobileDeviceAccessRulesRequest {
     /**
-     * The Amazon WorkMail organization for which to list the rules.
+     * The WorkMail organization for which to list the rules.
      */
     OrganizationId: OrganizationId;
   }
   export interface ListMobileDeviceAccessRulesResponse {
     /**
-     * The list of mobile device access rules that exist under the specified Amazon WorkMail organization.
+     * The list of mobile device access rules that exist under the specified WorkMail organization.
      */
     Rules?: MobileDeviceAccessRulesList;
   }
@@ -1975,9 +2507,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the resource whose delegates are listed.
+     * The identifier for the resource whose delegates are listed. The identifier can accept ResourceId, Resourcename, or email. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Email address: resource@domain.tld   Resource name: resource  
      */
-    ResourceId: WorkMailIdentifier;
+    ResourceId: EntityIdentifier;
     /**
      * The token used to paginate through the delegates associated with a resource.
      */
@@ -1993,9 +2525,23 @@ declare namespace WorkMail {
      */
     Delegates?: ResourceDelegates;
     /**
-     * The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty. 
+     * The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty.
      */
     NextToken?: NextToken;
+  }
+  export interface ListResourcesFilters {
+    /**
+     * Filters only resource that start with the entered name prefix .
+     */
+    NamePrefix?: String;
+    /**
+     * Filters only resource with the provided primary email prefix.
+     */
+    PrimaryEmailPrefix?: String;
+    /**
+     * Filters only resource with the provided state.
+     */
+    State?: EntityState;
   }
   export interface ListResourcesRequest {
     /**
@@ -2010,6 +2556,10 @@ declare namespace WorkMail {
      * The maximum number of results to return in a single call.
      */
     MaxResults?: MaxResults;
+    /**
+     * Limit the resource search results based on the filter criteria. You can only use one filter per request.
+     */
+    Filters?: ListResourcesFilters;
   }
   export interface ListResourcesResponse {
     /**
@@ -2033,6 +2583,24 @@ declare namespace WorkMail {
      */
     Tags?: TagList;
   }
+  export interface ListUsersFilters {
+    /**
+     * Filters only users with the provided username prefix.
+     */
+    UsernamePrefix?: String;
+    /**
+     * Filters only users with the provided display name prefix.
+     */
+    DisplayNamePrefix?: UserAttribute;
+    /**
+     * Filters only users with the provided email prefix.
+     */
+    PrimaryEmailPrefix?: String;
+    /**
+     * Filters only users with the provided state.
+     */
+    State?: EntityState;
+  }
   export interface ListUsersRequest {
     /**
      * The identifier for the organization under which the users exist.
@@ -2046,6 +2614,10 @@ declare namespace WorkMail {
      * The maximum number of results to return in a single call.
      */
     MaxResults?: MaxResults;
+    /**
+     * Limit the user search results based on the filter criteria. You can only use one filter per request.
+     */
+    Filters?: ListUsersFilters;
   }
   export interface ListUsersResponse {
     /**
@@ -2131,11 +2703,11 @@ declare namespace WorkMail {
      */
     State?: EntityState;
     /**
-     * The date indicating when the member was enabled for Amazon WorkMail use.
+     * The date indicating when the member was enabled for WorkMail use.
      */
     EnabledDate?: Timestamp;
     /**
-     * The date indicating when the member was disabled from Amazon WorkMail use.
+     * The date indicating when the member was disabled from WorkMail use.
      */
     DisabledDate?: Timestamp;
   }
@@ -2181,7 +2753,7 @@ declare namespace WorkMail {
   export type MobileDeviceAccessOverridesList = MobileDeviceAccessOverride[];
   export interface MobileDeviceAccessRule {
     /**
-     * The ID assigned to a mobile access rule. 
+     * The ID assigned to a mobile access rule.
      */
     MobileDeviceAccessRuleId?: MobileDeviceAccessRuleId;
     /**
@@ -2197,7 +2769,7 @@ declare namespace WorkMail {
      */
     Effect?: MobileDeviceAccessRuleEffect;
     /**
-     * Device types that a rule will match. 
+     * Device types that a rule will match.
      */
     DeviceTypes?: DeviceTypeList;
     /**
@@ -2242,6 +2814,7 @@ declare namespace WorkMail {
   export type MobileDeviceAccessRuleId = string;
   export type MobileDeviceAccessRuleName = string;
   export type MobileDeviceAccessRulesList = MobileDeviceAccessRule[];
+  export type NewResourceDescription = string;
   export type NextToken = string;
   export type OrganizationId = string;
   export type OrganizationName = string;
@@ -2329,6 +2902,14 @@ declare namespace WorkMail {
      * The identifier of the organization.
      */
     OrganizationId: OrganizationId;
+    /**
+     * Impersonation role IDs to include in the rule.
+     */
+    ImpersonationRoleIds?: ImpersonationRoleIdList;
+    /**
+     * Impersonation role IDs to exclude from the rule.
+     */
+    NotImpersonationRoleIds?: ImpersonationRoleIdList;
   }
   export interface PutAccessControlRuleResponse {
   }
@@ -2350,7 +2931,7 @@ declare namespace WorkMail {
   }
   export interface PutInboundDmarcSettingsRequest {
     /**
-     * The ID of the organization that you are applying the DMARC policy to. 
+     * The ID of the organization that you are applying the DMARC policy to.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2366,13 +2947,13 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the user, group, or resource for which to update mailbox permissions.
+     * The identifier of the user or resource for which to update mailbox permissions. The identifier can be UserId, ResourceID, or Group Id, Username, Resourcename, or Groupname, or email.   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
-     * The identifier of the user, group, or resource to which to grant the permissions.
+     * The identifier of the user, group, or resource to which to grant the permissions. The identifier can be UserId, ResourceID, or Group Id, Username, Resourcename, or Groupname, or email.   Grantee ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: grantee@domain.tld   Grantee name: grantee  
      */
-    GranteeId: WorkMailIdentifier;
+    GranteeId: EntityIdentifier;
     /**
      * The permissions granted to the grantee. SEND_AS allows the grantee to send email as the owner of the mailbox (the grantee is not mentioned on these emails). SEND_ON_BEHALF allows the grantee to send email on behalf of the owner of the mailbox (the grantee is not mentioned as the physical sender of these emails). FULL_ACCESS allows the grantee full access to the mailbox, irrespective of other folder-level permissions set on the mailbox.
      */
@@ -2382,7 +2963,7 @@ declare namespace WorkMail {
   }
   export interface PutMobileDeviceAccessOverrideRequest {
     /**
-     * Identifies the Amazon WorkMail organization for which you create the override.
+     * Identifies the WorkMail organization for which you create the override.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2444,11 +3025,11 @@ declare namespace WorkMail {
      */
     ClientToken?: IdempotencyClientToken;
     /**
-     * The Amazon WorkMail organization under which you're creating the domain.
+     * The WorkMail organization under which you're creating the domain.
      */
     OrganizationId: OrganizationId;
     /**
-     * The name of the mail domain to create in Amazon WorkMail and SES.
+     * The name of the mail domain to create in WorkMail and SES.
      */
     DomainName: WorkMailDomainName;
   }
@@ -2460,9 +3041,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier for the user, group, or resource to be updated.
+     * The identifier for the user, group, or resource to be updated. The identifier can accept UserId, ResourceId, or GroupId, or Username, Resourcename, or Groupname. The following identity formats are available:   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
      * The email for the user, group, or resource to be updated.
      */
@@ -2508,15 +3089,20 @@ declare namespace WorkMail {
      */
     State?: EntityState;
     /**
-     * The date indicating when the resource was enabled for Amazon WorkMail use.
+     * The date indicating when the resource was enabled for WorkMail use.
      */
     EnabledDate?: Timestamp;
     /**
-     * The date indicating when the resource was disabled from Amazon WorkMail use.
+     * The date indicating when the resource was disabled from WorkMail use.
      */
     DisabledDate?: Timestamp;
+    /**
+     * Resource description.
+     */
+    Description?: ResourceDescription;
   }
   export type ResourceDelegates = Delegate[];
+  export type ResourceDescription = string;
   export type ResourceId = string;
   export type ResourceName = string;
   export type ResourceType = "ROOM"|"EQUIPMENT"|string;
@@ -2537,9 +3123,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the user or resource associated with the mailbox.
+     * The identifier of the user or resource associated with the mailbox. The identifier can accept UserId or ResourceId, Username or Resourcename, or email. The following identity formats are available:   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789 , or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
      * The mailbox export job description.
      */
@@ -2594,9 +3180,10 @@ declare namespace WorkMail {
   export interface TagResourceResponse {
   }
   export type TagValue = string;
+  export type TargetUsers = EntityIdentifier[];
   export interface TestAvailabilityConfigurationRequest {
     /**
-     * The Amazon WorkMail organization where the availability provider will be tested.
+     * The WorkMail organization where the availability provider will be tested.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2631,7 +3218,7 @@ declare namespace WorkMail {
   }
   export interface UpdateAvailabilityConfigurationRequest {
     /**
-     * The Amazon WorkMail organization for which the AvailabilityConfiguration will be updated.
+     * The WorkMail organization for which the AvailabilityConfiguration will be updated.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2651,7 +3238,7 @@ declare namespace WorkMail {
   }
   export interface UpdateDefaultMailDomainRequest {
     /**
-     * The Amazon WorkMail organization for which to list domains.
+     * The WorkMail organization for which to list domains.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2661,15 +3248,59 @@ declare namespace WorkMail {
   }
   export interface UpdateDefaultMailDomainResponse {
   }
+  export interface UpdateGroupRequest {
+    /**
+     * The identifier for the organization under which the group exists.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The identifier for the group to be updated. The identifier can accept GroupId, Groupname, or email. The following identity formats are available:   Group ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: group@domain.tld   Group name: group  
+     */
+    GroupId: EntityIdentifier;
+    /**
+     * If enabled, the group is hidden from the global address list.
+     */
+    HiddenFromGlobalAddressList?: BooleanObject;
+  }
+  export interface UpdateGroupResponse {
+  }
+  export interface UpdateImpersonationRoleRequest {
+    /**
+     * The WorkMail organization that contains the impersonation role to update.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The ID of the impersonation role to update.
+     */
+    ImpersonationRoleId: ImpersonationRoleId;
+    /**
+     * The updated impersonation role name.
+     */
+    Name: ImpersonationRoleName;
+    /**
+     * The updated impersonation role type.
+     */
+    Type: ImpersonationRoleType;
+    /**
+     * The updated impersonation role description.
+     */
+    Description?: ImpersonationRoleDescription;
+    /**
+     * The updated list of rules.
+     */
+    Rules: ImpersonationRuleList;
+  }
+  export interface UpdateImpersonationRoleResponse {
+  }
   export interface UpdateMailboxQuotaRequest {
     /**
      * The identifier for the organization that contains the user for whom to update the mailbox quota.
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifer for the user for whom to update the mailbox quota.
+     * The identifer for the user for whom to update the mailbox quota. The identifier can be the UserId, Username, or email. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: user@domain.tld   User name: user  
      */
-    UserId: WorkMailIdentifier;
+    UserId: EntityIdentifier;
     /**
      * The updated mailbox quota, in MB, for the specified user.
      */
@@ -2679,7 +3310,7 @@ declare namespace WorkMail {
   }
   export interface UpdateMobileDeviceAccessRuleRequest {
     /**
-     * The Amazon WorkMail organization under which the rule will be updated.
+     * The WorkMail organization under which the rule will be updated.
      */
     OrganizationId: OrganizationId;
     /**
@@ -2739,9 +3370,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The user, group, or resource to update.
+     * The user, group, or resource to update. The identifier can accept UseriD, ResourceId, or GroupId, Username, Resourcename, or Groupname, or email. The following identity formats are available:   Entity ID: 12345678-1234-1234-1234-123456789012, r-0123456789a0123456789b0123456789, or S-1-1-12-1234567890-123456789-123456789-1234   Email address: entity@domain.tld   Entity name: entity  
      */
-    EntityId: WorkMailIdentifier;
+    EntityId: EntityIdentifier;
     /**
      * The value of the email to be updated as primary.
      */
@@ -2755,9 +3386,9 @@ declare namespace WorkMail {
      */
     OrganizationId: OrganizationId;
     /**
-     * The identifier of the resource to be updated.
+     * The identifier of the resource to be updated. The identifier can accept ResourceId, Resourcename, or email. The following identity formats are available:   Resource ID: r-0123456789a0123456789b0123456789   Email address: resource@domain.tld   Resource name: resource  
      */
-    ResourceId: ResourceId;
+    ResourceId: EntityIdentifier;
     /**
      * The name of the resource to be updated.
      */
@@ -2766,8 +3397,92 @@ declare namespace WorkMail {
      * The resource's booking options to be updated.
      */
     BookingOptions?: BookingOptions;
+    /**
+     * Updates the resource description.
+     */
+    Description?: NewResourceDescription;
+    /**
+     * Updates the resource type.
+     */
+    Type?: ResourceType;
+    /**
+     * If enabled, the resource is hidden from the global address list.
+     */
+    HiddenFromGlobalAddressList?: BooleanObject;
   }
   export interface UpdateResourceResponse {
+  }
+  export interface UpdateUserRequest {
+    /**
+     * The identifier for the organization under which the user exists.
+     */
+    OrganizationId: OrganizationId;
+    /**
+     * The identifier for the user to be updated. The identifier can be the UserId, Username, or email. The following identity formats are available:   User ID: 12345678-1234-1234-1234-123456789012 or S-1-1-12-1234567890-123456789-123456789-1234   Email address: user@domain.tld   User name: user  
+     */
+    UserId: EntityIdentifier;
+    /**
+     * Updates the user role. You cannot pass SYSTEM_USER or RESOURCE.
+     */
+    Role?: UserRole;
+    /**
+     * Updates the display name of the user.
+     */
+    DisplayName?: UserAttribute;
+    /**
+     * Updates the user's first name.
+     */
+    FirstName?: UserAttribute;
+    /**
+     * Updates the user's last name.
+     */
+    LastName?: UserAttribute;
+    /**
+     * If enabled, the user is hidden from the global address list.
+     */
+    HiddenFromGlobalAddressList?: BooleanObject;
+    /**
+     * Updates the user's initials.
+     */
+    Initials?: UserAttribute;
+    /**
+     * Updates the user's contact details.
+     */
+    Telephone?: UserAttribute;
+    /**
+     * Updates the user's street address.
+     */
+    Street?: UserAttribute;
+    /**
+     * Updates the user's job title.
+     */
+    JobTitle?: UserAttribute;
+    /**
+     * Updates the user's city.
+     */
+    City?: UserAttribute;
+    /**
+     * Updates the user's company.
+     */
+    Company?: UserAttribute;
+    /**
+     * Updates the user's zipcode.
+     */
+    ZipCode?: UserAttribute;
+    /**
+     * Updates the user's department.
+     */
+    Department?: UserAttribute;
+    /**
+     * Updates the user's country.
+     */
+    Country?: UserAttribute;
+    /**
+     * Updates the user's office.
+     */
+    Office?: UserAttribute;
+  }
+  export interface UpdateUserResponse {
   }
   export type Url = string;
   export interface User {
@@ -2796,17 +3511,18 @@ declare namespace WorkMail {
      */
     UserRole?: UserRole;
     /**
-     * The date indicating when the user was enabled for Amazon WorkMail use.
+     * The date indicating when the user was enabled for WorkMail use.
      */
     EnabledDate?: Timestamp;
     /**
-     * The date indicating when the user was disabled from Amazon WorkMail use.
+     * The date indicating when the user was disabled from WorkMail use.
      */
     DisabledDate?: Timestamp;
   }
+  export type UserAttribute = string;
   export type UserIdList = WorkMailIdentifier[];
   export type UserName = string;
-  export type UserRole = "USER"|"RESOURCE"|"SYSTEM_USER"|string;
+  export type UserRole = "USER"|"RESOURCE"|"SYSTEM_USER"|"REMOTE_USER"|string;
   export type Users = User[];
   export type WorkMailDomainName = string;
   export type WorkMailIdentifier = string;

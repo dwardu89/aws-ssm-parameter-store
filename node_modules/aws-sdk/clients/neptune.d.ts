@@ -668,6 +668,40 @@ declare namespace Neptune {
      */
     DisableLogTypes?: LogTypeList;
   }
+  export interface ClusterPendingModifiedValues {
+    /**
+     * This PendingCloudwatchLogsExports structure specifies pending changes to which CloudWatch logs are enabled and which are disabled.
+     */
+    PendingCloudwatchLogsExports?: PendingCloudwatchLogsExports;
+    /**
+     * The DBClusterIdentifier value for the DB cluster.
+     */
+    DBClusterIdentifier?: String;
+    /**
+     * A value that indicates whether mapping of Amazon Web Services Identity and Access Management (IAM) accounts to database accounts is enabled.
+     */
+    IAMDatabaseAuthenticationEnabled?: BooleanOptional;
+    /**
+     * The database engine version.
+     */
+    EngineVersion?: String;
+    /**
+     * The number of days for which automatic DB snapshots are retained.
+     */
+    BackupRetentionPeriod?: IntegerOptional;
+    /**
+     * The storage type for the DB cluster.
+     */
+    StorageType?: String;
+    /**
+     * The allocated storage size in gibibytes (GiB) for database engines. For Neptune, AllocatedStorage always returns 1, because Neptune DB cluster storage size isn't fixed, but instead automatically adjusts as needed.
+     */
+    AllocatedStorage?: IntegerOptional;
+    /**
+     * The Provisioned IOPS (I/O operations per second) value. This setting is only for non-Aurora Multi-AZ DB clusters.
+     */
+    Iops?: IntegerOptional;
+  }
   export interface CopyDBClusterParameterGroupMessage {
     /**
      * The identifier or Amazon Resource Name (ARN) for the source DB cluster parameter group. For information about creating an ARN, see  Constructing an Amazon Resource Name (ARN). Constraints:   Must specify a valid DB cluster parameter group.   If the source DB cluster parameter group is in the same Amazon Region as the copy, specify a valid DB parameter group identifier, for example my-db-cluster-param-group, or a valid ARN.   If the source DB parameter group is in a different Amazon Region than the copy, specify a valid DB cluster parameter group ARN, for example arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1.  
@@ -869,11 +903,11 @@ declare namespace Neptune {
      */
     OptionGroupName?: String;
     /**
-     * The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. The default is a 30-minute window selected at random from an 8-hour block of time for each Amazon Region. To see the time blocks available, see  Adjusting the Preferred Maintenance Window in the Amazon Neptune User Guide.  Constraints:   Must be in the format hh24:mi-hh24:mi.   Must be in Universal Coordinated Time (UTC).   Must not conflict with the preferred maintenance window.   Must be at least 30 minutes.  
+     * The daily time range during which automated backups are created if automated backups are enabled using the BackupRetentionPeriod parameter. The default is a 30-minute window selected at random from an 8-hour block of time for each Amazon Region. To see the time blocks available, see Neptune Maintenance Window in the Amazon Neptune User Guide.  Constraints:   Must be in the format hh24:mi-hh24:mi.   Must be in Universal Coordinated Time (UTC).   Must not conflict with the preferred maintenance window.   Must be at least 30 minutes.  
      */
     PreferredBackupWindow?: String;
     /**
-     * The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). Format: ddd:hh24:mi-ddd:hh24:mi  The default is a 30-minute window selected at random from an 8-hour block of time for each Amazon Region, occurring on a random day of the week. To see the time blocks available, see  Adjusting the Preferred Maintenance Window in the Amazon Neptune User Guide.  Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints: Minimum 30-minute window.
+     * The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). Format: ddd:hh24:mi-ddd:hh24:mi  The default is a 30-minute window selected at random from an 8-hour block of time for each Amazon Region, occurring on a random day of the week. To see the time blocks available, see Neptune Maintenance Window in the Amazon Neptune User Guide.  Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints: Minimum 30-minute window.
      */
     PreferredMaintenanceWindow?: String;
     /**
@@ -901,7 +935,7 @@ declare namespace Neptune {
      */
     EnableIAMDatabaseAuthentication?: BooleanOptional;
     /**
-     * The list of log types that need to be enabled for exporting to CloudWatch Logs.
+     * A list of the log types that this DB cluster should export to CloudWatch Logs. Valid log types are: audit (to publish audit logs) and slowquery (to publish slow-query logs). See Publishing Neptune logs to Amazon CloudWatch logs.
      */
     EnableCloudwatchLogsExports?: LogTypeList;
     /**
@@ -909,9 +943,17 @@ declare namespace Neptune {
      */
     DeletionProtection?: BooleanOptional;
     /**
+     * Contains the scaling configuration of a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.
+     */
+    ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
+    /**
      * The ID of the Neptune global database to which this new DB cluster should be added.
      */
     GlobalClusterIdentifier?: GlobalClusterIdentifier;
+    /**
+     * The storage type to associate with the DB cluster. Valid Values:    standard | iopt1    Default:    standard     When you create a Neptune cluster with the storage type set to iopt1, the storage type is returned in the response. The storage type isn't returned when you set it to standard. 
+     */
+    StorageType?: String;
   }
   export interface CreateDBClusterParameterGroupMessage {
     /**
@@ -1058,7 +1100,7 @@ declare namespace Neptune {
     /**
      * The identifier of the DB cluster that the instance will belong to. For information on creating a DB cluster, see CreateDBCluster. Type: String
      */
-    DBClusterIdentifier?: String;
+    DBClusterIdentifier: String;
     /**
      * Specifies the storage type to be associated with the DB instance. Not applicable. Storage is managed by the DB Cluster.
      */
@@ -1070,7 +1112,7 @@ declare namespace Neptune {
     /**
      * The password for the given ARN from the key store in order to access the device.
      */
-    TdeCredentialPassword?: String;
+    TdeCredentialPassword?: SensitiveString;
     /**
      * Specifies whether the DB instance is encrypted. Not applicable. The encryption for DB instances is managed by the DB cluster. For more information, see CreateDBCluster. Default: false
      */
@@ -1381,9 +1423,13 @@ declare namespace Neptune {
      */
     CopyTagsToSnapshot?: BooleanOptional;
     /**
-     * A list of log types that this DB cluster is configured to export to CloudWatch Logs.
+     * A list of the log types that this DB cluster is configured to export to CloudWatch Logs. Valid log types are: audit (to publish audit logs to CloudWatch) and slowquery (to publish slow-query logs to CloudWatch). See Publishing Neptune logs to Amazon CloudWatch logs.
      */
     EnabledCloudwatchLogsExports?: LogTypeList;
+    /**
+     * This data type is used as a response element in the ModifyDBCluster operation and contains changes that will be applied during the next maintenance window.
+     */
+    PendingModifiedValues?: ClusterPendingModifiedValues;
     /**
      * Indicates whether or not the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled.
      */
@@ -1396,6 +1442,22 @@ declare namespace Neptune {
      * Time at which the DB cluster will be automatically restarted.
      */
     AutomaticRestartTime?: TStamp;
+    /**
+     * Shows the scaling configuration for a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.
+     */
+    ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfigurationInfo;
+    /**
+     * Contains a user-supplied global database cluster identifier. This identifier is the unique key that identifies a global database.
+     */
+    GlobalClusterIdentifier?: GlobalClusterIdentifier;
+    /**
+     * The next time you can modify the DB cluster to use the iopt1 storage type.
+     */
+    IOOptimizedNextAllowedModificationTime?: TStamp;
+    /**
+     * The storage type associated with the DB cluster.
+     */
+    StorageType?: String;
   }
   export interface DBClusterEndpoint {
     /**
@@ -1632,6 +1694,10 @@ declare namespace Neptune {
      * True if mapping of Amazon Identity and Access Management (IAM) accounts to database accounts is enabled, and otherwise false.
      */
     IAMDatabaseAuthenticationEnabled?: Boolean;
+    /**
+     * The storage type associated with the DB cluster snapshot.
+     */
+    StorageType?: String;
   }
   export interface DBClusterSnapshotAttribute {
     /**
@@ -3021,7 +3087,7 @@ declare namespace Neptune {
      */
     EnableIAMDatabaseAuthentication?: BooleanOptional;
     /**
-     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB cluster.
+     * The configuration setting for the log types to be enabled for export to CloudWatch Logs for a specific DB cluster. See Using the CLI to publish Neptune audit logs to CloudWatch Logs.
      */
     CloudwatchLogsExportConfiguration?: CloudwatchLogsExportConfiguration;
     /**
@@ -3044,6 +3110,14 @@ declare namespace Neptune {
      *  If set to true, tags are copied to any snapshot of the DB cluster that is created. 
      */
     CopyTagsToSnapshot?: BooleanOptional;
+    /**
+     * Contains the scaling configuration of a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.
+     */
+    ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
+    /**
+     * The storage type to associate with the DB cluster. Valid Values:    standard | iopt1    Default:    standard   
+     */
+    StorageType?: String;
   }
   export interface ModifyDBClusterParameterGroupMessage {
     /**
@@ -3171,7 +3245,7 @@ declare namespace Neptune {
     /**
      * The password for the given ARN from the key store in order to access the device.
      */
-    TdeCredentialPassword?: String;
+    TdeCredentialPassword?: SensitiveString;
     /**
      * Indicates the certificate that needs to be associated with the instance.
      */
@@ -3764,6 +3838,14 @@ declare namespace Neptune {
      *  If set to true, tags are copied to any snapshot of the restored DB cluster that is created. 
      */
     CopyTagsToSnapshot?: BooleanOptional;
+    /**
+     * Contains the scaling configuration of a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.
+     */
+    ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
+    /**
+     * Specifies the storage type to be associated with the DB cluster. Valid values: standard, iopt1  Default: standard 
+     */
+    StorageType?: String;
   }
   export interface RestoreDBClusterFromSnapshotResult {
     DBCluster?: DBCluster;
@@ -3829,9 +3911,38 @@ declare namespace Neptune {
      * A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled. 
      */
     DeletionProtection?: BooleanOptional;
+    /**
+     * Contains the scaling configuration of a Neptune Serverless DB cluster. For more information, see Using Amazon Neptune Serverless in the Amazon Neptune User Guide.
+     */
+    ServerlessV2ScalingConfiguration?: ServerlessV2ScalingConfiguration;
+    /**
+     * Specifies the storage type to be associated with the DB cluster. Valid values: standard, iopt1  Default: standard 
+     */
+    StorageType?: String;
   }
   export interface RestoreDBClusterToPointInTimeResult {
     DBCluster?: DBCluster;
+  }
+  export type SensitiveString = string;
+  export interface ServerlessV2ScalingConfiguration {
+    /**
+     * The minimum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 8, 8.5, 9, and so on.
+     */
+    MinCapacity?: DoubleOptional;
+    /**
+     * The maximum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 40, 40.5, 41, and so on.
+     */
+    MaxCapacity?: DoubleOptional;
+  }
+  export interface ServerlessV2ScalingConfigurationInfo {
+    /**
+     * The minimum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 8, 8.5, 9, and so on.
+     */
+    MinCapacity?: DoubleOptional;
+    /**
+     * The maximum number of Neptune capacity units (NCUs) for a DB instance in a Neptune Serverless cluster. You can specify NCU values in half-step increments, such as 40, 40.5, 41, and so on.
+     */
+    MaxCapacity?: DoubleOptional;
   }
   export type SourceIdsList = String[];
   export type SourceType = "db-instance"|"db-parameter-group"|"db-security-group"|"db-snapshot"|"db-cluster"|"db-cluster-snapshot"|string;

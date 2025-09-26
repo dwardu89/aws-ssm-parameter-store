@@ -68,11 +68,11 @@ declare class Iot extends Service {
    */
   attachSecurityProfile(callback?: (err: AWSError, data: Iot.Types.AttachSecurityProfileResponse) => void): Request<Iot.Types.AttachSecurityProfileResponse, AWSError>;
   /**
-   * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. Requires permission to access the AttachThingPrincipal action.
+   * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, Amazon Cognito identities or federated identities. Requires permission to access the AttachThingPrincipal action.
    */
   attachThingPrincipal(params: Iot.Types.AttachThingPrincipalRequest, callback?: (err: AWSError, data: Iot.Types.AttachThingPrincipalResponse) => void): Request<Iot.Types.AttachThingPrincipalResponse, AWSError>;
   /**
-   * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito identities or federated identities. Requires permission to access the AttachThingPrincipal action.
+   * Attaches the specified principal to the specified thing. A principal can be X.509 certificates, Amazon Cognito identities or federated identities. Requires permission to access the AttachThingPrincipal action.
    */
   attachThingPrincipal(callback?: (err: AWSError, data: Iot.Types.AttachThingPrincipalResponse) => void): Request<Iot.Types.AttachThingPrincipalResponse, AWSError>;
   /**
@@ -164,13 +164,21 @@ declare class Iot extends Service {
    */
   createBillingGroup(callback?: (err: AWSError, data: Iot.Types.CreateBillingGroupResponse) => void): Request<Iot.Types.CreateBillingGroupResponse, AWSError>;
   /**
-   * Creates an X.509 certificate using the specified certificate signing request.  Note: The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-512 curves. For supported certificates, consult  Certificate signing algorithms supported by IoT.  Note: Reusing the same certificate signing request (CSR) results in a distinct certificate. Requires permission to access the CreateCertificateFromCsr action. You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs. Assuming a set of CSRs are located inside of the directory my-csr-directory: On Linux and OS X, the command is: $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{} This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr Amazon Web Services CLI command to create a certificate for the corresponding CSR. The aws iot create-certificate-from-csr part of the command can also be run in parallel to speed up the certificate creation process: $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{} On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is: &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_} On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is: &gt; forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"
+   * Creates an X.509 certificate using the specified certificate signing request.  Requires permission to access the CreateCertificateFromCsr action.   The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-521 curves. For supported certificates, consult  Certificate signing algorithms supported by IoT.    Reusing the same certificate signing request (CSR) results in a distinct certificate.  You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs. In the following commands, we assume that a set of CSRs are located inside of the directory my-csr-directory: On Linux and OS X, the command is:   $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}  This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr Amazon Web Services CLI command to create a certificate for the corresponding CSR.  You can also run the aws iot create-certificate-from-csr part of the command in parallel to speed up the certificate creation process:  $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}   On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:  &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_}   On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:  &gt; forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"  
    */
   createCertificateFromCsr(params: Iot.Types.CreateCertificateFromCsrRequest, callback?: (err: AWSError, data: Iot.Types.CreateCertificateFromCsrResponse) => void): Request<Iot.Types.CreateCertificateFromCsrResponse, AWSError>;
   /**
-   * Creates an X.509 certificate using the specified certificate signing request.  Note: The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-512 curves. For supported certificates, consult  Certificate signing algorithms supported by IoT.  Note: Reusing the same certificate signing request (CSR) results in a distinct certificate. Requires permission to access the CreateCertificateFromCsr action. You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs. Assuming a set of CSRs are located inside of the directory my-csr-directory: On Linux and OS X, the command is: $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{} This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr Amazon Web Services CLI command to create a certificate for the corresponding CSR. The aws iot create-certificate-from-csr part of the command can also be run in parallel to speed up the certificate creation process: $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{} On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is: &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_} On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is: &gt; forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"
+   * Creates an X.509 certificate using the specified certificate signing request.  Requires permission to access the CreateCertificateFromCsr action.   The CSR must include a public key that is either an RSA key with a length of at least 2048 bits or an ECC key from NIST P-256, NIST P-384, or NIST P-521 curves. For supported certificates, consult  Certificate signing algorithms supported by IoT.    Reusing the same certificate signing request (CSR) results in a distinct certificate.  You can create multiple certificates in a batch by creating a directory, copying multiple .csr files into that directory, and then specifying that directory on the command line. The following commands show how to create a batch of certificates given a batch of CSRs. In the following commands, we assume that a set of CSRs are located inside of the directory my-csr-directory: On Linux and OS X, the command is:   $ ls my-csr-directory/ | xargs -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}  This command lists all of the CSRs in my-csr-directory and pipes each CSR file name to the aws iot create-certificate-from-csr Amazon Web Services CLI command to create a certificate for the corresponding CSR.  You can also run the aws iot create-certificate-from-csr part of the command in parallel to speed up the certificate creation process:  $ ls my-csr-directory/ | xargs -P 10 -I {} aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/{}   On Windows PowerShell, the command to create certificates for all CSRs in my-csr-directory is:  &gt; ls -Name my-csr-directory | %{aws iot create-certificate-from-csr --certificate-signing-request file://my-csr-directory/$_}   On a Windows command prompt, the command to create certificates for all CSRs in my-csr-directory is:  &gt; forfiles /p my-csr-directory /c "cmd /c aws iot create-certificate-from-csr --certificate-signing-request file://@path"  
    */
   createCertificateFromCsr(callback?: (err: AWSError, data: Iot.Types.CreateCertificateFromCsrResponse) => void): Request<Iot.Types.CreateCertificateFromCsrResponse, AWSError>;
+  /**
+   * Creates an Amazon Web Services IoT Core certificate provider. You can use Amazon Web Services IoT Core certificate provider to customize how to sign a certificate signing request (CSR) in IoT fleet provisioning. For more information, see Customizing certificate signing using Amazon Web Services IoT Core certificate provider from Amazon Web Services IoT Core Developer Guide. Requires permission to access the CreateCertificateProvider action.  After you create a certificate provider, the behavior of  CreateCertificateFromCsr API for fleet provisioning will change and all API calls to CreateCertificateFromCsr will invoke the certificate provider to create the certificates. It can take up to a few minutes for this behavior to change after a certificate provider is created. 
+   */
+  createCertificateProvider(params: Iot.Types.CreateCertificateProviderRequest, callback?: (err: AWSError, data: Iot.Types.CreateCertificateProviderResponse) => void): Request<Iot.Types.CreateCertificateProviderResponse, AWSError>;
+  /**
+   * Creates an Amazon Web Services IoT Core certificate provider. You can use Amazon Web Services IoT Core certificate provider to customize how to sign a certificate signing request (CSR) in IoT fleet provisioning. For more information, see Customizing certificate signing using Amazon Web Services IoT Core certificate provider from Amazon Web Services IoT Core Developer Guide. Requires permission to access the CreateCertificateProvider action.  After you create a certificate provider, the behavior of  CreateCertificateFromCsr API for fleet provisioning will change and all API calls to CreateCertificateFromCsr will invoke the certificate provider to create the certificates. It can take up to a few minutes for this behavior to change after a certificate provider is created. 
+   */
+  createCertificateProvider(callback?: (err: AWSError, data: Iot.Types.CreateCertificateProviderResponse) => void): Request<Iot.Types.CreateCertificateProviderResponse, AWSError>;
   /**
    *  Use this API to define a Custom Metric published by your devices to Device Defender.  Requires permission to access the CreateCustomMetric action.
    */
@@ -252,6 +260,22 @@ declare class Iot extends Service {
    */
   createOTAUpdate(callback?: (err: AWSError, data: Iot.Types.CreateOTAUpdateResponse) => void): Request<Iot.Types.CreateOTAUpdateResponse, AWSError>;
   /**
+   * Creates an IoT software package that can be deployed to your fleet. Requires permission to access the CreatePackage and GetIndexingConfiguration actions.
+   */
+  createPackage(params: Iot.Types.CreatePackageRequest, callback?: (err: AWSError, data: Iot.Types.CreatePackageResponse) => void): Request<Iot.Types.CreatePackageResponse, AWSError>;
+  /**
+   * Creates an IoT software package that can be deployed to your fleet. Requires permission to access the CreatePackage and GetIndexingConfiguration actions.
+   */
+  createPackage(callback?: (err: AWSError, data: Iot.Types.CreatePackageResponse) => void): Request<Iot.Types.CreatePackageResponse, AWSError>;
+  /**
+   * Creates a new version for an existing IoT software package. Requires permission to access the CreatePackageVersion and GetIndexingConfiguration actions.
+   */
+  createPackageVersion(params: Iot.Types.CreatePackageVersionRequest, callback?: (err: AWSError, data: Iot.Types.CreatePackageVersionResponse) => void): Request<Iot.Types.CreatePackageVersionResponse, AWSError>;
+  /**
+   * Creates a new version for an existing IoT software package. Requires permission to access the CreatePackageVersion and GetIndexingConfiguration actions.
+   */
+  createPackageVersion(callback?: (err: AWSError, data: Iot.Types.CreatePackageVersionResponse) => void): Request<Iot.Types.CreatePackageVersionResponse, AWSError>;
+  /**
    * Creates an IoT policy. The created policy is the default version for the policy. This operation creates a policy version with a version identifier of 1 and sets 1 as the policy's default version. Requires permission to access the CreatePolicy action.
    */
   createPolicy(params: Iot.Types.CreatePolicyRequest, callback?: (err: AWSError, data: Iot.Types.CreatePolicyResponse) => void): Request<Iot.Types.CreatePolicyResponse, AWSError>;
@@ -276,19 +300,19 @@ declare class Iot extends Service {
    */
   createProvisioningClaim(callback?: (err: AWSError, data: Iot.Types.CreateProvisioningClaimResponse) => void): Request<Iot.Types.CreateProvisioningClaimResponse, AWSError>;
   /**
-   * Creates a fleet provisioning template. Requires permission to access the CreateProvisioningTemplate action.
+   * Creates a provisioning template. Requires permission to access the CreateProvisioningTemplate action.
    */
   createProvisioningTemplate(params: Iot.Types.CreateProvisioningTemplateRequest, callback?: (err: AWSError, data: Iot.Types.CreateProvisioningTemplateResponse) => void): Request<Iot.Types.CreateProvisioningTemplateResponse, AWSError>;
   /**
-   * Creates a fleet provisioning template. Requires permission to access the CreateProvisioningTemplate action.
+   * Creates a provisioning template. Requires permission to access the CreateProvisioningTemplate action.
    */
   createProvisioningTemplate(callback?: (err: AWSError, data: Iot.Types.CreateProvisioningTemplateResponse) => void): Request<Iot.Types.CreateProvisioningTemplateResponse, AWSError>;
   /**
-   * Creates a new version of a fleet provisioning template. Requires permission to access the CreateProvisioningTemplateVersion action.
+   * Creates a new version of a provisioning template. Requires permission to access the CreateProvisioningTemplateVersion action.
    */
   createProvisioningTemplateVersion(params: Iot.Types.CreateProvisioningTemplateVersionRequest, callback?: (err: AWSError, data: Iot.Types.CreateProvisioningTemplateVersionResponse) => void): Request<Iot.Types.CreateProvisioningTemplateVersionResponse, AWSError>;
   /**
-   * Creates a new version of a fleet provisioning template. Requires permission to access the CreateProvisioningTemplateVersion action.
+   * Creates a new version of a provisioning template. Requires permission to access the CreateProvisioningTemplateVersion action.
    */
   createProvisioningTemplateVersion(callback?: (err: AWSError, data: Iot.Types.CreateProvisioningTemplateVersionResponse) => void): Request<Iot.Types.CreateProvisioningTemplateVersionResponse, AWSError>;
   /**
@@ -332,11 +356,11 @@ declare class Iot extends Service {
    */
   createThing(callback?: (err: AWSError, data: Iot.Types.CreateThingResponse) => void): Request<Iot.Types.CreateThingResponse, AWSError>;
   /**
-   * Create a thing group.  This is a control plane operation. See Authorization for information about authorizing control plane actions.  Requires permission to access the CreateThingGroup action.
+   * Create a thing group.  This is a control plane operation. See Authorization for information about authorizing control plane actions. If the ThingGroup that you create has the exact same attributes as an existing ThingGroup, you will get a 200 success response.   Requires permission to access the CreateThingGroup action.
    */
   createThingGroup(params: Iot.Types.CreateThingGroupRequest, callback?: (err: AWSError, data: Iot.Types.CreateThingGroupResponse) => void): Request<Iot.Types.CreateThingGroupResponse, AWSError>;
   /**
-   * Create a thing group.  This is a control plane operation. See Authorization for information about authorizing control plane actions.  Requires permission to access the CreateThingGroup action.
+   * Create a thing group.  This is a control plane operation. See Authorization for information about authorizing control plane actions. If the ThingGroup that you create has the exact same attributes as an existing ThingGroup, you will get a 200 success response.   Requires permission to access the CreateThingGroup action.
    */
   createThingGroup(callback?: (err: AWSError, data: Iot.Types.CreateThingGroupResponse) => void): Request<Iot.Types.CreateThingGroupResponse, AWSError>;
   /**
@@ -411,6 +435,14 @@ declare class Iot extends Service {
    * Deletes the specified certificate. A certificate cannot be deleted if it has a policy or IoT thing attached to it or if its status is set to ACTIVE. To delete a certificate, first use the DetachPolicy action to detach all policies. Next, use the UpdateCertificate action to set the certificate to the INACTIVE status. Requires permission to access the DeleteCertificate action.
    */
   deleteCertificate(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
+  /**
+   * Deletes a certificate provider. Requires permission to access the DeleteCertificateProvider action.  If you delete the certificate provider resource, the behavior of CreateCertificateFromCsr will resume, and IoT will create certificates signed by IoT from a certificate signing request (CSR).
+   */
+  deleteCertificateProvider(params: Iot.Types.DeleteCertificateProviderRequest, callback?: (err: AWSError, data: Iot.Types.DeleteCertificateProviderResponse) => void): Request<Iot.Types.DeleteCertificateProviderResponse, AWSError>;
+  /**
+   * Deletes a certificate provider. Requires permission to access the DeleteCertificateProvider action.  If you delete the certificate provider resource, the behavior of CreateCertificateFromCsr will resume, and IoT will create certificates signed by IoT from a certificate signing request (CSR).
+   */
+  deleteCertificateProvider(callback?: (err: AWSError, data: Iot.Types.DeleteCertificateProviderResponse) => void): Request<Iot.Types.DeleteCertificateProviderResponse, AWSError>;
   /**
    *  Deletes a Device Defender detect custom metric.  Requires permission to access the DeleteCustomMetric action.  Before you can delete a custom metric, you must first remove the custom metric from all security profiles it's a part of. The security profile associated with the custom metric can be found using the ListSecurityProfiles API with metricName set to your custom metric name. 
    */
@@ -492,6 +524,22 @@ declare class Iot extends Service {
    */
   deleteOTAUpdate(callback?: (err: AWSError, data: Iot.Types.DeleteOTAUpdateResponse) => void): Request<Iot.Types.DeleteOTAUpdateResponse, AWSError>;
   /**
+   * Deletes a specific version from a software package.  Note: All package versions must be deleted before deleting the software package. Requires permission to access the DeletePackageVersion action.
+   */
+  deletePackage(params: Iot.Types.DeletePackageRequest, callback?: (err: AWSError, data: Iot.Types.DeletePackageResponse) => void): Request<Iot.Types.DeletePackageResponse, AWSError>;
+  /**
+   * Deletes a specific version from a software package.  Note: All package versions must be deleted before deleting the software package. Requires permission to access the DeletePackageVersion action.
+   */
+  deletePackage(callback?: (err: AWSError, data: Iot.Types.DeletePackageResponse) => void): Request<Iot.Types.DeletePackageResponse, AWSError>;
+  /**
+   * Deletes a specific version from a software package.  Note: If a package version is designated as default, you must remove the designation from the software package using the UpdatePackage action.
+   */
+  deletePackageVersion(params: Iot.Types.DeletePackageVersionRequest, callback?: (err: AWSError, data: Iot.Types.DeletePackageVersionResponse) => void): Request<Iot.Types.DeletePackageVersionResponse, AWSError>;
+  /**
+   * Deletes a specific version from a software package.  Note: If a package version is designated as default, you must remove the designation from the software package using the UpdatePackage action.
+   */
+  deletePackageVersion(callback?: (err: AWSError, data: Iot.Types.DeletePackageVersionResponse) => void): Request<Iot.Types.DeletePackageVersionResponse, AWSError>;
+  /**
    * Deletes the specified policy. A policy cannot be deleted if it has non-default versions or it is attached to any certificate. To delete a policy, use the DeletePolicyVersion action to delete all non-default versions of the policy; use the DetachPolicy action to detach the policy from any certificate; and then use the DeletePolicy action to delete the policy. When a policy is deleted using DeletePolicy, its default version is deleted with it.  Because of the distributed nature of Amazon Web Services, it can take up to five minutes after a policy is detached before it's ready to be deleted.  Requires permission to access the DeletePolicy action.
    */
   deletePolicy(params: Iot.Types.DeletePolicyRequest, callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
@@ -508,19 +556,19 @@ declare class Iot extends Service {
    */
   deletePolicyVersion(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
-   * Deletes a fleet provisioning template. Requires permission to access the DeleteProvisioningTemplate action.
+   * Deletes a provisioning template. Requires permission to access the DeleteProvisioningTemplate action.
    */
   deleteProvisioningTemplate(params: Iot.Types.DeleteProvisioningTemplateRequest, callback?: (err: AWSError, data: Iot.Types.DeleteProvisioningTemplateResponse) => void): Request<Iot.Types.DeleteProvisioningTemplateResponse, AWSError>;
   /**
-   * Deletes a fleet provisioning template. Requires permission to access the DeleteProvisioningTemplate action.
+   * Deletes a provisioning template. Requires permission to access the DeleteProvisioningTemplate action.
    */
   deleteProvisioningTemplate(callback?: (err: AWSError, data: Iot.Types.DeleteProvisioningTemplateResponse) => void): Request<Iot.Types.DeleteProvisioningTemplateResponse, AWSError>;
   /**
-   * Deletes a fleet provisioning template version. Requires permission to access the DeleteProvisioningTemplateVersion action.
+   * Deletes a provisioning template version. Requires permission to access the DeleteProvisioningTemplateVersion action.
    */
   deleteProvisioningTemplateVersion(params: Iot.Types.DeleteProvisioningTemplateVersionRequest, callback?: (err: AWSError, data: Iot.Types.DeleteProvisioningTemplateVersionResponse) => void): Request<Iot.Types.DeleteProvisioningTemplateVersionResponse, AWSError>;
   /**
-   * Deletes a fleet provisioning template version. Requires permission to access the DeleteProvisioningTemplateVersion action.
+   * Deletes a provisioning template version. Requires permission to access the DeleteProvisioningTemplateVersion action.
    */
   deleteProvisioningTemplateVersion(callback?: (err: AWSError, data: Iot.Types.DeleteProvisioningTemplateVersionResponse) => void): Request<Iot.Types.DeleteProvisioningTemplateVersionResponse, AWSError>;
   /**
@@ -692,6 +740,14 @@ declare class Iot extends Service {
    */
   describeCertificate(callback?: (err: AWSError, data: Iot.Types.DescribeCertificateResponse) => void): Request<Iot.Types.DescribeCertificateResponse, AWSError>;
   /**
+   * Describes a certificate provider. Requires permission to access the DescribeCertificateProvider action. 
+   */
+  describeCertificateProvider(params: Iot.Types.DescribeCertificateProviderRequest, callback?: (err: AWSError, data: Iot.Types.DescribeCertificateProviderResponse) => void): Request<Iot.Types.DescribeCertificateProviderResponse, AWSError>;
+  /**
+   * Describes a certificate provider. Requires permission to access the DescribeCertificateProvider action. 
+   */
+  describeCertificateProvider(callback?: (err: AWSError, data: Iot.Types.DescribeCertificateProviderResponse) => void): Request<Iot.Types.DescribeCertificateProviderResponse, AWSError>;
+  /**
    *  Gets information about a Device Defender detect custom metric.  Requires permission to access the DescribeCustomMetric action.
    */
   describeCustomMetric(params: Iot.Types.DescribeCustomMetricRequest, callback?: (err: AWSError, data: Iot.Types.DescribeCustomMetricResponse) => void): Request<Iot.Types.DescribeCustomMetricResponse, AWSError>;
@@ -732,11 +788,11 @@ declare class Iot extends Service {
    */
   describeDomainConfiguration(callback?: (err: AWSError, data: Iot.Types.DescribeDomainConfigurationResponse) => void): Request<Iot.Types.DescribeDomainConfigurationResponse, AWSError>;
   /**
-   * Returns a unique endpoint specific to the Amazon Web Services account making the call. Requires permission to access the DescribeEndpoint action.
+   * Returns or creates a unique endpoint specific to the Amazon Web Services account making the call.  The first time DescribeEndpoint is called, an endpoint is created. All subsequent calls to DescribeEndpoint return the same endpoint.  Requires permission to access the DescribeEndpoint action.
    */
   describeEndpoint(params: Iot.Types.DescribeEndpointRequest, callback?: (err: AWSError, data: Iot.Types.DescribeEndpointResponse) => void): Request<Iot.Types.DescribeEndpointResponse, AWSError>;
   /**
-   * Returns a unique endpoint specific to the Amazon Web Services account making the call. Requires permission to access the DescribeEndpoint action.
+   * Returns or creates a unique endpoint specific to the Amazon Web Services account making the call.  The first time DescribeEndpoint is called, an endpoint is created. All subsequent calls to DescribeEndpoint return the same endpoint.  Requires permission to access the DescribeEndpoint action.
    */
   describeEndpoint(callback?: (err: AWSError, data: Iot.Types.DescribeEndpointResponse) => void): Request<Iot.Types.DescribeEndpointResponse, AWSError>;
   /**
@@ -804,19 +860,19 @@ declare class Iot extends Service {
    */
   describeMitigationAction(callback?: (err: AWSError, data: Iot.Types.DescribeMitigationActionResponse) => void): Request<Iot.Types.DescribeMitigationActionResponse, AWSError>;
   /**
-   * Returns information about a fleet provisioning template. Requires permission to access the DescribeProvisioningTemplate action.
+   * Returns information about a provisioning template. Requires permission to access the DescribeProvisioningTemplate action.
    */
   describeProvisioningTemplate(params: Iot.Types.DescribeProvisioningTemplateRequest, callback?: (err: AWSError, data: Iot.Types.DescribeProvisioningTemplateResponse) => void): Request<Iot.Types.DescribeProvisioningTemplateResponse, AWSError>;
   /**
-   * Returns information about a fleet provisioning template. Requires permission to access the DescribeProvisioningTemplate action.
+   * Returns information about a provisioning template. Requires permission to access the DescribeProvisioningTemplate action.
    */
   describeProvisioningTemplate(callback?: (err: AWSError, data: Iot.Types.DescribeProvisioningTemplateResponse) => void): Request<Iot.Types.DescribeProvisioningTemplateResponse, AWSError>;
   /**
-   * Returns information about a fleet provisioning template version. Requires permission to access the DescribeProvisioningTemplateVersion action.
+   * Returns information about a provisioning template version. Requires permission to access the DescribeProvisioningTemplateVersion action.
    */
   describeProvisioningTemplateVersion(params: Iot.Types.DescribeProvisioningTemplateVersionRequest, callback?: (err: AWSError, data: Iot.Types.DescribeProvisioningTemplateVersionResponse) => void): Request<Iot.Types.DescribeProvisioningTemplateVersionResponse, AWSError>;
   /**
-   * Returns information about a fleet provisioning template version. Requires permission to access the DescribeProvisioningTemplateVersion action.
+   * Returns information about a provisioning template version. Requires permission to access the DescribeProvisioningTemplateVersion action.
    */
   describeProvisioningTemplateVersion(callback?: (err: AWSError, data: Iot.Types.DescribeProvisioningTemplateVersionResponse) => void): Request<Iot.Types.DescribeProvisioningTemplateVersionResponse, AWSError>;
   /**
@@ -892,11 +948,11 @@ declare class Iot extends Service {
    */
   detachPolicy(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
-   * Removes the specified policy from the specified certificate.  This action is deprecated. Please use DetachPolicy instead.  Requires permission to access the DetachPrincipalPolicy action.
+   * Removes the specified policy from the specified certificate.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use DetachPolicy instead. Requires permission to access the DetachPrincipalPolicy action.
    */
   detachPrincipalPolicy(params: Iot.Types.DetachPrincipalPolicyRequest, callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
-   * Removes the specified policy from the specified certificate.  This action is deprecated. Please use DetachPolicy instead.  Requires permission to access the DetachPrincipalPolicy action.
+   * Removes the specified policy from the specified certificate.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use DetachPolicy instead. Requires permission to access the DetachPrincipalPolicy action.
    */
   detachPrincipalPolicy(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
@@ -996,6 +1052,30 @@ declare class Iot extends Service {
    */
   getOTAUpdate(callback?: (err: AWSError, data: Iot.Types.GetOTAUpdateResponse) => void): Request<Iot.Types.GetOTAUpdateResponse, AWSError>;
   /**
+   * Gets information about the specified software package. Requires permission to access the GetPackage action.
+   */
+  getPackage(params: Iot.Types.GetPackageRequest, callback?: (err: AWSError, data: Iot.Types.GetPackageResponse) => void): Request<Iot.Types.GetPackageResponse, AWSError>;
+  /**
+   * Gets information about the specified software package. Requires permission to access the GetPackage action.
+   */
+  getPackage(callback?: (err: AWSError, data: Iot.Types.GetPackageResponse) => void): Request<Iot.Types.GetPackageResponse, AWSError>;
+  /**
+   * Gets information about the specified software package's configuration. Requires permission to access the GetPackageConfiguration action.
+   */
+  getPackageConfiguration(params: Iot.Types.GetPackageConfigurationRequest, callback?: (err: AWSError, data: Iot.Types.GetPackageConfigurationResponse) => void): Request<Iot.Types.GetPackageConfigurationResponse, AWSError>;
+  /**
+   * Gets information about the specified software package's configuration. Requires permission to access the GetPackageConfiguration action.
+   */
+  getPackageConfiguration(callback?: (err: AWSError, data: Iot.Types.GetPackageConfigurationResponse) => void): Request<Iot.Types.GetPackageConfigurationResponse, AWSError>;
+  /**
+   * Gets information about the specified package version.  Requires permission to access the GetPackageVersion action.
+   */
+  getPackageVersion(params: Iot.Types.GetPackageVersionRequest, callback?: (err: AWSError, data: Iot.Types.GetPackageVersionResponse) => void): Request<Iot.Types.GetPackageVersionResponse, AWSError>;
+  /**
+   * Gets information about the specified package version.  Requires permission to access the GetPackageVersion action.
+   */
+  getPackageVersion(callback?: (err: AWSError, data: Iot.Types.GetPackageVersionResponse) => void): Request<Iot.Types.GetPackageVersionResponse, AWSError>;
+  /**
    * Groups the aggregated values that match the query into percentile groupings. The default percentile groupings are: 1,5,25,50,75,95,99, although you can specify your own when you call GetPercentiles. This function returns a value for each percentile group specified (or the default percentile groupings). The percentile group "1" contains the aggregated field value that occurs in approximately one percent of the values that match the query. The percentile group "5" contains the aggregated field value that occurs in approximately five percent of the values that match the query, and so on. The result is an approximation, the more values that match the query, the more accurate the percentile values. Requires permission to access the GetPercentiles action.
    */
   getPercentiles(params: Iot.Types.GetPercentilesRequest, callback?: (err: AWSError, data: Iot.Types.GetPercentilesResponse) => void): Request<Iot.Types.GetPercentilesResponse, AWSError>;
@@ -1020,11 +1100,11 @@ declare class Iot extends Service {
    */
   getPolicyVersion(callback?: (err: AWSError, data: Iot.Types.GetPolicyVersionResponse) => void): Request<Iot.Types.GetPolicyVersionResponse, AWSError>;
   /**
-   * Gets a registration code used to register a CA certificate with IoT. Requires permission to access the GetRegistrationCode action.
+   * Gets a registration code used to register a CA certificate with IoT. IoT will create a registration code as part of this API call if the registration code doesn't exist or has been deleted. If you already have a registration code, this API call will return the same registration code. Requires permission to access the GetRegistrationCode action.
    */
   getRegistrationCode(params: Iot.Types.GetRegistrationCodeRequest, callback?: (err: AWSError, data: Iot.Types.GetRegistrationCodeResponse) => void): Request<Iot.Types.GetRegistrationCodeResponse, AWSError>;
   /**
-   * Gets a registration code used to register a CA certificate with IoT. Requires permission to access the GetRegistrationCode action.
+   * Gets a registration code used to register a CA certificate with IoT. IoT will create a registration code as part of this API call if the registration code doesn't exist or has been deleted. If you already have a registration code, this API call will return the same registration code. Requires permission to access the GetRegistrationCode action.
    */
   getRegistrationCode(callback?: (err: AWSError, data: Iot.Types.GetRegistrationCodeResponse) => void): Request<Iot.Types.GetRegistrationCodeResponse, AWSError>;
   /**
@@ -1139,6 +1219,14 @@ declare class Iot extends Service {
    * Lists the CA certificates registered for your Amazon Web Services account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results. Requires permission to access the ListCACertificates action.
    */
   listCACertificates(callback?: (err: AWSError, data: Iot.Types.ListCACertificatesResponse) => void): Request<Iot.Types.ListCACertificatesResponse, AWSError>;
+  /**
+   * Lists all your certificate providers in your Amazon Web Services account. Requires permission to access the ListCertificateProviders action. 
+   */
+  listCertificateProviders(params: Iot.Types.ListCertificateProvidersRequest, callback?: (err: AWSError, data: Iot.Types.ListCertificateProvidersResponse) => void): Request<Iot.Types.ListCertificateProvidersResponse, AWSError>;
+  /**
+   * Lists all your certificate providers in your Amazon Web Services account. Requires permission to access the ListCertificateProviders action. 
+   */
+  listCertificateProviders(callback?: (err: AWSError, data: Iot.Types.ListCertificateProvidersResponse) => void): Request<Iot.Types.ListCertificateProvidersResponse, AWSError>;
   /**
    * Lists the certificates registered in your Amazon Web Services account. The results are paginated with a default page size of 25. You can use the returned marker to retrieve additional results. Requires permission to access the ListCertificates action.
    */
@@ -1284,6 +1372,22 @@ declare class Iot extends Service {
    */
   listOutgoingCertificates(callback?: (err: AWSError, data: Iot.Types.ListOutgoingCertificatesResponse) => void): Request<Iot.Types.ListOutgoingCertificatesResponse, AWSError>;
   /**
+   * Lists the software package versions associated to the account. Requires permission to access the ListPackageVersions action.
+   */
+  listPackageVersions(params: Iot.Types.ListPackageVersionsRequest, callback?: (err: AWSError, data: Iot.Types.ListPackageVersionsResponse) => void): Request<Iot.Types.ListPackageVersionsResponse, AWSError>;
+  /**
+   * Lists the software package versions associated to the account. Requires permission to access the ListPackageVersions action.
+   */
+  listPackageVersions(callback?: (err: AWSError, data: Iot.Types.ListPackageVersionsResponse) => void): Request<Iot.Types.ListPackageVersionsResponse, AWSError>;
+  /**
+   * Lists the software packages associated to the account. Requires permission to access the ListPackages action.
+   */
+  listPackages(params: Iot.Types.ListPackagesRequest, callback?: (err: AWSError, data: Iot.Types.ListPackagesResponse) => void): Request<Iot.Types.ListPackagesResponse, AWSError>;
+  /**
+   * Lists the software packages associated to the account. Requires permission to access the ListPackages action.
+   */
+  listPackages(callback?: (err: AWSError, data: Iot.Types.ListPackagesResponse) => void): Request<Iot.Types.ListPackagesResponse, AWSError>;
+  /**
    * Lists your policies. Requires permission to access the ListPolicies action.
    */
   listPolicies(params: Iot.Types.ListPoliciesRequest, callback?: (err: AWSError, data: Iot.Types.ListPoliciesResponse) => void): Request<Iot.Types.ListPoliciesResponse, AWSError>;
@@ -1292,11 +1396,11 @@ declare class Iot extends Service {
    */
   listPolicies(callback?: (err: AWSError, data: Iot.Types.ListPoliciesResponse) => void): Request<Iot.Types.ListPoliciesResponse, AWSError>;
   /**
-   * Lists the principals associated with the specified policy.  Note: This action is deprecated. Please use ListTargetsForPolicy instead. Requires permission to access the ListPolicyPrincipals action.
+   * Lists the principals associated with the specified policy.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use ListTargetsForPolicy instead. Requires permission to access the ListPolicyPrincipals action.
    */
   listPolicyPrincipals(params: Iot.Types.ListPolicyPrincipalsRequest, callback?: (err: AWSError, data: Iot.Types.ListPolicyPrincipalsResponse) => void): Request<Iot.Types.ListPolicyPrincipalsResponse, AWSError>;
   /**
-   * Lists the principals associated with the specified policy.  Note: This action is deprecated. Please use ListTargetsForPolicy instead. Requires permission to access the ListPolicyPrincipals action.
+   * Lists the principals associated with the specified policy.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use ListTargetsForPolicy instead. Requires permission to access the ListPolicyPrincipals action.
    */
   listPolicyPrincipals(callback?: (err: AWSError, data: Iot.Types.ListPolicyPrincipalsResponse) => void): Request<Iot.Types.ListPolicyPrincipalsResponse, AWSError>;
   /**
@@ -1308,11 +1412,11 @@ declare class Iot extends Service {
    */
   listPolicyVersions(callback?: (err: AWSError, data: Iot.Types.ListPolicyVersionsResponse) => void): Request<Iot.Types.ListPolicyVersionsResponse, AWSError>;
   /**
-   * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in AmazonCognito Identity format.  Note: This action is deprecated. Please use ListAttachedPolicies instead. Requires permission to access the ListPrincipalPolicies action.
+   * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in AmazonCognito Identity format.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use ListAttachedPolicies instead. Requires permission to access the ListPrincipalPolicies action.
    */
   listPrincipalPolicies(params: Iot.Types.ListPrincipalPoliciesRequest, callback?: (err: AWSError, data: Iot.Types.ListPrincipalPoliciesResponse) => void): Request<Iot.Types.ListPrincipalPoliciesResponse, AWSError>;
   /**
-   * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in AmazonCognito Identity format.  Note: This action is deprecated. Please use ListAttachedPolicies instead. Requires permission to access the ListPrincipalPolicies action.
+   * Lists the policies attached to the specified principal. If you use an Cognito identity, the ID must be in AmazonCognito Identity format.  Note: This action is deprecated and works as expected for backward compatibility, but we won't add enhancements. Use ListAttachedPolicies instead. Requires permission to access the ListPrincipalPolicies action.
    */
   listPrincipalPolicies(callback?: (err: AWSError, data: Iot.Types.ListPrincipalPoliciesResponse) => void): Request<Iot.Types.ListPrincipalPoliciesResponse, AWSError>;
   /**
@@ -1324,21 +1428,29 @@ declare class Iot extends Service {
    */
   listPrincipalThings(callback?: (err: AWSError, data: Iot.Types.ListPrincipalThingsResponse) => void): Request<Iot.Types.ListPrincipalThingsResponse, AWSError>;
   /**
-   * A list of fleet provisioning template versions. Requires permission to access the ListProvisioningTemplateVersions action.
+   * A list of provisioning template versions. Requires permission to access the ListProvisioningTemplateVersions action.
    */
   listProvisioningTemplateVersions(params: Iot.Types.ListProvisioningTemplateVersionsRequest, callback?: (err: AWSError, data: Iot.Types.ListProvisioningTemplateVersionsResponse) => void): Request<Iot.Types.ListProvisioningTemplateVersionsResponse, AWSError>;
   /**
-   * A list of fleet provisioning template versions. Requires permission to access the ListProvisioningTemplateVersions action.
+   * A list of provisioning template versions. Requires permission to access the ListProvisioningTemplateVersions action.
    */
   listProvisioningTemplateVersions(callback?: (err: AWSError, data: Iot.Types.ListProvisioningTemplateVersionsResponse) => void): Request<Iot.Types.ListProvisioningTemplateVersionsResponse, AWSError>;
   /**
-   * Lists the fleet provisioning templates in your Amazon Web Services account. Requires permission to access the ListProvisioningTemplates action.
+   * Lists the provisioning templates in your Amazon Web Services account. Requires permission to access the ListProvisioningTemplates action.
    */
   listProvisioningTemplates(params: Iot.Types.ListProvisioningTemplatesRequest, callback?: (err: AWSError, data: Iot.Types.ListProvisioningTemplatesResponse) => void): Request<Iot.Types.ListProvisioningTemplatesResponse, AWSError>;
   /**
-   * Lists the fleet provisioning templates in your Amazon Web Services account. Requires permission to access the ListProvisioningTemplates action.
+   * Lists the provisioning templates in your Amazon Web Services account. Requires permission to access the ListProvisioningTemplates action.
    */
   listProvisioningTemplates(callback?: (err: AWSError, data: Iot.Types.ListProvisioningTemplatesResponse) => void): Request<Iot.Types.ListProvisioningTemplatesResponse, AWSError>;
+  /**
+   * The related resources of an Audit finding. The following resources can be returned from calling this API:   DEVICE_CERTIFICATE   CA_CERTIFICATE   IOT_POLICY   COGNITO_IDENTITY_POOL   CLIENT_ID   ACCOUNT_SETTINGS   ROLE_ALIAS   IAM_ROLE   ISSUER_CERTIFICATE    This API is similar to DescribeAuditFinding's RelatedResources but provides pagination and is not limited to 10 resources. When calling DescribeAuditFinding for the intermediate CA revoked for active device certificates check, RelatedResources will not be populated. You must use this API, ListRelatedResourcesForAuditFinding, to list the certificates. 
+   */
+  listRelatedResourcesForAuditFinding(params: Iot.Types.ListRelatedResourcesForAuditFindingRequest, callback?: (err: AWSError, data: Iot.Types.ListRelatedResourcesForAuditFindingResponse) => void): Request<Iot.Types.ListRelatedResourcesForAuditFindingResponse, AWSError>;
+  /**
+   * The related resources of an Audit finding. The following resources can be returned from calling this API:   DEVICE_CERTIFICATE   CA_CERTIFICATE   IOT_POLICY   COGNITO_IDENTITY_POOL   CLIENT_ID   ACCOUNT_SETTINGS   ROLE_ALIAS   IAM_ROLE   ISSUER_CERTIFICATE    This API is similar to DescribeAuditFinding's RelatedResources but provides pagination and is not limited to 10 resources. When calling DescribeAuditFinding for the intermediate CA revoked for active device certificates check, RelatedResources will not be populated. You must use this API, ListRelatedResourcesForAuditFinding, to list the certificates. 
+   */
+  listRelatedResourcesForAuditFinding(callback?: (err: AWSError, data: Iot.Types.ListRelatedResourcesForAuditFindingResponse) => void): Request<Iot.Types.ListRelatedResourcesForAuditFindingResponse, AWSError>;
   /**
    * Lists the role aliases registered in your account. Requires permission to access the ListRoleAliases action.
    */
@@ -1452,11 +1564,11 @@ declare class Iot extends Service {
    */
   listThingTypes(callback?: (err: AWSError, data: Iot.Types.ListThingTypesResponse) => void): Request<Iot.Types.ListThingTypesResponse, AWSError>;
   /**
-   * Lists your things. Use the attributeName and attributeValue parameters to filter your things. For example, calling ListThings with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute Color with the value Red.  Requires permission to access the ListThings action.  You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned. 
+   * Lists your things. Use the attributeName and attributeValue parameters to filter your things. For example, calling ListThings with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute Color with the value Red. For more information, see List Things from the Amazon Web Services IoT Core Developer Guide. Requires permission to access the ListThings action.  You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned. 
    */
   listThings(params: Iot.Types.ListThingsRequest, callback?: (err: AWSError, data: Iot.Types.ListThingsResponse) => void): Request<Iot.Types.ListThingsResponse, AWSError>;
   /**
-   * Lists your things. Use the attributeName and attributeValue parameters to filter your things. For example, calling ListThings with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute Color with the value Red.  Requires permission to access the ListThings action.  You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned. 
+   * Lists your things. Use the attributeName and attributeValue parameters to filter your things. For example, calling ListThings with attributeName=Color and attributeValue=Red retrieves all things in the registry that contain an attribute Color with the value Red. For more information, see List Things from the Amazon Web Services IoT Core Developer Guide. Requires permission to access the ListThings action.  You will not be charged for calling this API if an Access denied error is returned. You will also not be charged if no attributes or pagination token was provided in request and no pagination token and no results were returned. 
    */
   listThings(callback?: (err: AWSError, data: Iot.Types.ListThingsResponse) => void): Request<Iot.Types.ListThingsResponse, AWSError>;
   /**
@@ -1756,6 +1868,14 @@ declare class Iot extends Service {
    */
   updateCertificate(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
+   * Updates a certificate provider. Requires permission to access the UpdateCertificateProvider action. 
+   */
+  updateCertificateProvider(params: Iot.Types.UpdateCertificateProviderRequest, callback?: (err: AWSError, data: Iot.Types.UpdateCertificateProviderResponse) => void): Request<Iot.Types.UpdateCertificateProviderResponse, AWSError>;
+  /**
+   * Updates a certificate provider. Requires permission to access the UpdateCertificateProvider action. 
+   */
+  updateCertificateProvider(callback?: (err: AWSError, data: Iot.Types.UpdateCertificateProviderResponse) => void): Request<Iot.Types.UpdateCertificateProviderResponse, AWSError>;
+  /**
    * Updates a Device Defender detect custom metric.  Requires permission to access the UpdateCustomMetric action.
    */
   updateCustomMetric(params: Iot.Types.UpdateCustomMetricRequest, callback?: (err: AWSError, data: Iot.Types.UpdateCustomMetricResponse) => void): Request<Iot.Types.UpdateCustomMetricResponse, AWSError>;
@@ -1828,11 +1948,35 @@ declare class Iot extends Service {
    */
   updateMitigationAction(callback?: (err: AWSError, data: Iot.Types.UpdateMitigationActionResponse) => void): Request<Iot.Types.UpdateMitigationActionResponse, AWSError>;
   /**
-   * Updates a fleet provisioning template. Requires permission to access the UpdateProvisioningTemplate action.
+   * Updates the supported fields for a specific software package. Requires permission to access the UpdatePackage and GetIndexingConfiguration actions.
+   */
+  updatePackage(params: Iot.Types.UpdatePackageRequest, callback?: (err: AWSError, data: Iot.Types.UpdatePackageResponse) => void): Request<Iot.Types.UpdatePackageResponse, AWSError>;
+  /**
+   * Updates the supported fields for a specific software package. Requires permission to access the UpdatePackage and GetIndexingConfiguration actions.
+   */
+  updatePackage(callback?: (err: AWSError, data: Iot.Types.UpdatePackageResponse) => void): Request<Iot.Types.UpdatePackageResponse, AWSError>;
+  /**
+   * Updates the software package configuration. Requires permission to access the UpdatePackageConfiguration and iam:PassRole actions.
+   */
+  updatePackageConfiguration(params: Iot.Types.UpdatePackageConfigurationRequest, callback?: (err: AWSError, data: Iot.Types.UpdatePackageConfigurationResponse) => void): Request<Iot.Types.UpdatePackageConfigurationResponse, AWSError>;
+  /**
+   * Updates the software package configuration. Requires permission to access the UpdatePackageConfiguration and iam:PassRole actions.
+   */
+  updatePackageConfiguration(callback?: (err: AWSError, data: Iot.Types.UpdatePackageConfigurationResponse) => void): Request<Iot.Types.UpdatePackageConfigurationResponse, AWSError>;
+  /**
+   * Updates the supported fields for a specific package version. Requires permission to access the UpdatePackageVersion and GetIndexingConfiguration actions.
+   */
+  updatePackageVersion(params: Iot.Types.UpdatePackageVersionRequest, callback?: (err: AWSError, data: Iot.Types.UpdatePackageVersionResponse) => void): Request<Iot.Types.UpdatePackageVersionResponse, AWSError>;
+  /**
+   * Updates the supported fields for a specific package version. Requires permission to access the UpdatePackageVersion and GetIndexingConfiguration actions.
+   */
+  updatePackageVersion(callback?: (err: AWSError, data: Iot.Types.UpdatePackageVersionResponse) => void): Request<Iot.Types.UpdatePackageVersionResponse, AWSError>;
+  /**
+   * Updates a provisioning template. Requires permission to access the UpdateProvisioningTemplate action.
    */
   updateProvisioningTemplate(params: Iot.Types.UpdateProvisioningTemplateRequest, callback?: (err: AWSError, data: Iot.Types.UpdateProvisioningTemplateResponse) => void): Request<Iot.Types.UpdateProvisioningTemplateResponse, AWSError>;
   /**
-   * Updates a fleet provisioning template. Requires permission to access the UpdateProvisioningTemplate action.
+   * Updates a provisioning template. Requires permission to access the UpdateProvisioningTemplate action.
    */
   updateProvisioningTemplate(callback?: (err: AWSError, data: Iot.Types.UpdateProvisioningTemplateResponse) => void): Request<Iot.Types.UpdateProvisioningTemplateResponse, AWSError>;
   /**
@@ -2036,6 +2180,10 @@ declare namespace Iot {
      * Write data to an Amazon OpenSearch Service domain.
      */
     openSearch?: OpenSearchAction;
+    /**
+     * The Amazon Location Service rule action sends device location updates from an MQTT message to an Amazon Location tracker resource.
+     */
+    location?: LocationAction;
   }
   export type ActionList = Action[];
   export type ActionType = "PUBLISH"|"SUBSCRIBE"|"RECEIVE"|"CONNECT"|string;
@@ -2245,7 +2393,7 @@ declare namespace Iot {
      */
     comment?: Comment;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
   }
@@ -2739,13 +2887,17 @@ declare namespace Iot {
      */
     metricDimension?: MetricDimension;
     /**
-     * The criteria that determine if a device is behaving normally in regard to the metric.
+     * The criteria that determine if a device is behaving normally in regard to the metric.  In the IoT console, you can choose to be sent an alert through Amazon SNS when IoT Device Defender detects that a device is behaving anomalously. 
      */
     criteria?: BehaviorCriteria;
     /**
      *  Suppresses alerts. 
      */
     suppressAlerts?: SuppressAlerts;
+    /**
+     * Value indicates exporting metrics related to the behavior when it is true.
+     */
+    exportMetric?: ExportMetric;
   }
   export interface BehaviorCriteria {
     /**
@@ -3092,6 +3244,22 @@ declare namespace Iot {
   export type CertificateName = string;
   export type CertificatePathOnDevice = string;
   export type CertificatePem = string;
+  export type CertificateProviderAccountDefaultForOperations = CertificateProviderOperation[];
+  export type CertificateProviderArn = string;
+  export type CertificateProviderFunctionArn = string;
+  export type CertificateProviderName = string;
+  export type CertificateProviderOperation = "CreateCertificateFromCsr"|string;
+  export interface CertificateProviderSummary {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName?: CertificateProviderName;
+    /**
+     * The ARN of the certificate provider.
+     */
+    certificateProviderArn?: CertificateProviderArn;
+  }
+  export type CertificateProviders = CertificateProviderSummary[];
   export type CertificateSigningRequest = string;
   export type CertificateStatus = "ACTIVE"|"INACTIVE"|"REVOKED"|"PENDING_TRANSFER"|"REGISTER_INACTIVE"|"PENDING_ACTIVATION"|string;
   export interface CertificateValidity {
@@ -3116,6 +3284,7 @@ declare namespace Iot {
   export type ClientId = string;
   export type ClientProperties = {[key: string]: String};
   export type ClientRequestToken = string;
+  export type ClientToken = string;
   export interface CloudwatchAlarmAction {
     /**
      * The IAM role that allows access to the CloudWatch alarm.
@@ -3143,6 +3312,10 @@ declare namespace Iot {
      * The CloudWatch log group to which the action sends data.
      */
     logGroupName: LogGroupName;
+    /**
+     * Indicates whether batches of log records will be extracted and uploaded into CloudWatch. Values include true or false (default).
+     */
+    batchMode?: BatchMode;
   }
   export interface CloudwatchMetricAction {
     /**
@@ -3224,6 +3397,8 @@ declare namespace Iot {
   export type ConnectivityTimestamp = number;
   export type ConsecutiveDatapointsToAlarm = number;
   export type ConsecutiveDatapointsToClear = number;
+  export type ContentType = string;
+  export type CorrelationData = string;
   export type Count = number;
   export interface CreateAuditSuppressionRequest {
     checkName: AuditCheckName;
@@ -3343,6 +3518,38 @@ declare namespace Iot {
      */
     certificatePem?: CertificatePem;
   }
+  export interface CreateCertificateProviderRequest {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName: CertificateProviderName;
+    /**
+     * The ARN of the Lambda function that defines the authentication logic.
+     */
+    lambdaFunctionArn: CertificateProviderFunctionArn;
+    /**
+     * A list of the operations that the certificate provider will use to generate certificates. Valid value: CreateCertificateFromCsr.
+     */
+    accountDefaultForOperations: CertificateProviderAccountDefaultForOperations;
+    /**
+     * A string that you can optionally pass in the CreateCertificateProvider request to make sure the request is idempotent.
+     */
+    clientToken?: ClientToken;
+    /**
+     * Metadata which can be used to manage the certificate provider.
+     */
+    tags?: TagList;
+  }
+  export interface CreateCertificateProviderResponse {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName?: CertificateProviderName;
+    /**
+     * The ARN of the certificate provider.
+     */
+    certificateProviderArn?: CertificateProviderArn;
+  }
   export interface CreateCustomMetricRequest {
     /**
      *  The name of the custom metric. This will be used in the metric report submitted from the device/thing. The name can't begin with aws:. You can't change the name after you define it.
@@ -3436,6 +3643,14 @@ declare namespace Iot {
      * Metadata which can be used to manage the domain configuration.  For URI Request parameters use format: ...key1=value1&amp;key2=value2... For the CLI command-line parameter use format: &amp;&amp;tags "key1=value1&amp;key2=value2..." For the cli-input-json file use format: "tags": "key1=value1&amp;key2=value2..." 
      */
     tags?: TagList;
+    /**
+     * An object that specifies the TLS configuration for a domain.
+     */
+    tlsConfig?: TlsConfig;
+    /**
+     * The server certificate configuration.
+     */
+    serverCertificateConfig?: ServerCertificateConfig;
   }
   export interface CreateDomainConfigurationResponse {
     /**
@@ -3561,7 +3776,7 @@ declare namespace Iot {
      */
     targets: JobTargets;
     /**
-     * An S3 link to the job document. Required if you don't specify a value for document.  If the job document resides in an S3 bucket, you must use a placeholder link when specifying the document. The placeholder link is of the following form:  ${aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key}  where bucket is your bucket name and key is the object in the bucket to which you are linking. 
+     * An S3 link, or S3 object URL, to the job document. The link is an Amazon S3 object URL and is required if you don't specify a value for document. For example, --document-source https://s3.region-code.amazonaws.com/example-firmware/device-firmware.1.0  For more information, see Methods for accessing a bucket.
      */
     documentSource?: JobDocumentSource;
     /**
@@ -3597,7 +3812,7 @@ declare namespace Iot {
      */
     tags?: TagList;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
     /**
@@ -3612,6 +3827,14 @@ declare namespace Iot {
      * Parameters of an Amazon Web Services managed template that you can specify to create the job document.   documentParameters can only be used when creating jobs from Amazon Web Services managed templates. This parameter can't be used with custom job templates or to create jobs from them. 
      */
     documentParameters?: ParameterMap;
+    /**
+     * The configuration that allows you to schedule a job for a future date and time in addition to specifying the end behavior for each job execution.
+     */
+    schedulingConfig?: SchedulingConfig;
+    /**
+     * The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle.   Note:The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed.
+     */
+    destinationPackageVersions?: DestinationPackageVersions;
   }
   export interface CreateJobResponse {
     /**
@@ -3637,7 +3860,7 @@ declare namespace Iot {
      */
     jobArn?: JobArn;
     /**
-     * An S3 link to the job document to use in the template. Required if you don't specify a value for document.  If the job document resides in an S3 bucket, you must use a placeholder link when specifying the document. The placeholder link is of the following form:  ${aws:iot:s3-presigned-url:https://s3.amazonaws.com/bucket/key}  where bucket is your bucket name and key is the object in the bucket to which you are linking. 
+     * An S3 link, or S3 object URL, to the job document. The link is an Amazon S3 object URL and is required if you don't specify a value for document. For example, --document-source https://s3.region-code.amazonaws.com/example-firmware/device-firmware.1.0  For more information, see Methods for accessing a bucket.
      */
     documentSource?: JobDocumentSource;
     /**
@@ -3660,6 +3883,14 @@ declare namespace Iot {
      * Allows you to create the criteria to retry a job.
      */
     jobExecutionsRetryConfig?: JobExecutionsRetryConfig;
+    /**
+     * Allows you to configure an optional maintenance window for the rollout of a job document to all devices in the target group for a job.
+     */
+    maintenanceWindows?: MaintenanceWindows;
+    /**
+     * The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle.  Note:The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed.
+     */
+    destinationPackageVersions?: DestinationPackageVersions;
   }
   export interface CreateJobTemplateResponse {
     /**
@@ -3769,7 +4000,7 @@ declare namespace Iot {
      */
     roleArn: RoleArn;
     /**
-     * A list of additional OTA update parameters which are name-value pairs.
+     * A list of additional OTA update parameters, which are name-value pairs. They won't be sent to devices as a part of the Job document.
      */
     additionalParameters?: AdditionalParameterMap;
     /**
@@ -3798,6 +4029,94 @@ declare namespace Iot {
      * The OTA update status.
      */
     otaUpdateStatus?: OTAUpdateStatus;
+  }
+  export interface CreatePackageRequest {
+    /**
+     * The name of the new software package.
+     */
+    packageName: PackageName;
+    /**
+     * A summary of the package being created. This can be used to outline the package's contents or purpose.
+     */
+    description?: ResourceDescription;
+    /**
+     * Metadata that can be used to manage the package.
+     */
+    tags?: TagMap;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface CreatePackageResponse {
+    /**
+     * The name of the software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The Amazon Resource Name (ARN) for the package.
+     */
+    packageArn?: PackageArn;
+    /**
+     * The package description.
+     */
+    description?: ResourceDescription;
+  }
+  export interface CreatePackageVersionRequest {
+    /**
+     * The name of the associated software package.
+     */
+    packageName: PackageName;
+    /**
+     * The name of the new package version.
+     */
+    versionName: VersionName;
+    /**
+     * A summary of the package version being created. This can be used to outline the package's contents or purpose.
+     */
+    description?: ResourceDescription;
+    /**
+     * Metadata that can be used to define a package version’s configuration. For example, the S3 file location, configuration options that are being sent to the device or fleet. The combined size of all the attributes on a package version is limited to 3KB.
+     */
+    attributes?: ResourceAttributes;
+    /**
+     * Metadata that can be used to manage the package version.
+     */
+    tags?: TagMap;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface CreatePackageVersionResponse {
+    /**
+     * The Amazon Resource Name (ARN) for the package.
+     */
+    packageVersionArn?: PackageVersionArn;
+    /**
+     * The name of the associated software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The name of the new package version.
+     */
+    versionName?: VersionName;
+    /**
+     * The package version description.
+     */
+    description?: ResourceDescription;
+    /**
+     * Metadata that were added to the package version that can be used to define a package version’s configuration.
+     */
+    attributes?: ResourceAttributes;
+    /**
+     * The status of the package version. For more information, see Package version lifecycle.
+     */
+    status?: PackageVersionStatus;
+    /**
+     * Error reason for a package version failure during creation or update.
+     */
+    errorReason?: PackageVersionErrorReason;
   }
   export interface CreatePolicyRequest {
     /**
@@ -3889,33 +4208,37 @@ declare namespace Iot {
   }
   export interface CreateProvisioningTemplateRequest {
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName: TemplateName;
     /**
-     * The description of the fleet provisioning template.
+     * The description of the provisioning template.
      */
     description?: TemplateDescription;
     /**
-     * The JSON formatted contents of the fleet provisioning template.
+     * The JSON formatted contents of the provisioning template.
      */
     templateBody: TemplateBody;
     /**
-     * True to enable the fleet provisioning template, otherwise false.
+     * True to enable the provisioning template, otherwise false.
      */
     enabled?: Enabled;
     /**
-     * The role ARN for the role associated with the fleet provisioning template. This IoT role grants permission to provision a device.
+     * The role ARN for the role associated with the provisioning template. This IoT role grants permission to provision a device.
      */
     provisioningRoleArn: RoleArn;
     /**
-     * Creates a pre-provisioning hook template.
+     * Creates a pre-provisioning hook template. Only supports template of type FLEET_PROVISIONING. For more information about provisioning template types, see type.
      */
     preProvisioningHook?: ProvisioningHook;
     /**
-     * Metadata which can be used to manage the fleet provisioning template.  For URI Request parameters use format: ...key1=value1&amp;key2=value2... For the CLI command-line parameter use format: &amp;&amp;tags "key1=value1&amp;key2=value2..." For the cli-input-json file use format: "tags": "key1=value1&amp;key2=value2..." 
+     * Metadata which can be used to manage the provisioning template.  For URI Request parameters use format: ...key1=value1&amp;key2=value2... For the CLI command-line parameter use format: &amp;&amp;tags "key1=value1&amp;key2=value2..." For the cli-input-json file use format: "tags": "key1=value1&amp;key2=value2..." 
      */
     tags?: TagList;
+    /**
+     * The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is FLEET_PROVISIONING. For more information about provisioning template, see: Provisioning template. 
+     */
+    type?: TemplateType;
   }
   export interface CreateProvisioningTemplateResponse {
     /**
@@ -3923,21 +4246,21 @@ declare namespace Iot {
      */
     templateArn?: TemplateArn;
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName?: TemplateName;
     /**
-     * The default version of the fleet provisioning template.
+     * The default version of the provisioning template.
      */
     defaultVersionId?: TemplateVersionId;
   }
   export interface CreateProvisioningTemplateVersionRequest {
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName: TemplateName;
     /**
-     * The JSON formatted contents of the fleet provisioning template.
+     * The JSON formatted contents of the provisioning template.
      */
     templateBody: TemplateBody;
     /**
@@ -3951,15 +4274,15 @@ declare namespace Iot {
      */
     templateArn?: TemplateArn;
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName?: TemplateName;
     /**
-     * The version of the fleet provisioning template.
+     * The version of the provisioning template.
      */
     versionId?: TemplateVersionId;
     /**
-     * True if the fleet provisioning template version is the default version, otherwise false.
+     * True if the provisioning template version is the default version, otherwise false.
      */
     isDefaultVersion?: IsDefaultVersion;
   }
@@ -4052,6 +4375,10 @@ declare namespace Iot {
      * Metadata that can be used to manage the security profile.
      */
     tags?: TagList;
+    /**
+     * Specifies the MQTT topic and role ARN required for metric export.
+     */
+    metricsExportConfig?: MetricsExportConfig;
   }
   export interface CreateSecurityProfileResponse {
     /**
@@ -4224,6 +4551,7 @@ declare namespace Iot {
   export type CreatedAtDate = Date;
   export type CreationDate = Date;
   export type CredentialDurationSeconds = number;
+  export type CronExpression = string;
   export interface CustomCodeSigning {
     /**
      * The signature for the file.
@@ -4294,6 +4622,14 @@ declare namespace Iot {
     certificateId: CertificateId;
   }
   export interface DeleteCACertificateResponse {
+  }
+  export interface DeleteCertificateProviderRequest {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName: CertificateProviderName;
+  }
+  export interface DeleteCertificateProviderResponse {
   }
   export interface DeleteCertificateRequest {
     /**
@@ -4369,7 +4705,7 @@ declare namespace Iot {
      */
     force?: ForceFlag;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
   }
@@ -4383,7 +4719,7 @@ declare namespace Iot {
      */
     force?: ForceFlag;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
   }
@@ -4393,6 +4729,7 @@ declare namespace Iot {
      */
     jobTemplateId: JobTemplateId;
   }
+  export type DeleteMetricsExportConfig = boolean;
   export interface DeleteMitigationActionRequest {
     /**
      * The name of the mitigation action that you want to delete.
@@ -4416,6 +4753,34 @@ declare namespace Iot {
     forceDeleteAWSJob?: ForceDeleteAWSJob;
   }
   export interface DeleteOTAUpdateResponse {
+  }
+  export interface DeletePackageRequest {
+    /**
+     * The name of the target software package.
+     */
+    packageName: PackageName;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface DeletePackageResponse {
+  }
+  export interface DeletePackageVersionRequest {
+    /**
+     * The name of the associated software package.
+     */
+    packageName: PackageName;
+    /**
+     * The name of the target package version.
+     */
+    versionName: VersionName;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface DeletePackageVersionResponse {
   }
   export interface DeletePolicyRequest {
     /**
@@ -4443,11 +4808,11 @@ declare namespace Iot {
   }
   export interface DeleteProvisioningTemplateVersionRequest {
     /**
-     * The name of the fleet provisioning template version to delete.
+     * The name of the provisioning template version to delete.
      */
     templateName: TemplateName;
     /**
-     * The fleet provisioning template version ID to delete.
+     * The provisioning template version ID to delete.
      */
     versionId: TemplateVersionId;
   }
@@ -4748,6 +5113,38 @@ declare namespace Iot {
      */
     registrationConfig?: RegistrationConfig;
   }
+  export interface DescribeCertificateProviderRequest {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName: CertificateProviderName;
+  }
+  export interface DescribeCertificateProviderResponse {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName?: CertificateProviderName;
+    /**
+     * The ARN of the certificate provider.
+     */
+    certificateProviderArn?: CertificateProviderArn;
+    /**
+     * The Lambda function ARN that's associated with the certificate provider.
+     */
+    lambdaFunctionArn?: CertificateProviderFunctionArn;
+    /**
+     * A list of the operations that the certificate provider will use to generate certificates. Valid value: CreateCertificateFromCsr.
+     */
+    accountDefaultForOperations?: CertificateProviderAccountDefaultForOperations;
+    /**
+     * The date-time string that indicates when the certificate provider was created.
+     */
+    creationDate?: DateType;
+    /**
+     * The date-time string that indicates when the certificate provider was last updated.
+     */
+    lastModifiedDate?: DateType;
+  }
   export interface DescribeCertificateRequest {
     /**
      * The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
@@ -4887,10 +5284,18 @@ declare namespace Iot {
      * The date and time the domain configuration's status was last changed.
      */
     lastStatusChangeDate?: DateType;
+    /**
+     * An object that specifies the TLS configuration for a domain.
+     */
+    tlsConfig?: TlsConfig;
+    /**
+     * The server certificate configuration.
+     */
+    serverCertificateConfig?: ServerCertificateConfig;
   }
   export interface DescribeEndpointRequest {
     /**
-     * The endpoint type. Valid endpoint types include:    iot:Data - Returns a VeriSign signed data endpoint.      iot:Data-ATS - Returns an ATS signed data endpoint.      iot:CredentialProvider - Returns an IoT credentials provider API endpoint.      iot:Jobs - Returns an IoT device management Jobs API endpoint.   We strongly recommend that customers use the newer iot:Data-ATS endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities.
+     * The endpoint type. Valid endpoint types include:    iot:Data - Returns a VeriSign signed data endpoint.      iot:Data-ATS - Returns an ATS signed data endpoint.      iot:CredentialProvider - Returns an IoT credentials provider API endpoint.      iot:Jobs - Returns an IoT device management Jobs API endpoint.   We strongly recommend that customers use the newer iot:Data-ATS endpoint type to avoid issues related to the widespread distrust of Symantec certificate authorities. ATS Signed Certificates are more secure and are trusted by most popular browsers.
      */
     endpointType?: EndpointType;
   }
@@ -5071,6 +5476,14 @@ declare namespace Iot {
      * The configuration that determines how many retries are allowed for each failure type for a job.
      */
     jobExecutionsRetryConfig?: JobExecutionsRetryConfig;
+    /**
+     * Allows you to configure an optional maintenance window for the rollout of a job document to all devices in the target group for a job.
+     */
+    maintenanceWindows?: MaintenanceWindows;
+    /**
+     * The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle.  Note:The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed.
+     */
+    destinationPackageVersions?: DestinationPackageVersions;
   }
   export interface DescribeManagedJobTemplateRequest {
     /**
@@ -5154,29 +5567,29 @@ declare namespace Iot {
   }
   export interface DescribeProvisioningTemplateRequest {
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName: TemplateName;
   }
   export interface DescribeProvisioningTemplateResponse {
     /**
-     * The ARN of the fleet provisioning template.
+     * The ARN of the provisioning template.
      */
     templateArn?: TemplateArn;
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName?: TemplateName;
     /**
-     * The description of the fleet provisioning template.
+     * The description of the provisioning template.
      */
     description?: TemplateDescription;
     /**
-     * The date when the fleet provisioning template was created.
+     * The date when the provisioning template was created.
      */
     creationDate?: DateType;
     /**
-     * The date when the fleet provisioning template was last modified.
+     * The date when the provisioning template was last modified.
      */
     lastModifiedDate?: DateType;
     /**
@@ -5184,11 +5597,11 @@ declare namespace Iot {
      */
     defaultVersionId?: TemplateVersionId;
     /**
-     * The JSON formatted contents of the fleet provisioning template.
+     * The JSON formatted contents of the provisioning template.
      */
     templateBody?: TemplateBody;
     /**
-     * True if the fleet provisioning template is enabled, otherwise false.
+     * True if the provisioning template is enabled, otherwise false.
      */
     enabled?: Enabled;
     /**
@@ -5199,6 +5612,10 @@ declare namespace Iot {
      * Gets information about a pre-provisioned hook.
      */
     preProvisioningHook?: ProvisioningHook;
+    /**
+     * The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is FLEET_PROVISIONING. For more information about provisioning template, see: Provisioning template. 
+     */
+    type?: TemplateType;
   }
   export interface DescribeProvisioningTemplateVersionRequest {
     /**
@@ -5206,25 +5623,25 @@ declare namespace Iot {
      */
     templateName: TemplateName;
     /**
-     * The fleet provisioning template version ID.
+     * The provisioning template version ID.
      */
     versionId: TemplateVersionId;
   }
   export interface DescribeProvisioningTemplateVersionResponse {
     /**
-     * The fleet provisioning template version ID.
+     * The provisioning template version ID.
      */
     versionId?: TemplateVersionId;
     /**
-     * The date when the fleet provisioning template version was created.
+     * The date when the provisioning template version was created.
      */
     creationDate?: DateType;
     /**
-     * The JSON formatted contents of the fleet provisioning template version.
+     * The JSON formatted contents of the provisioning template version.
      */
     templateBody?: TemplateBody;
     /**
-     * True if the fleet provisioning template version is the default version.
+     * True if the provisioning template version is the default version.
      */
     isDefaultVersion?: IsDefaultVersion;
   }
@@ -5319,6 +5736,10 @@ declare namespace Iot {
      * The time the security profile was last modified.
      */
     lastModifiedDate?: Timestamp;
+    /**
+     * Specifies the MQTT topic and role ARN required for metric export.
+     */
+    metricsExportConfig?: MetricsExportConfig;
   }
   export interface DescribeStreamRequest {
     /**
@@ -5511,6 +5932,7 @@ declare namespace Iot {
      */
     s3Destination?: S3Destination;
   }
+  export type DestinationPackageVersions = PackageVersionArn[];
   export interface DetachPolicyRequest {
     /**
      * The policy to detach.
@@ -5733,6 +6155,7 @@ declare namespace Iot {
   export type DomainConfigurations = DomainConfigurationSummary[];
   export type DomainName = string;
   export type DomainType = "ENDPOINT"|"AWS_MANAGED"|"CUSTOMER_MANAGED"|string;
+  export type DurationInMinutes = number;
   export type DurationSeconds = number;
   export type DynamicGroupStatus = "ACTIVE"|"BUILDING"|"REBUILDING"|string;
   export interface DynamoDBAction {
@@ -5841,6 +6264,7 @@ declare namespace Iot {
      */
     logLevel: LogLevel;
   }
+  export type EnableOCSPCheck = boolean;
   export interface EnableTopicRuleRequest {
     /**
      * The name of the topic rule to enable.
@@ -5848,6 +6272,7 @@ declare namespace Iot {
     ruleName: RuleName;
   }
   export type Enabled = boolean;
+  export type EnabledBoolean = boolean;
   export type EndpointAddress = string;
   export type EndpointType = string;
   export type Environment = string;
@@ -5893,6 +6318,7 @@ declare namespace Iot {
      */
     rateIncreaseCriteria: RateIncreaseCriteria;
   }
+  export type ExportMetric = boolean;
   export type FailedChecksCount = number;
   export type FailedFindingsCount = number;
   export type FailedThings = number;
@@ -5967,13 +6393,24 @@ declare namespace Iot {
   export type FunctionArn = string;
   export type GenerationId = string;
   export type GenericLongValue = number;
+  export interface GeoLocationTarget {
+    /**
+     * The name of the geolocation target field. If the target field is part of a named shadow, you must select the named shadow using the namedShadow filter.
+     */
+    name?: TargetFieldName;
+    /**
+     * The order of the geolocation target field. This field is optional. The default value is LatLon.
+     */
+    order?: TargetFieldOrder;
+  }
+  export type GeoLocationsFilter = GeoLocationTarget[];
   export interface GetBehaviorModelTrainingSummariesRequest {
     /**
      *  The name of the security profile. 
      */
     securityProfileName?: SecurityProfileName;
     /**
-     *  The maximum number of results to return at one time. The default is 25. 
+     *  The maximum number of results to return at one time. The default is 10. 
      */
     maxResults?: TinyMaxResults;
     /**
@@ -6114,6 +6551,94 @@ declare namespace Iot {
      * The OTA update info.
      */
     otaUpdateInfo?: OTAUpdateInfo;
+  }
+  export interface GetPackageConfigurationRequest {
+  }
+  export interface GetPackageConfigurationResponse {
+    /**
+     * The version that is associated to a specific job.
+     */
+    versionUpdateByJobsConfig?: VersionUpdateByJobsConfig;
+  }
+  export interface GetPackageRequest {
+    /**
+     * The name of the target software package.
+     */
+    packageName: PackageName;
+  }
+  export interface GetPackageResponse {
+    /**
+     * The name of the software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The ARN for the package.
+     */
+    packageArn?: PackageArn;
+    /**
+     * The package description.
+     */
+    description?: ResourceDescription;
+    /**
+     * The name of the default package version.
+     */
+    defaultVersionName?: VersionName;
+    /**
+     * The date the package was created.
+     */
+    creationDate?: CreationDate;
+    /**
+     * The date when the package was last updated.
+     */
+    lastModifiedDate?: LastModifiedDate;
+  }
+  export interface GetPackageVersionRequest {
+    /**
+     * The name of the associated package.
+     */
+    packageName: PackageName;
+    /**
+     * The name of the target package version.
+     */
+    versionName: VersionName;
+  }
+  export interface GetPackageVersionResponse {
+    /**
+     * The ARN for the package version.
+     */
+    packageVersionArn?: PackageVersionArn;
+    /**
+     * The name of the software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The name of the package version.
+     */
+    versionName?: VersionName;
+    /**
+     * The package version description.
+     */
+    description?: ResourceDescription;
+    /**
+     * Metadata that were added to the package version that can be used to define a package version’s configuration.
+     */
+    attributes?: ResourceAttributes;
+    /**
+     * The status associated to the package version. For more information, see Package version lifecycle.
+     */
+    status?: PackageVersionStatus;
+    /**
+     * Error reason for a package version failure during creation or update.
+     */
+    errorReason?: PackageVersionErrorReason;
+    /**
+     * The date when the package version was created.
+     */
+    creationDate?: CreationDate;
+    /**
+     * The date when the package version was last updated.
+     */
+    lastModifiedDate?: LastModifiedDate;
   }
   export interface GetPercentilesRequest {
     /**
@@ -6400,6 +6925,10 @@ declare namespace Iot {
      * The shadow names that you select to index. The default maximum number of shadow names for indexing is 10. To increase the limit, see Amazon Web Services IoT Device Management Quotas in the Amazon Web Services General Reference. 
      */
     namedShadowNames?: NamedShadowNamesFilter;
+    /**
+     * The list of geolocation targets that you select to index. The default maximum number of geolocation targets for indexing is 1. To increase the limit, see Amazon Web Services IoT Device Management Quotas in the Amazon Web Services General Reference.
+     */
+    geoLocations?: GeoLocationsFilter;
   }
   export type InlineDocument = string;
   export type InputName = string;
@@ -6453,6 +6982,23 @@ declare namespace Iot {
   export type IsDefaultVersion = boolean;
   export type IsDisabled = boolean;
   export type IsSuppressed = boolean;
+  export interface IssuerCertificateIdentifier {
+    /**
+     * The subject of the issuer certificate.
+     */
+    issuerCertificateSubject?: IssuerCertificateSubject;
+    /**
+     * The issuer ID.
+     */
+    issuerId?: IssuerId;
+    /**
+     * The issuer certificate serial number.
+     */
+    issuerCertificateSerialNumber?: IssuerCertificateSerialNumber;
+  }
+  export type IssuerCertificateSerialNumber = string;
+  export type IssuerCertificateSubject = string;
+  export type IssuerId = string;
   export interface Job {
     /**
      * An ARN identifying the job with format "arn:aws:iot:region:account:job/jobId".
@@ -6523,7 +7069,7 @@ declare namespace Iot {
      */
     timeoutConfig?: TimeoutConfig;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
     /**
@@ -6542,11 +7088,24 @@ declare namespace Iot {
      * Indicates whether a job is concurrent. Will be true when a job is rolling out new job executions or canceling previously created executions, otherwise false.
      */
     isConcurrent?: BooleanWrapperObject;
+    /**
+     * The configuration that allows you to schedule a job for a future date and time in addition to specifying the end behavior for each job execution.
+     */
+    schedulingConfig?: SchedulingConfig;
+    /**
+     * Displays the next seven maintenance window occurrences and their start times.
+     */
+    scheduledJobRollouts?: ScheduledJobRolloutList;
+    /**
+     * The package version Amazon Resource Names (ARNs) that are installed on the device when the job successfully completes. The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle.The package version must be in either the Published or Deprecated state when the job deploys. For more information, see Package version lifecycle.  Note:The following Length Constraints relates to a single ARN. Up to 25 package version ARNs are allowed.
+     */
+    destinationPackageVersions?: DestinationPackageVersions;
   }
   export type JobArn = string;
   export type JobDescription = string;
   export type JobDocument = string;
   export type JobDocumentSource = string;
+  export type JobEndBehavior = "STOP_ROLLOUT"|"CANCEL"|"FORCE_CANCEL"|string;
   export interface JobExecution {
     /**
      * The unique identifier you assigned to the job when it was created.
@@ -6704,7 +7263,7 @@ declare namespace Iot {
      */
     numberOfTimedOutThings?: TimedOutThings;
   }
-  export type JobStatus = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS"|string;
+  export type JobStatus = "IN_PROGRESS"|"CANCELED"|"COMPLETED"|"DELETION_IN_PROGRESS"|"SCHEDULED"|string;
   export interface JobSummary {
     /**
      * The job ARN.
@@ -6788,7 +7347,24 @@ declare namespace Iot {
      * Properties of the Apache Kafka producer client.
      */
     clientProperties: ClientProperties;
+    /**
+     * The list of Kafka headers that you specify.
+     */
+    headers?: KafkaHeaders;
   }
+  export interface KafkaActionHeader {
+    /**
+     * The key of the Kafka header.
+     */
+    key: KafkaHeaderKey;
+    /**
+     * The value of the Kafka header.
+     */
+    value: KafkaHeaderValue;
+  }
+  export type KafkaHeaderKey = string;
+  export type KafkaHeaderValue = string;
+  export type KafkaHeaders = KafkaActionHeader[];
   export type Key = string;
   export type KeyName = string;
   export interface KeyPair {
@@ -7136,6 +7712,10 @@ declare namespace Iot {
      * Determines the order of the results.
      */
     ascendingOrder?: AscendingOrder;
+    /**
+     * The name of the provisioning template.
+     */
+    templateName?: TemplateName;
   }
   export interface ListCACertificatesResponse {
     /**
@@ -7146,6 +7726,26 @@ declare namespace Iot {
      * The current position within the list of CA certificates.
      */
     nextMarker?: Marker;
+  }
+  export interface ListCertificateProvidersRequest {
+    /**
+     * The token for the next set of results, or null if there are no more results.
+     */
+    nextToken?: Marker;
+    /**
+     * Returns the list of certificate providers in ascending alphabetical order.
+     */
+    ascendingOrder?: AscendingOrder;
+  }
+  export interface ListCertificateProvidersResponse {
+    /**
+     * The list of certificate providers in your Amazon Web Services account.
+     */
+    certificateProviders?: CertificateProviders;
+    /**
+     * The token for the next set of results, or null if there are no more results.
+     */
+    nextToken?: Marker;
   }
   export interface ListCertificatesByCARequest {
     /**
@@ -7409,7 +8009,7 @@ declare namespace Iot {
      */
     status?: JobExecutionStatus;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
     /**
@@ -7481,7 +8081,7 @@ declare namespace Iot {
      */
     thingGroupId?: ThingGroupId;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
   }
@@ -7635,6 +8235,54 @@ declare namespace Iot {
      */
     nextMarker?: Marker;
   }
+  export interface ListPackageVersionsRequest {
+    /**
+     * The name of the target software package.
+     */
+    packageName: PackageName;
+    /**
+     * The status of the package version. For more information, see Package version lifecycle.
+     */
+    status?: PackageVersionStatus;
+    /**
+     * The maximum number of results to return at one time.
+     */
+    maxResults?: PackageCatalogMaxResults;
+    /**
+     * The token for the next set of results.
+     */
+    nextToken?: NextToken;
+  }
+  export interface ListPackageVersionsResponse {
+    /**
+     * Lists the package versions associated to the package.
+     */
+    packageVersionSummaries?: PackageVersionSummaryList;
+    /**
+     * The token for the next set of results.
+     */
+    nextToken?: NextToken;
+  }
+  export interface ListPackagesRequest {
+    /**
+     * The maximum number of results returned at one time.
+     */
+    maxResults?: PackageCatalogMaxResults;
+    /**
+     * The token for the next set of results.
+     */
+    nextToken?: NextToken;
+  }
+  export interface ListPackagesResponse {
+    /**
+     * The software package summary.
+     */
+    packageSummaries?: PackageSummaryList;
+    /**
+     * The token for the next set of results.
+     */
+    nextToken?: NextToken;
+  }
   export interface ListPoliciesRequest {
     /**
      * The marker for the next set of results.
@@ -7753,7 +8401,7 @@ declare namespace Iot {
   }
   export interface ListProvisioningTemplateVersionsRequest {
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName: TemplateName;
     /**
@@ -7767,7 +8415,7 @@ declare namespace Iot {
   }
   export interface ListProvisioningTemplateVersionsResponse {
     /**
-     * The list of fleet provisioning template versions.
+     * The list of provisioning template versions.
      */
     versions?: ProvisioningTemplateVersionListing;
     /**
@@ -7787,11 +8435,35 @@ declare namespace Iot {
   }
   export interface ListProvisioningTemplatesResponse {
     /**
-     * A list of fleet provisioning templates
+     * A list of provisioning templates
      */
     templates?: ProvisioningTemplateListing;
     /**
      * A token to retrieve the next set of results.
+     */
+    nextToken?: NextToken;
+  }
+  export interface ListRelatedResourcesForAuditFindingRequest {
+    /**
+     * The finding Id.
+     */
+    findingId: FindingId;
+    /**
+     * A token that can be used to retrieve the next set of results, or null if there are no additional results.
+     */
+    nextToken?: NextToken;
+    /**
+     * The maximum number of results to return at one time.
+     */
+    maxResults?: MaxResults;
+  }
+  export interface ListRelatedResourcesForAuditFindingResponse {
+    /**
+     * The related resources.
+     */
+    relatedResources?: RelatedResources;
+    /**
+     * A token that can be used to retrieve the next set of results, or null for the first API call.
      */
     nextToken?: NextToken;
   }
@@ -8357,6 +9029,42 @@ declare namespace Iot {
      */
     nextToken?: NextToken;
   }
+  export interface LocationAction {
+    /**
+     * The IAM role that grants permission to write to the Amazon Location resource.
+     */
+    roleArn: AwsArn;
+    /**
+     * The name of the tracker resource in Amazon Location in which the location is updated.
+     */
+    trackerName: String;
+    /**
+     * The unique ID of the device providing the location data.
+     */
+    deviceId: String;
+    /**
+     * The time that the location data was sampled. The default value is the time the MQTT message was processed.
+     */
+    timestamp?: LocationTimestamp;
+    /**
+     * A string that evaluates to a double value that represents the latitude of the device's location.
+     */
+    latitude: String;
+    /**
+     * A string that evaluates to a double value that represents the longitude of the device's location.
+     */
+    longitude: String;
+  }
+  export interface LocationTimestamp {
+    /**
+     * An expression that returns a long epoch time value.
+     */
+    value: String;
+    /**
+     * The precision of the timestamp value that results from the expression described in value. Valid values: SECONDS | MILLISECONDS | MICROSECONDS | NANOSECONDS. The default is MILLISECONDS.
+     */
+    unit?: String;
+  }
   export type LogGroupName = string;
   export type LogLevel = "DEBUG"|"INFO"|"ERROR"|"WARN"|"DISABLED"|string;
   export interface LogTarget {
@@ -8398,6 +9106,17 @@ declare namespace Iot {
      */
     confidenceLevel: ConfidenceLevel;
   }
+  export interface MaintenanceWindow {
+    /**
+     * Displays the start time of the next maintenance window.
+     */
+    startTime: CronExpression;
+    /**
+     * Displays the duration of the next maintenance window.
+     */
+    durationInMinutes: DurationInMinutes;
+  }
+  export type MaintenanceWindows = MaintenanceWindow[];
   export type ManagedJobTemplateName = string;
   export interface ManagedJobTemplateSummary {
     /**
@@ -8430,6 +9149,7 @@ declare namespace Iot {
   export type Maximum = number;
   export type MaximumPerMinute = number;
   export type Message = string;
+  export type MessageExpiry = string;
   export type MessageFormat = "RAW"|"JSON"|string;
   export type MessageId = string;
   export interface MetricDatum {
@@ -8464,6 +9184,10 @@ declare namespace Iot {
      * The dimension of a metric. This can't be used with custom metrics.
      */
     metricDimension?: MetricDimension;
+    /**
+     * The value indicates exporting metrics related to the MetricToRetain  when it's true.
+     */
+    exportMetric?: ExportMetric;
   }
   export interface MetricValue {
     /**
@@ -8490,6 +9214,16 @@ declare namespace Iot {
      *  The string values of a metric. 
      */
     strings?: StringList;
+  }
+  export interface MetricsExportConfig {
+    /**
+     * The MQTT topic that Device Defender Detect should publish messages to for metrics export.
+     */
+    mqttTopic: MqttTopic;
+    /**
+     * This role ARN has permission to publish MQTT messages, after which Device Defender Detect can assume the role and publish messages on your behalf.
+     */
+    roleArn: RoleArn;
   }
   export type Minimum = number;
   export type MinimumNumberOfExecutedThings = number;
@@ -8577,7 +9311,34 @@ declare namespace Iot {
      */
     clientId?: MqttClientId;
   }
+  export interface MqttHeaders {
+    /**
+     * An Enum string value that indicates whether the payload is formatted as UTF-8. Valid values are UNSPECIFIED_BYTES and UTF8_DATA. For more information, see  Payload Format Indicator from the MQTT Version 5.0 specification. Supports substitution templates.
+     */
+    payloadFormatIndicator?: PayloadFormatIndicator;
+    /**
+     * A UTF-8 encoded string that describes the content of the publishing message. For more information, see  Content Type from the MQTT Version 5.0 specification. Supports substitution templates.
+     */
+    contentType?: ContentType;
+    /**
+     * A UTF-8 encoded string that's used as the topic name for a response message. The response topic is used to describe the topic which the receiver should publish to as part of the request-response flow. The topic must not contain wildcard characters. For more information, see  Response Topic from the MQTT Version 5.0 specification. Supports substitution templates.
+     */
+    responseTopic?: ResponseTopic;
+    /**
+     * The base64-encoded binary data used by the sender of the request message to identify which request the response message is for when it's received. For more information, see  Correlation Data from the MQTT Version 5.0 specification.   This binary data must be based64-encoded.   Supports substitution templates.
+     */
+    correlationData?: CorrelationData;
+    /**
+     * A user-defined integer value that will persist a message at the message broker for a specified amount of time to ensure that the message will expire if it's no longer relevant to the subscriber. The value of messageExpiry represents the number of seconds before it expires. For more information about the limits of messageExpiry, see Amazon Web Services IoT Core message broker and protocol limits and quotas  from the Amazon Web Services Reference Guide. Supports substitution templates.
+     */
+    messageExpiry?: MessageExpiry;
+    /**
+     * An array of key-value pairs that you define in the MQTT5 header.
+     */
+    userProperties?: UserProperties;
+  }
   export type MqttPassword = Buffer|Uint8Array|Blob|string;
+  export type MqttTopic = string;
   export type MqttUsername = string;
   export type NamedShadowIndexingMode = "OFF"|"ON"|string;
   export type NamedShadowNamesFilter = ShadowName[];
@@ -8629,7 +9390,7 @@ declare namespace Iot {
      */
     codeSigning?: CodeSigning;
     /**
-     * A list of name/attribute pairs.
+     * A list of name-attribute pairs. They won't be sent to devices as a part of the Job document.
      */
     attributes?: AttributesMap;
   }
@@ -8702,7 +9463,7 @@ declare namespace Iot {
      */
     additionalParameters?: AdditionalParameterMap;
   }
-  export type OTAUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|string;
+  export type OTAUpdateStatus = "CREATE_PENDING"|"CREATE_IN_PROGRESS"|"CREATE_COMPLETE"|"CREATE_FAILED"|"DELETE_IN_PROGRESS"|"DELETE_FAILED"|string;
   export interface OTAUpdateSummary {
     /**
      * The OTA update ID.
@@ -8770,6 +9531,55 @@ declare namespace Iot {
   }
   export type OutgoingCertificates = OutgoingCertificate[];
   export type OverrideDynamicGroups = boolean;
+  export type PackageArn = string;
+  export type PackageCatalogMaxResults = number;
+  export type PackageName = string;
+  export interface PackageSummary {
+    /**
+     * The name for the target software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The name of the default package version.
+     */
+    defaultVersionName?: VersionName;
+    /**
+     * The date that the package was created.
+     */
+    creationDate?: CreationDate;
+    /**
+     * The date that the package was last updated.
+     */
+    lastModifiedDate?: LastModifiedDate;
+  }
+  export type PackageSummaryList = PackageSummary[];
+  export type PackageVersionAction = "PUBLISH"|"DEPRECATE"|string;
+  export type PackageVersionArn = string;
+  export type PackageVersionErrorReason = string;
+  export type PackageVersionStatus = "DRAFT"|"PUBLISHED"|"DEPRECATED"|string;
+  export interface PackageVersionSummary {
+    /**
+     * The name of the associated software package.
+     */
+    packageName?: PackageName;
+    /**
+     * The name of the target package version.
+     */
+    versionName?: VersionName;
+    /**
+     * The status of the package version. For more information, see Package version lifecycle.
+     */
+    status?: PackageVersionStatus;
+    /**
+     * The date that the package version was created.
+     */
+    creationDate?: CreationDate;
+    /**
+     * The date that the package version was last updated.
+     */
+    lastModifiedDate?: LastModifiedDate;
+  }
+  export type PackageVersionSummaryList = PackageVersionSummary[];
   export type PageSize = number;
   export type Parameter = string;
   export type ParameterKey = string;
@@ -8778,6 +9588,7 @@ declare namespace Iot {
   export type Parameters = {[key: string]: Value};
   export type PartitionKey = string;
   export type PayloadField = string;
+  export type PayloadFormatIndicator = string;
   export type PayloadVersion = string;
   export type Percent = number;
   export type PercentList = Percent[];
@@ -8845,7 +9656,7 @@ declare namespace Iot {
   export type Prefix = string;
   export interface PresignedUrlConfig {
     /**
-     * The ARN of an IAM role that grants grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.  For information about addressing the confused deputy problem, see cross-service confused deputy prevention in the Amazon Web Services IoT Core developer guide. 
+     * The ARN of an IAM role that grants permission to download files from the S3 bucket where the job data/updates are stored. The role must also grant permission for IoT to download the files.  For information about addressing the confused deputy problem, see cross-service confused deputy prevention in the Amazon Web Services IoT Core developer guide. 
      */
     roleArn?: RoleArn;
     /**
@@ -8876,42 +9687,46 @@ declare namespace Iot {
   export type ProvisioningTemplateListing = ProvisioningTemplateSummary[];
   export interface ProvisioningTemplateSummary {
     /**
-     * The ARN of the fleet provisioning template.
+     * The ARN of the provisioning template.
      */
     templateArn?: TemplateArn;
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName?: TemplateName;
     /**
-     * The description of the fleet provisioning template.
+     * The description of the provisioning template.
      */
     description?: TemplateDescription;
     /**
-     * The date when the fleet provisioning template summary was created.
+     * The date when the provisioning template summary was created.
      */
     creationDate?: DateType;
     /**
-     * The date when the fleet provisioning template summary was last modified.
+     * The date when the provisioning template summary was last modified.
      */
     lastModifiedDate?: DateType;
     /**
      * True if the fleet provision template is enabled, otherwise false.
      */
     enabled?: Enabled;
+    /**
+     * The type you define in a provisioning template. You can create a template with only one type. You can't change the template type after its creation. The default value is FLEET_PROVISIONING. For more information about provisioning template, see: Provisioning template. 
+     */
+    type?: TemplateType;
   }
   export type ProvisioningTemplateVersionListing = ProvisioningTemplateVersionSummary[];
   export interface ProvisioningTemplateVersionSummary {
     /**
-     * The ID of the fleet privisioning template version.
+     * The ID of the fleet provisioning template version.
      */
     versionId?: TemplateVersionId;
     /**
-     * The date when the fleet provisioning template version was created
+     * The date when the provisioning template version was created
      */
     creationDate?: DateType;
     /**
-     * True if the fleet provisioning template version is the default version, otherwise false.
+     * True if the provisioning template version is the default version, otherwise false.
      */
     isDefaultVersion?: IsDefaultVersion;
   }
@@ -9111,6 +9926,10 @@ declare namespace Iot {
      * The ARN of the role.
      */
     roleArn?: RoleArn;
+    /**
+     * The name of the provisioning template.
+     */
+    templateName?: TemplateName;
   }
   export type RegistryMaxResults = number;
   export type RegistryS3BucketName = string;
@@ -9216,11 +10035,19 @@ declare namespace Iot {
      * The Quality of Service (QoS) level to use when republishing messages. The default value is 0.
      */
     qos?: Qos;
+    /**
+     * MQTT Version 5.0 headers information. For more information, see  MQTT from the Amazon Web Services IoT Core Developer Guide.
+     */
+    headers?: MqttHeaders;
   }
   export type ReservedDomainConfigurationName = string;
   export type Resource = string;
   export type ResourceArn = string;
   export type ResourceArns = {[key: string]: ResourceArn};
+  export type ResourceAttributeKey = string;
+  export type ResourceAttributeValue = string;
+  export type ResourceAttributes = {[key: string]: ResourceAttributeValue};
+  export type ResourceDescription = string;
   export interface ResourceIdentifier {
     /**
      * The ID of the certificate attached to the resource.
@@ -9254,10 +10081,19 @@ declare namespace Iot {
      * The ARN of the role alias that has overly permissive actions.
      */
     roleAliasArn?: RoleAliasArn;
+    /**
+     * The issuer certificate identifier.
+     */
+    issuerCertificateIdentifier?: IssuerCertificateIdentifier;
+    /**
+     * The ARN of the identified device certificate.
+     */
+    deviceCertificateArn?: CertificateArn;
   }
   export type ResourceLogicalId = string;
-  export type ResourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE"|string;
+  export type ResourceType = "DEVICE_CERTIFICATE"|"CA_CERTIFICATE"|"IOT_POLICY"|"COGNITO_IDENTITY_POOL"|"CLIENT_ID"|"ACCOUNT_SETTINGS"|"ROLE_ALIAS"|"IAM_ROLE"|"ISSUER_CERTIFICATE"|string;
   export type Resources = Resource[];
+  export type ResponseTopic = string;
   export type RetryAttempt = number;
   export interface RetryCriteria {
     /**
@@ -9393,6 +10229,31 @@ declare namespace Iot {
   }
   export type ScheduledAuditMetadataList = ScheduledAuditMetadata[];
   export type ScheduledAuditName = string;
+  export interface ScheduledJobRollout {
+    /**
+     * Displays the start times of the next seven maintenance window occurrences.
+     */
+    startTime?: StringDateTime;
+  }
+  export type ScheduledJobRolloutList = ScheduledJobRollout[];
+  export interface SchedulingConfig {
+    /**
+     * The time a job will begin rollout of the job document to all devices in the target group for a job. The startTime can be scheduled up to a year in advance and must be scheduled a minimum of thirty minutes from the current time. The date and time format for the startTime is YYYY-MM-DD for the date and HH:MM for the time. For more information on the syntax for startTime when using an API command or the Command Line Interface, see Timestamp.
+     */
+    startTime?: StringDateTime;
+    /**
+     * The time a job will stop rollout of the job document to all devices in the target group for a job. The endTime must take place no later than two years from the current time and be scheduled a minimum of thirty minutes from the current time. The minimum duration between startTime and endTime is thirty minutes. The maximum duration between startTime and endTime is two years. The date and time format for the endTime is YYYY-MM-DD for the date and HH:MM for the time. For more information on the syntax for endTime when using an API command or the Command Line Interface, see Timestamp.
+     */
+    endTime?: StringDateTime;
+    /**
+     * Specifies the end behavior for all job executions after a job reaches the selected endTime. If endTime is not selected when creating the job, then endBehavior does not apply.
+     */
+    endBehavior?: JobEndBehavior;
+    /**
+     * An optional configuration within the SchedulingConfig to setup a recurring maintenance window with a predetermined start time and duration for the rollout of a job document to all devices in a target group for a job.
+     */
+    maintenanceWindows?: MaintenanceWindows;
+  }
   export interface SearchIndexRequest {
     /**
      * The search index name.
@@ -9407,9 +10268,9 @@ declare namespace Iot {
      */
     nextToken?: NextToken;
     /**
-     * The maximum number of results to return at one time.
+     * The maximum number of results to return per page at one time. This maximum number cannot exceed 100. The response might contain fewer results but will never contain more. You can use  nextToken  to retrieve the next set of results until nextToken returns NULL.
      */
-    maxResults?: QueryMaxResults;
+    maxResults?: SearchQueryMaxResults;
     /**
      * The query version.
      */
@@ -9429,10 +10290,12 @@ declare namespace Iot {
      */
     thingGroups?: ThingGroupDocumentList;
   }
+  export type SearchQueryMaxResults = number;
   export type SearchableAttributes = AttributeName[];
   export type Seconds = number;
   export type SecurityGroupId = string;
   export type SecurityGroupList = SecurityGroupId[];
+  export type SecurityPolicy = string;
   export type SecurityProfileArn = string;
   export type SecurityProfileDescription = string;
   export interface SecurityProfileIdentifier {
@@ -9467,6 +10330,12 @@ declare namespace Iot {
   export type SecurityProfileTargetMappings = SecurityProfileTargetMapping[];
   export type SecurityProfileTargets = SecurityProfileTarget[];
   export type ServerCertificateArns = AcmCertificateArn[];
+  export interface ServerCertificateConfig {
+    /**
+     * A Boolean value that indicates whether Online Certificate Status Protocol (OCSP) server certificate check is enabled or not. For more information, see Configuring OCSP server-certificate stapling in domain configuration from Amazon Web Services IoT Core Developer Guide.
+     */
+    enableOCSPCheck?: EnableOCSPCheck;
+  }
   export type ServerCertificateStatus = "INVALID"|"VALID"|string;
   export type ServerCertificateStatusDetail = string;
   export interface ServerCertificateSummary {
@@ -9868,6 +10737,7 @@ declare namespace Iot {
   export type StreamVersion = number;
   export type StreamsSummary = StreamSummary[];
   export type String = string;
+  export type StringDateTime = string;
   export type StringList = stringValue[];
   export type StringMap = {[key: string]: String};
   export type SubnetId = string;
@@ -9893,6 +10763,7 @@ declare namespace Iot {
   export type TagKey = string;
   export type TagKeyList = TagKey[];
   export type TagList = Tag[];
+  export type TagMap = {[key: string]: TagValue};
   export interface TagResourceRequest {
     /**
      * The ARN of the resource.
@@ -9909,6 +10780,8 @@ declare namespace Iot {
   export type Target = string;
   export type TargetArn = string;
   export type TargetAuditCheckNames = AuditCheckName[];
+  export type TargetFieldName = string;
+  export type TargetFieldOrder = "LatLon"|"LonLat"|string;
   export type TargetSelection = "CONTINUOUS"|"SNAPSHOT"|string;
   export type TargetViolationIdsForDetectMitigationActions = ViolationId[];
   export type Targets = Target[];
@@ -9970,6 +10843,7 @@ declare namespace Iot {
   export type TemplateBody = string;
   export type TemplateDescription = string;
   export type TemplateName = string;
+  export type TemplateType = "FLEET_PROVISIONING"|"JITP"|string;
   export type TemplateVersionId = number;
   export interface TermsAggregation {
     /**
@@ -10163,7 +11037,7 @@ declare namespace Iot {
      */
     thingGroupIndexingMode: ThingGroupIndexingMode;
     /**
-     * Contains fields that are indexed and whose types are already known by the Fleet Indexing service.
+     * Contains fields that are indexed and whose types are already known by the Fleet Indexing service. This is an optional field. For more information, see Managed fields in the Amazon Web Services IoT Core Developer Guide.  You can't modify managed fields by updating fleet indexing configuration. 
      */
     managedFields?: Fields;
     /**
@@ -10220,7 +11094,7 @@ declare namespace Iot {
      */
     namedShadowIndexingMode?: NamedShadowIndexingMode;
     /**
-     * Contains fields that are indexed and whose types are already known by the Fleet Indexing service.
+     * Contains fields that are indexed and whose types are already known by the Fleet Indexing service. This is an optional field. For more information, see Managed fields in the Amazon Web Services IoT Core Developer Guide.  You can't modify managed fields by updating fleet indexing configuration. 
      */
     managedFields?: Fields;
     /**
@@ -10228,7 +11102,7 @@ declare namespace Iot {
      */
     customFields?: Fields;
     /**
-     * Provides additional filters for specific data sources. Named shadow is the only data source that currently supports and requires a filter. To add named shadows to your fleet indexing configuration, set namedShadowIndexingMode to be ON and specify your shadow names in filter.
+     * Provides additional selections for named shadows and geolocation data.  To add named shadows to your fleet indexing configuration, set namedShadowIndexingMode to be ON and specify your shadow names in namedShadowNames filter. To add geolocation data to your fleet indexing configuration:    If you store geolocation data in a class/unnamed shadow, set thingIndexingMode to be REGISTRY_AND_SHADOW and specify your geolocation data in geoLocations filter.    If you store geolocation data in a named shadow, set namedShadowIndexingMode to be ON, add the shadow name in namedShadowNames filter, and specify your geolocation data in geoLocations filter. For more information, see Managing fleet indexing.  
      */
     filter?: IndexingFilter;
   }
@@ -10340,6 +11214,12 @@ declare namespace Iot {
   export type TimestreamTimestampUnit = string;
   export type TimestreamTimestampValue = string;
   export type TinyMaxResults = number;
+  export interface TlsConfig {
+    /**
+     * The security policy for a domain configuration. For more information, see Security policies  in the Amazon Web Services IoT Core developer guide.
+     */
+    securityPolicy?: SecurityPolicy;
+  }
   export interface TlsContext {
     /**
      * The value of the serverName key in a TLS authorization request.
@@ -10554,6 +11434,7 @@ declare namespace Iot {
     rejectDate?: DateType;
   }
   export type UndoDeprecate = boolean;
+  export type UnsetDefaultVersion = boolean;
   export type UnsignedLong = number;
   export interface UntagResourceRequest {
     /**
@@ -10685,6 +11566,30 @@ declare namespace Iot {
      */
     removeAutoRegistration?: RemoveAutoRegistration;
   }
+  export interface UpdateCertificateProviderRequest {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName: CertificateProviderName;
+    /**
+     * The Lambda function ARN that's associated with the certificate provider.
+     */
+    lambdaFunctionArn?: CertificateProviderFunctionArn;
+    /**
+     * A list of the operations that the certificate provider will use to generate certificates. Valid value: CreateCertificateFromCsr.
+     */
+    accountDefaultForOperations?: CertificateProviderAccountDefaultForOperations;
+  }
+  export interface UpdateCertificateProviderResponse {
+    /**
+     * The name of the certificate provider.
+     */
+    certificateProviderName?: CertificateProviderName;
+    /**
+     * The ARN of the certificate provider.
+     */
+    certificateProviderArn?: CertificateProviderArn;
+  }
   export interface UpdateCertificateRequest {
     /**
      * The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
@@ -10790,6 +11695,14 @@ declare namespace Iot {
      * Removes the authorization configuration from a domain.
      */
     removeAuthorizerConfig?: RemoveAuthorizerConfig;
+    /**
+     * An object that specifies the TLS configuration for a domain.
+     */
+    tlsConfig?: TlsConfig;
+    /**
+     * The server certificate configuration.
+     */
+    serverCertificateConfig?: ServerCertificateConfig;
   }
   export interface UpdateDomainConfigurationResponse {
     /**
@@ -10921,7 +11834,7 @@ declare namespace Iot {
      */
     timeoutConfig?: TimeoutConfig;
     /**
-     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is in public preview. 
+     * The namespace used to indicate that a job is a customer-managed job. When you specify a value for this parameter, Amazon Web Services IoT Core sends jobs notifications to MQTT topics that contain the value in the following format.  $aws/things/THING_NAME/jobs/JOB_ID/notify-namespace-NAMESPACE_ID/   The namespaceId feature is only supported by IoT Greengrass at this time. For more information, see Setting up IoT Greengrass core devices.  
      */
     namespaceId?: NamespaceId;
     /**
@@ -10953,17 +11866,81 @@ declare namespace Iot {
      */
     actionId?: MitigationActionId;
   }
+  export interface UpdatePackageConfigurationRequest {
+    /**
+     * Configuration to manage job's package version reporting. This updates the thing's reserved named shadow that the job targets.
+     */
+    versionUpdateByJobsConfig?: VersionUpdateByJobsConfig;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface UpdatePackageConfigurationResponse {
+  }
+  export interface UpdatePackageRequest {
+    /**
+     * The name of the target software package.
+     */
+    packageName: PackageName;
+    /**
+     * The package description.
+     */
+    description?: ResourceDescription;
+    /**
+     * The name of the default package version.  Note: You cannot name a defaultVersion and set unsetDefaultVersion equal to true at the same time.
+     */
+    defaultVersionName?: VersionName;
+    /**
+     * Indicates whether you want to remove the named default package version from the software package. Set as true to remove the default package version.   Note: You cannot name a defaultVersion and set unsetDefaultVersion equal to true at the same time.
+     */
+    unsetDefaultVersion?: UnsetDefaultVersion;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface UpdatePackageResponse {
+  }
+  export interface UpdatePackageVersionRequest {
+    /**
+     * The name of the associated software package.
+     */
+    packageName: PackageName;
+    /**
+     * The name of the target package version.
+     */
+    versionName: VersionName;
+    /**
+     * The package version description.
+     */
+    description?: ResourceDescription;
+    /**
+     * Metadata that can be used to define a package version’s configuration. For example, the Amazon S3 file location, configuration options that are being sent to the device or fleet.   Note: Attributes can be updated only when the package version is in a draft state. The combined size of all the attributes on a package version is limited to 3KB.
+     */
+    attributes?: ResourceAttributes;
+    /**
+     * The status that the package version should be assigned. For more information, see Package version lifecycle.
+     */
+    action?: PackageVersionAction;
+    /**
+     * A unique case-sensitive identifier that you can provide to ensure the idempotency of the request. Don't reuse this client token if a new idempotent request is required.
+     */
+    clientToken?: ClientToken;
+  }
+  export interface UpdatePackageVersionResponse {
+  }
   export interface UpdateProvisioningTemplateRequest {
     /**
-     * The name of the fleet provisioning template.
+     * The name of the provisioning template.
      */
     templateName: TemplateName;
     /**
-     * The description of the fleet provisioning template.
+     * The description of the provisioning template.
      */
     description?: TemplateDescription;
     /**
-     * True to enable the fleet provisioning template, otherwise false.
+     * True to enable the provisioning template, otherwise false.
      */
     enabled?: Enabled;
     /**
@@ -10975,7 +11952,7 @@ declare namespace Iot {
      */
     provisioningRoleArn?: RoleArn;
     /**
-     * Updates the pre-provisioning hook template.
+     * Updates the pre-provisioning hook template. Only supports template of type FLEET_PROVISIONING. For more information about provisioning template types, see type.
      */
     preProvisioningHook?: ProvisioningHook;
     /**
@@ -11078,6 +12055,14 @@ declare namespace Iot {
      * The expected version of the security profile. A new version is generated whenever the security profile is updated. If you specify a value that is different from the actual version, a VersionConflictException is thrown.
      */
     expectedVersion?: OptionalVersion;
+    /**
+     * Specifies the MQTT topic and role ARN required for metric export.
+     */
+    metricsExportConfig?: MetricsExportConfig;
+    /**
+     * Set the value as true to delete metrics export related configurations.
+     */
+    deleteMetricsExportConfig?: DeleteMetricsExportConfig;
   }
   export interface UpdateSecurityProfileResponse {
     /**
@@ -11120,6 +12105,10 @@ declare namespace Iot {
      * The time the security profile was last modified.
      */
     lastModifiedDate?: Timestamp;
+    /**
+     * Specifies the MQTT topic and role ARN required for metric export.
+     */
+    metricsExportConfig?: MetricsExportConfig;
   }
   export interface UpdateStreamRequest {
     /**
@@ -11235,6 +12224,19 @@ declare namespace Iot {
   }
   export type Url = string;
   export type UseBase64 = boolean;
+  export type UserProperties = UserProperty[];
+  export interface UserProperty {
+    /**
+     * A key to be specified in UserProperty.
+     */
+    key: UserPropertyKey;
+    /**
+     * A value to be specified in UserProperty.
+     */
+    value: UserPropertyValue;
+  }
+  export type UserPropertyKey = string;
+  export type UserPropertyValue = string;
   export type Valid = boolean;
   export interface ValidateSecurityProfileBehaviorsRequest {
     /**
@@ -11264,7 +12266,18 @@ declare namespace Iot {
   export type VerificationState = "FALSE_POSITIVE"|"BENIGN_POSITIVE"|"TRUE_POSITIVE"|"UNKNOWN"|string;
   export type VerificationStateDescription = string;
   export type Version = number;
+  export type VersionName = string;
   export type VersionNumber = number;
+  export interface VersionUpdateByJobsConfig {
+    /**
+     * Indicates whether the Job is enabled or not.
+     */
+    enabled?: EnabledBoolean;
+    /**
+     * The Amazon Resource Name (ARN) of the role that grants permission to the IoT jobs service to update the reserved named shadow when the job successfully completes.
+     */
+    roleArn?: RoleArn;
+  }
   export interface ViolationEvent {
     /**
      * The ID of the violation event.

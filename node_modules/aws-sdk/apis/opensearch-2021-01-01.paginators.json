@@ -40,6 +40,11 @@
       "output_token": "NextToken",
       "limit_key": "MaxResults"
     },
+    "ListDomainMaintenances": {
+      "input_token": "NextToken",
+      "output_token": "NextToken",
+      "limit_key": "MaxResults"
+    },
     "ListDomainsForPackage": {
       "input_token": "NextToken",
       "output_token": "NextToken",
@@ -51,6 +56,11 @@
       "limit_key": "MaxResults"
     },
     "ListPackagesForDomain": {
+      "input_token": "NextToken",
+      "output_token": "NextToken",
+      "limit_key": "MaxResults"
+    },
+    "ListScheduledActions": {
       "input_token": "NextToken",
       "output_token": "NextToken",
       "limit_key": "MaxResults"

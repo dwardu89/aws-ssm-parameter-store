@@ -20,11 +20,11 @@ declare class ServiceCatalogAppRegistry extends Service {
    */
   associateAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.AssociateAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.AssociateAttributeGroupResponse, AWSError>;
   /**
-   * Associates a resource with an application. Both the resource and the application can be specified either by ID or name.
+   *  Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.   Minimum permissions   You must have the following permissions to associate a resource using the OPTIONS parameter set to APPLY_APPLICATION_TAG.     tag:GetResources     tag:TagResources     You must also have these additional permissions if you don't use the AWSServiceCatalogAppRegistryFullAccess policy. For more information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry Administrator Guide.     resource-groups:AssociateResource     cloudformation:UpdateStack     cloudformation:DescribeStacks      In addition, you must have the tagging permission defined by the Amazon Web Services service that creates the resource. For more information, see TagResources in the Resource Groups Tagging API Reference.  
    */
   associateResource(params: ServiceCatalogAppRegistry.Types.AssociateResourceRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.AssociateResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.AssociateResourceResponse, AWSError>;
   /**
-   * Associates a resource with an application. Both the resource and the application can be specified either by ID or name.
+   *  Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.   Minimum permissions   You must have the following permissions to associate a resource using the OPTIONS parameter set to APPLY_APPLICATION_TAG.     tag:GetResources     tag:TagResources     You must also have these additional permissions if you don't use the AWSServiceCatalogAppRegistryFullAccess policy. For more information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry Administrator Guide.     resource-groups:AssociateResource     cloudformation:UpdateStack     cloudformation:DescribeStacks      In addition, you must have the tagging permission defined by the Amazon Web Services service that creates the resource. For more information, see TagResources in the Resource Groups Tagging API Reference.  
    */
   associateResource(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.AssociateResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.AssociateResourceResponse, AWSError>;
   /**
@@ -44,19 +44,19 @@ declare class ServiceCatalogAppRegistry extends Service {
    */
   createAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.CreateAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.CreateAttributeGroupResponse, AWSError>;
   /**
-   * Deletes an application that is specified either by its application ID or name. All associated attribute groups and resources must be disassociated from it before deleting an application.
+   * Deletes an application that is specified either by its application ID, name, or ARN. All associated attribute groups and resources must be disassociated from it before deleting an application.
    */
   deleteApplication(params: ServiceCatalogAppRegistry.Types.DeleteApplicationRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DeleteApplicationResponse) => void): Request<ServiceCatalogAppRegistry.Types.DeleteApplicationResponse, AWSError>;
   /**
-   * Deletes an application that is specified either by its application ID or name. All associated attribute groups and resources must be disassociated from it before deleting an application.
+   * Deletes an application that is specified either by its application ID, name, or ARN. All associated attribute groups and resources must be disassociated from it before deleting an application.
    */
   deleteApplication(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DeleteApplicationResponse) => void): Request<ServiceCatalogAppRegistry.Types.DeleteApplicationResponse, AWSError>;
   /**
-   * Deletes an attribute group, specified either by its attribute group ID or name.
+   * Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
    */
   deleteAttributeGroup(params: ServiceCatalogAppRegistry.Types.DeleteAttributeGroupRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DeleteAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.DeleteAttributeGroupResponse, AWSError>;
   /**
-   * Deletes an attribute group, specified either by its attribute group ID or name.
+   * Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
    */
   deleteAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DeleteAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.DeleteAttributeGroupResponse, AWSError>;
   /**
@@ -68,19 +68,19 @@ declare class ServiceCatalogAppRegistry extends Service {
    */
   disassociateAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DisassociateAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.DisassociateAttributeGroupResponse, AWSError>;
   /**
-   * Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.
+   *  Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.   Minimum permissions   You must have the following permissions to remove a resource that's been associated with an application using the APPLY_APPLICATION_TAG option for AssociateResource.     tag:GetResources     tag:UntagResources     You must also have the following permissions if you don't use the AWSServiceCatalogAppRegistryFullAccess policy. For more information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry Administrator Guide.     resource-groups:DisassociateResource     cloudformation:UpdateStack     cloudformation:DescribeStacks      In addition, you must have the tagging permission defined by the Amazon Web Services service that creates the resource. For more information, see UntagResources in the Resource Groups Tagging API Reference.  
    */
   disassociateResource(params: ServiceCatalogAppRegistry.Types.DisassociateResourceRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DisassociateResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.DisassociateResourceResponse, AWSError>;
   /**
-   * Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.
+   *  Disassociates a resource from application. Both the resource and the application can be specified either by ID or name.   Minimum permissions   You must have the following permissions to remove a resource that's been associated with an application using the APPLY_APPLICATION_TAG option for AssociateResource.     tag:GetResources     tag:UntagResources     You must also have the following permissions if you don't use the AWSServiceCatalogAppRegistryFullAccess policy. For more information, see AWSServiceCatalogAppRegistryFullAccess in the AppRegistry Administrator Guide.     resource-groups:DisassociateResource     cloudformation:UpdateStack     cloudformation:DescribeStacks      In addition, you must have the tagging permission defined by the Amazon Web Services service that creates the resource. For more information, see UntagResources in the Resource Groups Tagging API Reference.  
    */
   disassociateResource(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.DisassociateResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.DisassociateResourceResponse, AWSError>;
   /**
-   * Retrieves metadata information about one of your applications. The application can be specified either by its unique ID or by its name (which is unique within one account in one region at a given point in time). Specify by ID in automated workflows if you want to make sure that the exact same application is returned or a ResourceNotFoundException is thrown, avoiding the ABA addressing problem.
+   *  Retrieves metadata information about one of your applications. The application can be specified by its ARN, ID, or name (which is unique within one account in one region at a given point in time). Specify by ARN or ID in automated workflows if you want to make sure that the exact same application is returned or a ResourceNotFoundException is thrown, avoiding the ABA addressing problem. 
    */
   getApplication(params: ServiceCatalogAppRegistry.Types.GetApplicationRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetApplicationResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetApplicationResponse, AWSError>;
   /**
-   * Retrieves metadata information about one of your applications. The application can be specified either by its unique ID or by its name (which is unique within one account in one region at a given point in time). Specify by ID in automated workflows if you want to make sure that the exact same application is returned or a ResourceNotFoundException is thrown, avoiding the ABA addressing problem.
+   *  Retrieves metadata information about one of your applications. The application can be specified by its ARN, ID, or name (which is unique within one account in one region at a given point in time). Specify by ARN or ID in automated workflows if you want to make sure that the exact same application is returned or a ResourceNotFoundException is thrown, avoiding the ABA addressing problem. 
    */
   getApplication(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetApplicationResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetApplicationResponse, AWSError>;
   /**
@@ -92,13 +92,17 @@ declare class ServiceCatalogAppRegistry extends Service {
    */
   getAssociatedResource(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetAssociatedResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetAssociatedResourceResponse, AWSError>;
   /**
-   * Retrieves an attribute group, either by its name or its ID. The attribute group can be specified either by its unique ID or by its name.
+   *  Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name. 
    */
   getAttributeGroup(params: ServiceCatalogAppRegistry.Types.GetAttributeGroupRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetAttributeGroupResponse, AWSError>;
   /**
-   * Retrieves an attribute group, either by its name or its ID. The attribute group can be specified either by its unique ID or by its name.
+   *  Retrieves an attribute group by its ARN, ID, or name. The attribute group can be specified by its ARN, ID, or name. 
    */
   getAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetAttributeGroupResponse, AWSError>;
+  /**
+   *  Retrieves a TagKey configuration from an account. 
+   */
+  getConfiguration(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.GetConfigurationResponse) => void): Request<ServiceCatalogAppRegistry.Types.GetConfigurationResponse, AWSError>;
   /**
    * Retrieves a list of all of your applications. Results are paginated.
    */
@@ -116,11 +120,11 @@ declare class ServiceCatalogAppRegistry extends Service {
    */
   listAssociatedAttributeGroups(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.ListAssociatedAttributeGroupsResponse) => void): Request<ServiceCatalogAppRegistry.Types.ListAssociatedAttributeGroupsResponse, AWSError>;
   /**
-   * Lists all resources that are associated with specified application. Results are paginated.
+   *  Lists all of the resources that are associated with the specified application. Results are paginated.    If you share an application, and a consumer account associates a tag query to the application, all of the users who can access the application can also view the tag values in all accounts that are associated with it using this API.  
    */
   listAssociatedResources(params: ServiceCatalogAppRegistry.Types.ListAssociatedResourcesRequest, callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.ListAssociatedResourcesResponse) => void): Request<ServiceCatalogAppRegistry.Types.ListAssociatedResourcesResponse, AWSError>;
   /**
-   * Lists all resources that are associated with specified application. Results are paginated.
+   *  Lists all of the resources that are associated with the specified application. Results are paginated.    If you share an application, and a consumer account associates a tag query to the application, all of the users who can access the application can also view the tag values in all accounts that are associated with it using this API.  
    */
   listAssociatedResources(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.ListAssociatedResourcesResponse) => void): Request<ServiceCatalogAppRegistry.Types.ListAssociatedResourcesResponse, AWSError>;
   /**
@@ -147,6 +151,14 @@ declare class ServiceCatalogAppRegistry extends Service {
    * Lists all of the tags on the resource.
    */
   listTagsForResource(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.ListTagsForResourceResponse) => void): Request<ServiceCatalogAppRegistry.Types.ListTagsForResourceResponse, AWSError>;
+  /**
+   *  Associates a TagKey configuration to an account. 
+   */
+  putConfiguration(params: ServiceCatalogAppRegistry.Types.PutConfigurationRequest, callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
+  /**
+   *  Associates a TagKey configuration to an account. 
+   */
+  putConfiguration(callback?: (err: AWSError, data: {}) => void): Request<{}, AWSError>;
   /**
    * Syncs the resource with current AppRegistry records. Specifically, the resource’s AppRegistry system tags sync with its associated application. We remove the resource's AppRegistry system tags if it does not associate with the application. The caller must have permissions to read and update the resource.
    */
@@ -189,6 +201,12 @@ declare class ServiceCatalogAppRegistry extends Service {
   updateAttributeGroup(callback?: (err: AWSError, data: ServiceCatalogAppRegistry.Types.UpdateAttributeGroupResponse) => void): Request<ServiceCatalogAppRegistry.Types.UpdateAttributeGroupResponse, AWSError>;
 }
 declare namespace ServiceCatalogAppRegistry {
+  export interface AppRegistryConfiguration {
+    /**
+     *  Includes the definition of a tagQuery. 
+     */
+    tagQueryConfiguration?: TagQueryConfiguration;
+  }
   export interface Application {
     /**
      * The identifier of the application.
@@ -218,6 +236,10 @@ declare namespace ServiceCatalogAppRegistry {
      * Key-value pairs you can use to associate with the application.
      */
     tags?: Tags;
+    /**
+     *  A key-value pair that identifies an associated resource. 
+     */
+    applicationTag?: ApplicationTagDefinition;
   }
   export type ApplicationArn = string;
   export type ApplicationId = string;
@@ -249,14 +271,34 @@ declare namespace ServiceCatalogAppRegistry {
      */
     lastUpdateTime?: Timestamp;
   }
+  export type ApplicationTagDefinition = {[key: string]: TagValue};
+  export interface ApplicationTagResult {
+    /**
+     *  The application tag is in the process of being applied to a resource, was successfully applied to a resource, or failed to apply to a resource. 
+     */
+    applicationTagStatus?: ApplicationTagStatus;
+    /**
+     *  The message returned if the call fails. 
+     */
+    errorMessage?: String;
+    /**
+     *  The resources associated with an application 
+     */
+    resources?: ResourcesList;
+    /**
+     *  A unique pagination token for each page of results. Make the call again with the returned token to retrieve the next page of results. 
+     */
+    nextToken?: NextToken;
+  }
+  export type ApplicationTagStatus = "IN_PROGRESS"|"SUCCESS"|"FAILURE"|string;
   export type Arn = string;
   export interface AssociateAttributeGroupRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
     /**
-     * The name or ID of the attribute group that holds the attributes to describe the application.
+     *  The name, ID, or ARN of the attribute group that holds the attributes to describe the application. 
      */
     attributeGroup: AttributeGroupSpecifier;
   }
@@ -272,7 +314,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface AssociateResourceRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
     /**
@@ -283,6 +325,10 @@ declare namespace ServiceCatalogAppRegistry {
      * The name or ID of the resource of which the application will be associated.
      */
     resource: ResourceSpecifier;
+    /**
+     *  Determines whether an application tag is applied or skipped. 
+     */
+    options?: Options;
   }
   export interface AssociateResourceResponse {
     /**
@@ -293,8 +339,13 @@ declare namespace ServiceCatalogAppRegistry {
      * The Amazon resource name (ARN) that specifies the resource.
      */
     resourceArn?: Arn;
+    /**
+     *  Determines whether an application tag is applied or skipped. 
+     */
+    options?: Options;
   }
   export type AssociationCount = number;
+  export type AssociationOption = "APPLY_APPLICATION_TAG"|"SKIP_APPLICATION_TAG"|string;
   export interface AttributeGroup {
     /**
      * The globally unique attribute group identifier of the attribute group.
@@ -336,9 +387,13 @@ declare namespace ServiceCatalogAppRegistry {
      */
     arn?: AttributeGroupArn;
     /**
-     * The name of the attribute group. 
+     *   This field is no longer supported. We recommend you don't use the field when using ListAttributeGroupsForApplication.    The name of the attribute group. 
      */
     name?: Name;
+    /**
+     * The service principal that created the attribute group.
+     */
+    createdBy?: CreatedBy;
   }
   export type AttributeGroupDetailsList = AttributeGroupDetails[];
   export type AttributeGroupId = string;
@@ -370,6 +425,10 @@ declare namespace ServiceCatalogAppRegistry {
      * The ISO-8601 formatted timestamp of the moment the attribute group was last updated. This time is the same as the creationTime for a newly created attribute group.
      */
     lastUpdateTime?: Timestamp;
+    /**
+     * The service principal that created the attribute group.
+     */
+    createdBy?: CreatedBy;
   }
   export type Attributes = string;
   export type ClientToken = string;
@@ -425,9 +484,10 @@ declare namespace ServiceCatalogAppRegistry {
      */
     attributeGroup?: AttributeGroup;
   }
+  export type CreatedBy = string;
   export interface DeleteApplicationRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
   }
@@ -439,7 +499,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface DeleteAttributeGroupRequest {
     /**
-     * The name or ID of the attribute group that holds the attributes to describe the application.
+     *  The name, ID, or ARN of the attribute group that holds the attributes to describe the application. 
      */
     attributeGroup: AttributeGroupSpecifier;
   }
@@ -452,11 +512,11 @@ declare namespace ServiceCatalogAppRegistry {
   export type Description = string;
   export interface DisassociateAttributeGroupRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
     /**
-     * The name or ID of the attribute group that holds the attributes to describe the application.
+     *  The name, ID, or ARN of the attribute group that holds the attributes to describe the application. 
      */
     attributeGroup: AttributeGroupSpecifier;
   }
@@ -496,7 +556,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface GetApplicationRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
   }
@@ -534,13 +594,18 @@ declare namespace ServiceCatalogAppRegistry {
      */
     tags?: Tags;
     /**
-     * The information about the integration of the application with other services, such as Resource Groups.
+     *  The information about the integration of the application with other services, such as Resource Groups. 
      */
     integrations?: Integrations;
+    /**
+     *  A key-value pair that identifies an associated resource. 
+     */
+    applicationTag?: ApplicationTagDefinition;
   }
+  export type GetAssociatedResourceFilter = ResourceItemStatus[];
   export interface GetAssociatedResourceRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
     /**
@@ -551,16 +616,36 @@ declare namespace ServiceCatalogAppRegistry {
      * The name or ID of the resource associated with the application.
      */
     resource: ResourceSpecifier;
+    /**
+     *  A unique pagination token for each page of results. Make the call again with the returned token to retrieve the next page of results. 
+     */
+    nextToken?: NextToken;
+    /**
+     *  States whether an application tag is applied, not applied, in the process of being applied, or skipped. 
+     */
+    resourceTagStatus?: GetAssociatedResourceFilter;
+    /**
+     *  The maximum number of results to return. If the parameter is omitted, it defaults to 25. The value is optional. 
+     */
+    maxResults?: MaxResults;
   }
   export interface GetAssociatedResourceResponse {
     /**
      * The resource associated with the application.
      */
     resource?: Resource;
+    /**
+     *  Determines whether an application tag is applied or skipped. 
+     */
+    options?: Options;
+    /**
+     *  The result of the application that's tag applied to a resource. 
+     */
+    applicationTagResult?: ApplicationTagResult;
   }
   export interface GetAttributeGroupRequest {
     /**
-     * The name or ID of the attribute group that holds the attributes to describe the application.
+     *  The name, ID, or ARN of the attribute group that holds the attributes to describe the application. 
      */
     attributeGroup: AttributeGroupSpecifier;
   }
@@ -597,12 +682,23 @@ declare namespace ServiceCatalogAppRegistry {
      * Key-value pairs associated with the attribute group.
      */
     tags?: Tags;
+    /**
+     * The service principal that created the attribute group.
+     */
+    createdBy?: CreatedBy;
+  }
+  export interface GetConfigurationResponse {
+    /**
+     *  Retrieves TagKey configuration from an account. 
+     */
+    configuration?: AppRegistryConfiguration;
   }
   export interface Integrations {
     /**
      *  The information about the resource group integration.
      */
     resourceGroup?: ResourceGroup;
+    applicationTagResourceGroup?: ResourceGroup;
   }
   export interface ListApplicationsRequest {
     /**
@@ -650,7 +746,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface ListAssociatedResourcesRequest {
     /**
-     * The name or ID of the application.
+     *  The name, ID, or ARN of the application. 
      */
     application: ApplicationSpecifier;
     /**
@@ -688,7 +784,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface ListAttributeGroupsForApplicationResponse {
     /**
-     *  The details related to a specific AttributeGroup. 
+     *  The details related to a specific attribute group. 
      */
     attributeGroupsDetails?: AttributeGroupDetailsList;
     /**
@@ -731,6 +827,13 @@ declare namespace ServiceCatalogAppRegistry {
   export type MaxResults = number;
   export type Name = string;
   export type NextToken = string;
+  export type Options = AssociationOption[];
+  export interface PutConfigurationRequest {
+    /**
+     *  Associates a TagKey configuration to an account. 
+     */
+    configuration: AppRegistryConfiguration;
+  }
   export interface Resource {
     /**
      * The name of the resource.
@@ -739,7 +842,7 @@ declare namespace ServiceCatalogAppRegistry {
     /**
      * The Amazon resource name (ARN) of the resource.
      */
-    arn?: StackArn;
+    arn?: Arn;
     /**
      * The time the resource was associated with the application.
      */
@@ -748,6 +851,12 @@ declare namespace ServiceCatalogAppRegistry {
      * The service integration information about the resource. 
      */
     integrations?: ResourceIntegrations;
+  }
+  export interface ResourceDetails {
+    /**
+     * The value of the tag.
+     */
+    tagValue?: TagValue;
   }
   export interface ResourceGroup {
     /**
@@ -772,7 +881,19 @@ declare namespace ServiceCatalogAppRegistry {
     /**
      * The Amazon resource name (ARN) that specifies the resource across services.
      */
-    arn?: StackArn;
+    arn?: Arn;
+    /**
+     *  Provides information about the Service Catalog App Registry resource type. 
+     */
+    resourceType?: ResourceType;
+    /**
+     *  The details related to the resource. 
+     */
+    resourceDetails?: ResourceDetails;
+    /**
+     *  Determines whether an application tag is applied or skipped. 
+     */
+    options?: Options;
   }
   export interface ResourceIntegrations {
     /**
@@ -780,10 +901,31 @@ declare namespace ServiceCatalogAppRegistry {
      */
     resourceGroup?: ResourceGroup;
   }
+  export type ResourceItemStatus = "SUCCESS"|"FAILED"|"IN_PROGRESS"|"SKIPPED"|string;
+  export type ResourceItemType = string;
   export type ResourceSpecifier = string;
-  export type ResourceType = "CFN_STACK"|string;
+  export type ResourceType = "CFN_STACK"|"RESOURCE_TAG_VALUE"|string;
   export type Resources = ResourceInfo[];
-  export type StackArn = string;
+  export type ResourcesList = ResourcesListItem[];
+  export interface ResourcesListItem {
+    /**
+     *  The Amazon resource name (ARN) of the resource. 
+     */
+    resourceArn?: Arn;
+    /**
+     *  The message returned if the call fails. 
+     */
+    errorMessage?: ResourcesListItemErrorMessage;
+    /**
+     *  The status of the list item. 
+     */
+    status?: String;
+    /**
+     *  Provides information about the AppRegistry resource type. 
+     */
+    resourceType?: ResourceItemType;
+  }
+  export type ResourcesListItemErrorMessage = string;
   export type String = string;
   export type SyncAction = "START_SYNC"|"NO_ACTION"|string;
   export interface SyncResourceRequest {
@@ -811,7 +953,14 @@ declare namespace ServiceCatalogAppRegistry {
     actionTaken?: SyncAction;
   }
   export type TagKey = string;
+  export type TagKeyConfig = string;
   export type TagKeys = TagKey[];
+  export interface TagQueryConfiguration {
+    /**
+     *  Condition in the IAM policy that associates resources to an application. 
+     */
+    tagKey?: TagKeyConfig;
+  }
   export interface TagResourceRequest {
     /**
      * The Amazon resource name (ARN) that specifies the resource.
@@ -841,7 +990,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface UpdateApplicationRequest {
     /**
-     * The name or ID of the application that will be updated.
+     *  The name, ID, or ARN of the application that will be updated. 
      */
     application: ApplicationSpecifier;
     /**
@@ -861,7 +1010,7 @@ declare namespace ServiceCatalogAppRegistry {
   }
   export interface UpdateAttributeGroupRequest {
     /**
-     * The name or ID of the attribute group that holds the attributes to describe the application.
+     *  The name, ID, or ARN of the attribute group that holds the attributes to describe the application. 
      */
     attributeGroup: AttributeGroupSpecifier;
     /**

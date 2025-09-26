@@ -37,11 +37,11 @@ declare class Route53RecoveryControlConfig extends Service {
    */
   createRoutingControl(callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.CreateRoutingControlResponse) => void): Request<Route53RecoveryControlConfig.Types.CreateRoutingControlResponse, AWSError>;
   /**
-   * Creates a safety rule in a control panel. Safety rules let you add safeguards around changing routing control states, and for enabling and disabling routing controls, to help prevent unexpected outcomes. There are two types of safety rules: assertion rules and gating rules. Assertion rule: An assertion rule enforces that, when you change a routing control state, that a certain criteria is met. For example, the criteria might be that at least one routing control state is On after the transation so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario. Gating rule: A gating rule lets you configure a gating routing control as an overall "on/off" switch for a group of routing controls. Or, you can configure more complex gating scenarios, for example by configuring multiple gating routing controls. For more information, see Safety rules in the Amazon Route 53 Application Recovery Controller Developer Guide.
+   * Creates a safety rule in a control panel. Safety rules let you add safeguards around changing routing control states, and for enabling and disabling routing controls, to help prevent unexpected outcomes. There are two types of safety rules: assertion rules and gating rules. Assertion rule: An assertion rule enforces that, when you change a routing control state, that a certain criteria is met. For example, the criteria might be that at least one routing control state is On after the transaction so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario. Gating rule: A gating rule lets you configure a gating routing control as an overall "on/off" switch for a group of routing controls. Or, you can configure more complex gating scenarios, for example by configuring multiple gating routing controls. For more information, see Safety rules in the Amazon Route 53 Application Recovery Controller Developer Guide.
    */
   createSafetyRule(params: Route53RecoveryControlConfig.Types.CreateSafetyRuleRequest, callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.CreateSafetyRuleResponse) => void): Request<Route53RecoveryControlConfig.Types.CreateSafetyRuleResponse, AWSError>;
   /**
-   * Creates a safety rule in a control panel. Safety rules let you add safeguards around changing routing control states, and for enabling and disabling routing controls, to help prevent unexpected outcomes. There are two types of safety rules: assertion rules and gating rules. Assertion rule: An assertion rule enforces that, when you change a routing control state, that a certain criteria is met. For example, the criteria might be that at least one routing control state is On after the transation so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario. Gating rule: A gating rule lets you configure a gating routing control as an overall "on/off" switch for a group of routing controls. Or, you can configure more complex gating scenarios, for example by configuring multiple gating routing controls. For more information, see Safety rules in the Amazon Route 53 Application Recovery Controller Developer Guide.
+   * Creates a safety rule in a control panel. Safety rules let you add safeguards around changing routing control states, and for enabling and disabling routing controls, to help prevent unexpected outcomes. There are two types of safety rules: assertion rules and gating rules. Assertion rule: An assertion rule enforces that, when you change a routing control state, that a certain criteria is met. For example, the criteria might be that at least one routing control state is On after the transaction so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario. Gating rule: A gating rule lets you configure a gating routing control as an overall "on/off" switch for a group of routing controls. Or, you can configure more complex gating scenarios, for example by configuring multiple gating routing controls. For more information, see Safety rules in the Amazon Route 53 Application Recovery Controller Developer Guide.
    */
   createSafetyRule(callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.CreateSafetyRuleResponse) => void): Request<Route53RecoveryControlConfig.Types.CreateSafetyRuleResponse, AWSError>;
   /**
@@ -108,6 +108,14 @@ declare class Route53RecoveryControlConfig extends Service {
    * Returns information about a safety rule.
    */
   describeSafetyRule(callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.DescribeSafetyRuleResponse) => void): Request<Route53RecoveryControlConfig.Types.DescribeSafetyRuleResponse, AWSError>;
+  /**
+   * Get information about the resource policy for a cluster.
+   */
+  getResourcePolicy(params: Route53RecoveryControlConfig.Types.GetResourcePolicyRequest, callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.GetResourcePolicyResponse) => void): Request<Route53RecoveryControlConfig.Types.GetResourcePolicyResponse, AWSError>;
+  /**
+   * Get information about the resource policy for a cluster.
+   */
+  getResourcePolicy(callback?: (err: AWSError, data: Route53RecoveryControlConfig.Types.GetResourcePolicyResponse) => void): Request<Route53RecoveryControlConfig.Types.GetResourcePolicyResponse, AWSError>;
   /**
    * Returns an array of all Amazon Route 53 health checks associated with a specific routing control.
    */
@@ -260,7 +268,7 @@ declare namespace Route53RecoveryControlConfig {
      */
     Name: __stringMin1Max64PatternS;
     /**
-     * The criteria that you set for specific assertion routing controls (AssertedControls) that designate how many routing control states must be ON as the result of a transaction. For example, if you have three assertion routing controls, you might specify atleast 2 for your rule configuration. This means that at least two assertion routing control states must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.
+     * The criteria that you set for specific assertion routing controls (AssertedControls) that designate how many routing control states must be ON as the result of a transaction. For example, if you have three assertion routing controls, you might specify ATLEAST 2 for your rule configuration. This means that at least two assertion routing control states must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.
      */
     RuleConfig: RuleConfig;
     /**
@@ -275,6 +283,10 @@ declare namespace Route53RecoveryControlConfig {
      * An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent "flapping" of state. The wait period is 5000 ms by default, but you can choose a custom value.
      */
     WaitPeriodMs: __integer;
+    /**
+     * The Amazon Web Services account ID of the assertion rule owner.
+     */
+    Owner?: __stringMin12Max12PatternD12;
   }
   export interface AssertionRuleUpdate {
     /**
@@ -307,6 +319,10 @@ declare namespace Route53RecoveryControlConfig {
      * Deployment status of a resource. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.
      */
     Status?: Status;
+    /**
+     * The Amazon Web Services account ID of the cluster owner.
+     */
+    Owner?: __stringMin12Max12PatternD12;
   }
   export interface ClusterEndpoint {
     /**
@@ -343,6 +359,10 @@ declare namespace Route53RecoveryControlConfig {
      * The deployment status of control panel. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.
      */
     Status?: Status;
+    /**
+     * The Amazon Web Services account ID of the control panel owner.
+     */
+    Owner?: __stringMin12Max12PatternD12;
   }
   export interface CreateClusterRequest {
     /**
@@ -538,7 +558,7 @@ declare namespace Route53RecoveryControlConfig {
      */
     Name: __stringMin1Max64PatternS;
     /**
-     * The criteria that you set for gating routing controls that designates how many of the routing control states must be ON to allow you to update target routing control states.
+     * The criteria that you set for gating routing controls that designate how many of the routing control states must be ON to allow you to update target routing control states.
      */
     RuleConfig: RuleConfig;
     /**
@@ -550,13 +570,17 @@ declare namespace Route53RecoveryControlConfig {
      */
     Status: Status;
     /**
-     * An array of target routing control Amazon Resource Names (ARNs) for which the states can only be updated if the rule configuration that you specify evaluates to true for the gating routing control. As a simple example, if you have a single gating control, it acts as an overall "on/off" switch for a set of target routing controls. You can use this to manually override automated fail over, for example.
+     * An array of target routing control Amazon Resource Names (ARNs) for which the states can only be updated if the rule configuration that you specify evaluates to true for the gating routing control. As a simple example, if you have a single gating control, it acts as an overall "on/off" switch for a set of target routing controls. You can use this to manually override automated failover, for example.
      */
     TargetControls: __listOf__stringMin1Max256PatternAZaZ09;
     /**
      * An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent "flapping" of state. The wait period is 5000 ms by default, but you can choose a custom value.
      */
     WaitPeriodMs: __integer;
+    /**
+     * The Amazon Web Services account ID of the gating rule owner.
+     */
+    Owner?: __stringMin12Max12PatternD12;
   }
   export interface GatingRuleUpdate {
     /**
@@ -571,6 +595,18 @@ declare namespace Route53RecoveryControlConfig {
      * An evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail. This helps prevent "flapping" of state. The wait period is 5000 ms by default, but you can choose a custom value.
      */
     WaitPeriodMs: __integer;
+  }
+  export interface GetResourcePolicyRequest {
+    /**
+     * The Amazon Resource Name (ARN) of the resource.
+     */
+    ResourceArn: __string;
+  }
+  export interface GetResourcePolicyResponse {
+    /**
+     * The resource policy.
+     */
+    Policy?: __policy;
   }
   export interface ListAssociatedRoute53HealthChecksRequest {
     /**
@@ -715,7 +751,7 @@ declare namespace Route53RecoveryControlConfig {
      */
     Name: __stringMin1Max64PatternS;
     /**
-     * The criteria that you set for specific assertion controls (routing controls) that designate how many control states must be ON as the result of a transaction. For example, if you have three assertion controls, you might specify ATLEAST 2for your rule configuration. This means that at least two assertion controls must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.
+     * The criteria that you set for specific assertion controls (routing controls) that designate how many control states must be ON as the result of a transaction. For example, if you have three assertion controls, you might specify ATLEAST 2 for your rule configuration. This means that at least two assertion controls must be ON, so that at least two Amazon Web Services Regions have traffic flowing to them.
      */
     RuleConfig: RuleConfig;
     /**
@@ -737,11 +773,11 @@ declare namespace Route53RecoveryControlConfig {
      */
     Name: __stringMin1Max64PatternS;
     /**
-     * The criteria that you set for specific gating controls (routing controls) that designates how many control states must be ON to allow you to change (set or unset) the target control states.
+     * The criteria that you set for specific gating controls (routing controls) that designate how many control states must be ON to allow you to change (set or unset) the target control states.
      */
     RuleConfig: RuleConfig;
     /**
-     * Routing controls that can only be set or unset if the specified RuleConfig evaluates to true for the specified GatingControls. For example, say you have three gating controls, one for each of three Amazon Web Services Regions. Now you specify AtLeast 2 as your RuleConfig. With these settings, you can only change (set or unset) the routing controls that you have specified as TargetControls if that rule evaluates to true. In other words, your ability to change the routing controls that you have specified as TargetControls is gated by the rule that you set for the routing controls in GatingControls.
+     * Routing controls that can only be set or unset if the specified RuleConfig evaluates to true for the specified GatingControls. For example, say you have three gating controls, one for each of three Amazon Web Services Regions. Now you specify ATLEAST 2 as your RuleConfig. With these settings, you can only change (set or unset) the routing controls that you have specified as TargetControls if that rule evaluates to true. In other words, your ability to change the routing controls that you have specified as TargetControls is gated by the rule that you set for the routing controls in GatingControls.
      */
     TargetControls: __listOf__stringMin1Max256PatternAZaZ09;
     /**
@@ -766,14 +802,18 @@ declare namespace Route53RecoveryControlConfig {
      * The deployment status of a routing control. Status can be one of the following: PENDING, DEPLOYED, PENDING_DELETION.
      */
     Status?: Status;
+    /**
+     * The Amazon Web Services account ID of the routing control owner.
+     */
+    Owner?: __stringMin12Max12PatternD12;
   }
   export interface Rule {
     /**
-     * An assertion rule enforces that, when a routing control state is changed, the criteria set by the rule configuration is met. Otherwise, the change to the routing control state is not accepted. For example, the criteria might be that at least one routing control state is On after the transation so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario.
+     * An assertion rule enforces that, when a routing control state is changed, the criteria set by the rule configuration is met. Otherwise, the change to the routing control state is not accepted. For example, the criteria might be that at least one routing control state is On after the transaction so that traffic continues to flow to at least one cell for the application. This ensures that you avoid a fail-open scenario.
      */
     ASSERTION?: AssertionRule;
     /**
-     * A gating rule verifies that a gating routing control or set of gating rounting controls, evaluates as true, based on a rule configuration that you specify, which allows a set of routing control state changes to complete. For example, if you specify one gating routing control and you set the Type in the rule configuration to OR, that indicates that you must set the gating routing control to On for the rule to evaluate as true; that is, for the gating control "switch" to be "On". When you do that, then you can update the routing control states for the target routing controls that you specify in the gating rule.
+     * A gating rule verifies that a gating routing control or set of gating routing controls, evaluates as true, based on a rule configuration that you specify, which allows a set of routing control state changes to complete. For example, if you specify one gating routing control and you set the Type in the rule configuration to OR, that indicates that you must set the gating routing control to On for the rule to evaluate as true; that is, for the gating control "switch" to be "On". When you do that, then you can update the routing control states for the target routing controls that you specify in the gating rule.
      */
     GATING?: GatingRule;
   }
@@ -883,11 +923,13 @@ declare namespace Route53RecoveryControlConfig {
   export type __string = string;
   export type __stringMax36PatternS = string;
   export type __stringMin0Max256PatternS = string;
+  export type __stringMin12Max12PatternD12 = string;
   export type __stringMin1Max128PatternAZaZ09 = string;
   export type __stringMin1Max256PatternAZaZ09 = string;
   export type __stringMin1Max32PatternS = string;
   export type __stringMin1Max64PatternS = string;
   export type __stringMin1Max8096PatternS = string;
+  export type __policy = string;
   /**
    * A string in YYYY-MM-DD format that represents the latest possible API version that can be used in this service. Specify 'latest' to use the latest possible version.
    */

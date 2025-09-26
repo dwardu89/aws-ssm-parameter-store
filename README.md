@@ -95,7 +95,7 @@ To test this action locally, you can use [`act`](https://github.com/nektos/act)
 3. Run the command below.
 
 ```
-act -j local_test_store_ssm --secret AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --secret SSM_PATH="/joshghent/helloworld" --secret SSM_VALUE="hello"
+act -j local_test_store_ssm --secret AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID --secret AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY --secret SSM_PATH="/foo/helloworld" --secret SSM_VALUE="hello"
 ```
 
 ## Credit
