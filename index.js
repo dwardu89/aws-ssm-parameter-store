@@ -11,15 +11,20 @@ async function run() {
       apiVersion: "2014-11-06",
       region: core.getInput("aws-region"),
     });
+    var skip = core.getInput("skip-empty-value", { required: false });
     var params = {
       Name: core.getInput("ssm-path", { required: true }),
-      Value: core.getInput("ssm-value", { required: true }),
+      Value: core.getInput("ssm-value", { required: !skip }),
       Type: core.getInput("ssm-value-type", { required: true }),
       Overwrite: core.getBooleanInput("ssm-value-overwrite", {
         required: true,
       }),
       Description: core.getInput("ssm-value-description"),
     };
+    if (skip === 'true' && params.Value === '') {
+      core.info(`Skipping empty value parameter in path [${ssm_path}]`);
+      return;
+    }
     core.debug(
       `Prepared parameters for SSM parameter update. ${JSON.stringify(params)}`
     );

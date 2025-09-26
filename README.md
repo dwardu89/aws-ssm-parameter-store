@@ -38,6 +38,11 @@ This action helps solve this problem by allowing the user to provide the path an
 
 **Optional** The AWS KMS Key ARN to use to encrypt the key. Default uses the AWS Provided KMS Key ID .
 
+### `skip-empty-value`
+
+**Optional** When true - Skips creating/updating an SSM Parameter if provided value is empty. Default set to false.
+
+
 ## Example usage
 
 ```yaml
